@@ -16,7 +16,7 @@ public class Disco extends Multimedia{
 
     public Disco() {
         super();
-        setDuracionDisco(Constantes.DURACUION_DEFAULT);
+        setDuracionDisco();
         canciones = new ArrayList<>();
     }
 
@@ -31,7 +31,7 @@ public class Disco extends Multimedia{
      */
     public Disco(int duracionDisco, ArrayList<Cancion> canciones, String titulo, String autor, String formato, int anyo) {
         super(titulo, autor, formato, anyo);
-        setDuracionDisco(duracionDisco);
+        setDuracionDisco();
         setCanciones(canciones);
     }
 
@@ -44,8 +44,12 @@ public class Disco extends Multimedia{
         return duracionDisco;
     }
 
-    public void setDuracionDisco(int duracionDisco) {
-        this.duracionDisco = duracionDisco;
+    public void setDuracionDisco() {
+        int sumaTotalCanciones=0;
+        for (int i=0;i<canciones.size();i++){
+            sumaTotalCanciones += canciones.get(i).getDuracionSegundos();
+        }
+        this.duracionDisco=sumaTotalCanciones;
     }
 
     public ArrayList<Cancion> getCanciones() {
@@ -62,5 +66,38 @@ public class Disco extends Multimedia{
      */
     public void anyadirCanciones(Cancion cancion){
         canciones.add(cancion);
+    }
+
+    /**
+     * metodo para devolver los toString de todas las canciones
+     * @return String
+     */
+    String titulosCanciones(){
+        String cancionesString="";
+        for (int i=0;i< getCanciones().size();i++){
+            cancionesString+="-"+canciones.get(i).toString();
+        }
+        return cancionesString;
+    }
+
+    /**
+     * Pasa la duracion en segundos a minutos
+     * @return String
+     */
+    String duracionMinutos(){
+        String duracionMinutos="";
+        duracionMinutos = duracionMinutos +duracionDisco/60+ ":" + duracionDisco%60;
+
+        return duracionMinutos;
+    }
+
+    /**
+     * toString de disco
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return "\nDuracion Disco: " + duracionMinutos() +
+               "\n Canciones:\n" + titulosCanciones();
     }
 }

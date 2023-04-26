@@ -44,4 +44,22 @@ public class Cancion{
     public void setDuracionSegundos(int duracionSegundos) {
         this.duracionSegundos = duracionSegundos;
     }
+    /**
+     * Pasa la duracion en segundos a minutos
+     * @return String
+     */
+    String duracionMinutos(){
+        String duracionMinutos="";
+        duracionMinutos = duracionMinutos +duracionSegundos/60+ ":" + duracionSegundos%60 + "\n";
+
+        return duracionMinutos;
+    }
+    /**
+     * toString de cancion
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return  nombre + "\t" +duracionMinutos() + " min";
+    }
 }
