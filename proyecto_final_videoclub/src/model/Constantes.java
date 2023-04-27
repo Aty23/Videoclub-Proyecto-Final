@@ -21,4 +21,5 @@ public class Constantes {
     public static final int ANYO_DESCUENTO_PELICULA=2012;
     public static final int ANYO_DESCUENTO_VIDEOJUEGO=2010;
     public static final int DURACION_DISCO_DESCUENTO=30;
+    public static final int PAGO_EXTRA_VIDEOJUEGOS_PELICULAS_2023=1;
 }

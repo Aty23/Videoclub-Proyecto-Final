@@ -134,6 +134,9 @@ public class Socio {
         else if(multimedia instanceof Videojuego && ((Videojuego) multimedia).getAnyo()<Constantes.ANYO_DESCUENTO_VIDEOJUEGO){
             pagoAlquiler -= Constantes.DESCUENTO;
         }
+        else if((multimedia instanceof Pelicula ||multimedia instanceof Videojuego) && multimedia.getAnyo()==2023){
+            pagoAlquiler+=Constantes.PAGO_EXTRA_VIDEOJUEGOS_PELICULAS_2023;
+        }
 
     }
     public void recargoRetraso(Multimedia multimedia){
