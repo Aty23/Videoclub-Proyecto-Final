@@ -17,8 +17,8 @@ public class Cancion{
 
     /**
      * constructor por parámetros
-     * @param nombre
-     * @param duracionSegundos
+     * @param nombre String
+     * @param duracionSegundos int
      */
     public Cancion(String nombre, int duracionSegundos) {
         setNombre(nombre);
@@ -27,7 +27,7 @@ public class Cancion{
 
     /**
      * getters y setters
-     * @return
+     *
      */
     public String getNombre() {
         return nombre;

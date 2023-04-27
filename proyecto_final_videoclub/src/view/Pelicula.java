@@ -20,13 +20,13 @@ public class Pelicula extends Multimedia {
 
     /**
      * costructor por parámetros
-     * @param titulo
-     * @param autor
-     * @param formato
-     * @param anyo
-     * @param duracion
-     * @param actorPrincipal
-     * @param actrizPrincipal
+     * @param titulo String
+     * @param autor String
+     * @param formato String
+     * @param anyo int
+     * @param duracion int
+     * @param actorPrincipal String
+     * @param actrizPrincipal String
      */
     public Pelicula(String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal) {
         super(titulo, autor, formato, anyo);
@@ -37,7 +37,7 @@ public class Pelicula extends Multimedia {
 
     /**
      * getters y setters
-     * @return
+     *
      */
 
     public int getDuracion() {
@@ -79,7 +79,7 @@ public class Pelicula extends Multimedia {
 
     /**
      * override de toString
-     * @return
+     * @return String
      */
     @Override
     public String toString() {

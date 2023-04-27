@@ -16,11 +16,11 @@ public class Videojuego extends Multimedia{
 
     /**
      * construcor por parámetros
-     * @param titulo
-     * @param autor
-     * @param formato
-     * @param anyo
-     * @param platafotrma
+     * @param titulo String
+     * @param autor String
+     * @param formato String
+     * @param anyo int
+     * @param platafotrma String
      */
     public Videojuego(String titulo, String autor, String formato, int anyo, String platafotrma) {
         super(titulo, autor, formato, anyo);
@@ -29,7 +29,7 @@ public class Videojuego extends Multimedia{
 
     /**
      * getters y setter
-     * @return
+     *
      */
     public String getPlatafotrma() {
         return platafotrma;
@@ -46,7 +46,7 @@ public class Videojuego extends Multimedia{
 
     /**
      * override de toString
-     * @return
+     * @return String
      */
     @Override
     public String toString() {

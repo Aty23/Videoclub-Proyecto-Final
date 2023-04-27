@@ -1,5 +1,9 @@
 package view;
 import model.*;
+
+import javax.swing.plaf.PanelUI;
+import java.util.*;
+
 public class Socio {
     /**
      * atributos
@@ -9,7 +13,7 @@ public class Socio {
     private int anyoNacimiento;
     private String poblacion;
     private boolean alquilando;
-    private int diasAlquilando;
+    private Date diaAlquilado;
 
     /**
      * constructor default
@@ -21,15 +25,16 @@ public class Socio {
         setPoblacion(Constantes.POBLACION_DEFAULT);
         setAlquilando(Constantes.ALQUILANDO_DEFAULT);
 
+
     }
 
     /**
      * constructor por parámetros
-     * @param nif
-     * @param nombre
-     * @param anyoNacimiento
-     * @param poblacion
-     * @param alquilando
+     * @param nif String
+     * @param nombre String
+     * @param anyoNacimiento  int
+     * @param poblacion String
+     * @param alquilando boolean
      */
 
     public Socio(String nif, String nombre, int anyoNacimiento, String poblacion, boolean alquilando) {
@@ -42,7 +47,7 @@ public class Socio {
 
     /**
      * getters y setters
-     * @return
+     *
      */
 
     public String getNif() {
@@ -86,7 +91,7 @@ public class Socio {
         if(!poblacion.equals("")) {
             this.poblacion = poblacion;
         }else{
-            throw new RuntimeException("Población o introducida");
+            throw new RuntimeException("Población no introducida");
         }
     }
 
@@ -98,25 +103,43 @@ public class Socio {
         this.alquilando = alquilando;
     }
 
-    public int getDiasAlquilando() {
-        return diasAlquilando;
+    public Date getDiaAlquilado() {
+        return diaAlquilado;
     }
 
-    public void setDiasAlquilando(int diasAlquilando) {
-        if(diasAlquilando>=0) {
-            this.diasAlquilando = diasAlquilando;
-        }else {
-            throw new RuntimeException("Cantidad de dínas no valida");
+    public void setDiaAlquilado() {
+        if(alquilando==true) {
+            diaAlquilado = new Date();
         }
     }
 
     /**
      * controla si hay un alquiler activo
-     * @param peli
+     *
      */
-    public void alquilerPelicula(Pelicula peli){
+    public void alquilerPelicula(){
         if(!alquilando){
             setAlquilando(true);
+        }
+
+    }
+    public void pagarAlquiler(Multimedia multimedia){
+        int pagoAlquiler=Constantes.PRECIO_BASE_ALQUILER;
+        if(multimedia instanceof Disco && ((Disco) multimedia).getDuracionDisco()<Constantes.DURACION_DISCO_DESCUENTO){
+            pagoAlquiler -= Constantes.DESCUENTO;
+        }
+        else if(multimedia instanceof Pelicula && ((Pelicula)multimedia).getAnyo()<Constantes.ANYO_DESCUENTO_PELICULA){
+            pagoAlquiler -= Constantes.DESCUENTO;
+        }
+        else if(multimedia instanceof Videojuego && ((Videojuego) multimedia).getAnyo()<Constantes.ANYO_DESCUENTO_VIDEOJUEGO){
+            pagoAlquiler -= Constantes.DESCUENTO;
+        }
+
+    }
+    public void recargoRetraso(Multimedia multimedia){
+        Date hoy = new Date();
+        if(hoy.compareTo(getDiaAlquilado())<Constantes.MAX_DIAS_ALQUILER){
+
         }
 
     }
