@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.Scanner;
 import model.*;
 import view.*;
+import javax.swing.*;
+
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 /**
  * Esto es una ayuda para utilizar el JavaDoc:
@@ -26,6 +29,18 @@ public class Main {
         switch (OperacionesMenu.selectMenu(sc)){
 
         }
+
+        try{
+            Window w = new Window();
+            w.setSize(900, 700);
+            w.setContentPane(w.getPanelPrincipal());
+            w.setVisible(true);
+            w.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 
