@@ -1,6 +1,6 @@
 package view;
 import model.*;
-public class Multimedia {
+public abstract class Multimedia {
     /**
      * atributos
      */
@@ -21,10 +21,10 @@ public class Multimedia {
 
     /**
      * constructor por parámetros
-     * @param titulo
-     * @param autor
-     * @param formato
-     * @param anyo
+     * @param titulo String
+     * @param autor String
+     * @param formato String
+     * @param anyo int
      */
 
     public Multimedia(String titulo, String autor, String formato, int anyo) {
@@ -36,7 +36,7 @@ public class Multimedia {
 
     /**
      * getters y setters
-     * @return
+     *
      */
     public String getTitulo() {
         return titulo;
@@ -89,7 +89,7 @@ public class Multimedia {
 
     /**
      * override de toString
-     * @return
+     * @return String
      */
     @Override
     public String toString() {
@@ -99,8 +99,8 @@ public class Multimedia {
 
     /**
      * metodo equals propio de la clase para comparar el autor y el título
-     * @param multimedia2
-     * @return
+     * @param multimedia2 Multimedia
+     * @return boolean
      */
     public boolean equals(Multimedia multimedia2) {
         if(getTitulo().equals(multimedia2.getTitulo())&&getAutor().equals(multimedia2.getAutor())) {

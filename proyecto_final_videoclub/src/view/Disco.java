@@ -22,14 +22,14 @@ public class Disco extends Multimedia{
 
     /**
      * costructor por parámetros
-     * @param duracionDisco
-     * @param canciones
-     * @param titulo
-     * @param autor
-     * @param formato
-     * @param anyo
+     * @param titulo String
+     * @param autor String
+     * @param formato String
+     * @param anyo int
+     * @param duracionDisco int
+     * @param canciones ArrayList<Cancion>
      */
-    public Disco(int duracionDisco, ArrayList<Cancion> canciones, String titulo, String autor, String formato, int anyo) {
+    public Disco(String titulo, String autor,String formato, int anyo, int duracionDisco, ArrayList<Cancion> canciones) {
         super(titulo, autor, formato, anyo);
         setDuracionDisco();
         setCanciones(canciones);
@@ -37,7 +37,7 @@ public class Disco extends Multimedia{
 
     /**
      * getters y setters
-     * @return
+     *
      */
 
     public int getDuracionDisco() {
@@ -62,7 +62,7 @@ public class Disco extends Multimedia{
 
     /**
      * método para añadir canciones
-     * @param cancion
+     * @param cancion Cancion
      */
     public void anyadirCanciones(Cancion cancion){
         canciones.add(cancion);
@@ -75,7 +75,7 @@ public class Disco extends Multimedia{
     String titulosCanciones(){
         String cancionesString="";
         for (int i=0;i< getCanciones().size();i++){
-            cancionesString+="-"+canciones.get(i).toString();
+            cancionesString="-"+canciones.get(i).toString();
         }
         return cancionesString;
     }
