@@ -52,4 +52,5 @@ public class Videojuego extends Multimedia{
     public String toString() {
         return "Videojuego:\n" + super.toString() + "\nPlataforma: " + getPlatafotrma();
     }
+
 }

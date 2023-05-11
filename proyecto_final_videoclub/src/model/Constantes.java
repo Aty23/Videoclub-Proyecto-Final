@@ -1,5 +1,6 @@
 package model;
 import javax.swing.plaf.PanelUI;
+import java.util.*;
 public class Constantes {
     public static final String TITULO_DEFAULT="N/A";
     public static final String AUTOR_DEFAULT="N/A";
@@ -24,4 +25,5 @@ public class Constantes {
     public static final int ANYO_DESCUENTO_VIDEOJUEGO=2010;
     public static final int DURACION_DISCO_DESCUENTO=30;
     public static final int PAGO_EXTRA_VIDEOJUEGOS_PELICULAS_2023=1;
+    public static final Date FECHA_DEFAULT = new Date();
 }

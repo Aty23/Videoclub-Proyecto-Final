@@ -108,5 +108,6 @@ public abstract class Multimedia {
         }
         return false;
     }
+    public abstract Object[] sacarBD();
 }
 

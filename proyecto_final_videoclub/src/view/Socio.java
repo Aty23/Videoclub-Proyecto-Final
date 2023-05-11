@@ -13,7 +13,7 @@ public class Socio {
     private int anyoNacimiento;
     private String poblacion;
     private boolean alquilando;
-    private int diaAlquilado;
+    private Date diaAlquilado;
     private Date fecha;
 
     /**
@@ -25,7 +25,7 @@ public class Socio {
         setAnyoNacimiento(Constantes.ANYO_NACIMIENTO_DEFAULT);
         setPoblacion(Constantes.POBLACION_DEFAULT);
         setAlquilando(Constantes.ALQUILANDO_DEFAULT);
-        setDiasAlquilando(Constantes.DIAS_COMIENZO_ALQUILER);
+        setDiasAlquilando(Constantes.FECHA_DEFAULT);
         setfecha();
 
 
@@ -40,19 +40,21 @@ public class Socio {
      * @param alquilando boolean
      */
 
-    public Socio(String nif, String nombre, int anyoNacimiento, String poblacion, boolean alquilando) {
+    public Socio(String nif, String nombre, int anyoNacimiento, String poblacion, boolean alquilando, Date diaAlquilado) {
         setNif(nif);
         setNombre(nombre);
         setAnyoNacimiento(anyoNacimiento);
         setPoblacion(poblacion);
         setAlquilando(alquilando);
+        setDiasAlquilando(diaAlquilado);
+        setfecha();
     }
 
     /**
      * getters y setters
      *
      */
-    private void setDiasAlquilando(int diasAlquilando) {
+    private void setDiasAlquilando(Date diasAlquilando) {
         this.diaAlquilado = diasAlquilando;
     }
     public String getNif() {
