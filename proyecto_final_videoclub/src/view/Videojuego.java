@@ -4,14 +4,14 @@ public class Videojuego extends Multimedia{
     /**
      * atributos
      */
-    private String platafotrma;
+    private String plataforma;
 
     /**
      * constructor default
      */
     public Videojuego() {
         super();
-        setPlatafotrma(Constantes.PLATAFORMA_DEFAULT);
+        setPlataforma(Constantes.PLATAFORMA_DEFAULT);
     }
 
     /**
@@ -20,24 +20,24 @@ public class Videojuego extends Multimedia{
      * @param autor String
      * @param formato String
      * @param anyo int
-     * @param platafotrma String
+     * @param plataforma String
      */
-    public Videojuego(String titulo, String autor, String formato, int anyo, String platafotrma) {
+    public Videojuego(String titulo, String autor, String formato, int anyo, String plataforma) {
         super(titulo, autor, formato, anyo);
-        setPlatafotrma(platafotrma);
+        setPlataforma(plataforma);
     }
 
     /**
      * getters y setter
      *
      */
-    public String getPlatafotrma() {
-        return platafotrma;
+    public String getPlataforma() {
+        return plataforma;
     }
 
-    public void setPlatafotrma(String platafotrma) {
+    public void setPlataforma(String platafotrma) {
         if(!platafotrma.equals("")){
-            this.platafotrma = platafotrma;
+            this.plataforma = platafotrma;
         }else{
             throw new RuntimeException("No se ha introducido la plataforma");
         }
@@ -50,7 +50,7 @@ public class Videojuego extends Multimedia{
      */
     @Override
     public String toString() {
-        return "Videojuego:\n" + super.toString() + "\nPlataforma: " + getPlatafotrma();
+        return "Videojuego:\n" + super.toString() + "\nPlataforma: " + getPlataforma();
     }
 
 }

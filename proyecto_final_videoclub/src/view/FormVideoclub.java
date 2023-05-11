@@ -2,11 +2,14 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.Normalizer;
 
-public class Window extends JFrame{
+public class FormVideoclub extends JFrame{
     public JPanel panelPrincipal = new JPanel();
 
-    public Window()throws HeadlessException {
+    public FormVideoclub()throws HeadlessException {
         panelPrincipal.setLayout(null);
         JMenuBar barra = new JMenuBar();
         JMenu archivo = new JMenu("Archivo");
@@ -35,6 +38,17 @@ public class Window extends JFrame{
         panelPrincipal.add(devolver);
         listar.setBounds(400,500,100,50);
         panelPrincipal.add(listar);
+
+        altas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FormAltas fA = new FormAltas();
+                fA.setSize(900, 700);
+                fA.setContentPane(fA.getPanelPrincipal());
+                fA.setVisible(true);
+                fA.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            }
+        });
 
         /*setInfoCategorias();
         setCargarCategorias();

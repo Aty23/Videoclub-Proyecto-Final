@@ -3,9 +3,8 @@ package control;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-import model.*;
+
 import view.*;
-import javax.swing.*;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
@@ -31,7 +30,7 @@ public class Main {
         }
 
         try{
-            Window w = new Window();
+            FormVideoclub w = new FormVideoclub();
             w.setSize(900, 700);
             w.setContentPane(w.getPanelPrincipal());
             w.setVisible(true);
