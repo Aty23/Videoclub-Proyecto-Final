@@ -3,6 +3,7 @@ import model.*;
 
 import javax.swing.plaf.PanelUI;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class Socio {
     /**
@@ -14,7 +15,6 @@ public class Socio {
     private String poblacion;
     private boolean alquilando;
     private Date diaAlquilado;
-    private Date fecha;
 
     /**
      * constructor default
@@ -25,8 +25,6 @@ public class Socio {
         setAnyoNacimiento(Constantes.ANYO_NACIMIENTO_DEFAULT);
         setPoblacion(Constantes.POBLACION_DEFAULT);
         setAlquilando(Constantes.ALQUILANDO_DEFAULT);
-        setDiasAlquilando(Constantes.FECHA_DEFAULT);
-        setfecha();
 
 
     }
@@ -40,23 +38,19 @@ public class Socio {
      * @param alquilando boolean
      */
 
-    public Socio(String nif, String nombre, int anyoNacimiento, String poblacion, boolean alquilando, Date diaAlquilado) {
+    public Socio(String nif, String nombre, int anyoNacimiento, String poblacion, boolean alquilando) {
         setNif(nif);
         setNombre(nombre);
         setAnyoNacimiento(anyoNacimiento);
         setPoblacion(poblacion);
         setAlquilando(alquilando);
-        setDiasAlquilando(diaAlquilado);
-        setfecha();
     }
 
     /**
      * getters y setters
      *
      */
-    private void setDiasAlquilando(Date diasAlquilando) {
-        this.diaAlquilado = diasAlquilando;
-    }
+
     public String getNif() {
         return nif;
     }
@@ -110,13 +104,13 @@ public class Socio {
         this.alquilando = alquilando;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getDiaAlquilado() {
+        return diaAlquilado;
     }
 
-    public void setfecha() {
+    public void setDiaAlquilado() {
         if(alquilando==true) {
-            fecha = new Date();
+            diaAlquilado = new Date();
         }
     }
 
@@ -146,11 +140,23 @@ public class Socio {
         }
 
     }
-    public void recargoRetraso(Multimedia multimedia){
-        Date hoy = new Date();
-        if(hoy.compareTo(getFecha())<Constantes.MAX_DIAS_ALQUILER){
 
-        }
+    /**
+     * Calcula el valor del recargo por retraso y devuelve el valor.
+     * @param multimedia
+     * @return int
+     */
+    public int recargoRetraso(Multimedia multimedia){
+        int recargo;
+        Date hoy = new Date();
+        Date fechaAlquiler = new Date(123,1,8);
+
+
+        long diferenciaMilisec= hoy.getTime()-diaAlquilado.getTime();
+        long diferenciaDias= TimeUnit.MILLISECONDS.toDays(diferenciaMilisec);
+        recargo= (int) (diferenciaDias-3)*2;
+        System.out.println(diferenciaDias);
+        return recargo;
 
     }
 }
