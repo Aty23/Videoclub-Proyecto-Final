@@ -13,7 +13,7 @@ CREATE TABLE Socio (
 );
 
 CREATE TABLE Multimedia(
-  IdProducto  INTEGER(10),
+  IdProducto  INTEGER,
   Titulo VARCHAR(20),
   Autor      VARCHAR(30),
   Formato   VARCHAR(10),
@@ -23,25 +23,25 @@ CREATE TABLE Multimedia(
   CONSTRAINT fk_NIF_Socio FOREIGN KEY (NIF_Socio) REFERENCES Socio (NIF)
 );
 CREATE TABLE Videojuego (
-  IdVideojuego     INTEGER(10),
+  IdVideojuego     INTEGER,
   NombreCategoria VARCHAR(10),
-  Plataforma INTEGER(10),
+  Plataforma INTEGER,
   CONSTRAINT pk_Id_Videojuego PRIMARY KEY(IdVideojuego) ,
-  CONSTRAINT pk_Id_Videojuego FOREIGN KEY (IdVideojuego) REFERENCES Multimedia (IdProducto)
+  CONSTRAINT fk_Id_Videojuego FOREIGN KEY (IdVideojuego) REFERENCES Multimedia (IdProducto)
 
 );
 CREATE TABLE Pelicula (
-  IdPelicula     INTEGER(10),
+  IdPelicula     INTEGER,
   NombreCategoria VARCHAR(10),
-  Duracion INTEGER(100),
+  Duracion INTEGER,
   CONSTRAINT pk_Id_Pelicula PRIMARY KEY(IdPelicula) ,
-  CONSTRAINT pk_Id_Pelicula FOREIGN KEY (IdPelicula) REFERENCES Multimedia (IdProducto)
+  CONSTRAINT fk_Id_Pelicula FOREIGN KEY (IdPelicula) REFERENCES Multimedia (IdProducto)
 
 );
 CREATE TABLE Disco (
-  IdDisco     INTEGER(10),
+  IdDisco     INTEGER,
   NombreCategoria VARCHAR(10),
-  Duracion INTEGER(100),
+  Duracion INTEGER,
   ActorP      VARCHAR(30),
   ActrizP     VARCHAR(30),
   CONSTRAINT pk_Id_Disco PRIMARY KEY(IdDisco) ,
@@ -49,10 +49,10 @@ CREATE TABLE Disco (
 
 );
 CREATE TABLE Cancion (
-  IdCancion    INTEGER(10),
+  IdCancion    INTEGER,
   Nombre VARCHAR(10),
   DuracionSegundos VARCHAR(100),
-  IdDisco INTEGER(10),
-  CONSTRAINT pk_Id_Cancion PRIMARY KEY(IdCancion)
+  IdDisco INTEGER,
+  CONSTRAINT pk_Id_Cancion PRIMARY KEY(IdCancion),
   CONSTRAINT fk_Id_Cancion FOREIGN KEY (IdCancion) REFERENCES Disco (IdDisco)
 );
