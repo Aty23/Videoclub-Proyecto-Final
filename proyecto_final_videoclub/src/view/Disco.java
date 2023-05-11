@@ -8,7 +8,7 @@ public class Disco extends Multimedia{
      * atributos
      */
     private int duracionDisco;
-    private ArrayList<Cancion> canciones;
+    private ArrayList<Cancion> Coleccioncanciones;
 
     /**
      * costructor default
@@ -17,7 +17,7 @@ public class Disco extends Multimedia{
     public Disco() {
         super();
         setDuracionDisco();
-        canciones = new ArrayList<>();
+        Coleccioncanciones = new ArrayList<>();
     }
 
     /**
@@ -46,18 +46,18 @@ public class Disco extends Multimedia{
 
     public void setDuracionDisco() {
         int sumaTotalCanciones=0;
-        for (int i=0;i<canciones.size();i++){
-            sumaTotalCanciones += canciones.get(i).getDuracionSegundos();
+        for (int i=0;i<Coleccioncanciones.size();i++){
+            sumaTotalCanciones += Coleccioncanciones.get(i).getDuracionSegundos();
         }
         this.duracionDisco=sumaTotalCanciones;
     }
 
     public ArrayList<Cancion> getCanciones() {
-        return canciones;
+        return Coleccioncanciones;
     }
 
     public void setCanciones(ArrayList<Cancion> canciones) {
-        this.canciones = canciones;
+        this.Coleccioncanciones = canciones;
     }
 
     /**
@@ -65,7 +65,7 @@ public class Disco extends Multimedia{
      * @param cancion Cancion
      */
     public void anyadirCanciones(Cancion cancion){
-        canciones.add(cancion);
+        Coleccioncanciones.add(cancion);
     }
 
     /**
@@ -75,7 +75,7 @@ public class Disco extends Multimedia{
     String titulosCanciones(){
         String cancionesString="";
         for (int i=0;i< getCanciones().size();i++){
-            cancionesString="-"+canciones.get(i).toString();
+            cancionesString="-"+Coleccioncanciones.get(i).toString();
         }
         return cancionesString;
     }
