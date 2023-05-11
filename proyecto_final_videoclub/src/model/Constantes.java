@@ -15,9 +15,11 @@ public class Constantes {
     public static final String POBLACION_DEFAULT="N/A";
     public static final boolean ALQUILANDO_DEFAULT= false;
     public static final int MAX_DIAS_ALQUILER=3;
+    public static final int DIAS_COMIENZO_ALQUILER = 0;
     public static final int PRECIO_EXTRA_ALQUILER=2;
     public static final int PRECIO_BASE_ALQUILER=4;
     public static final int DESCUENTO=1;
+
     public static final int ANYO_DESCUENTO_PELICULA=2012;
     public static final int ANYO_DESCUENTO_VIDEOJUEGO=2010;
     public static final int DURACION_DISCO_DESCUENTO=30;

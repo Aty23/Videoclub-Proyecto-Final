@@ -13,7 +13,8 @@ public class Socio {
     private int anyoNacimiento;
     private String poblacion;
     private boolean alquilando;
-    private Date diaAlquilado;
+    private int diaAlquilado;
+    private Date fecha;
 
     /**
      * constructor default
@@ -24,6 +25,8 @@ public class Socio {
         setAnyoNacimiento(Constantes.ANYO_NACIMIENTO_DEFAULT);
         setPoblacion(Constantes.POBLACION_DEFAULT);
         setAlquilando(Constantes.ALQUILANDO_DEFAULT);
+        setDiasAlquilando(Constantes.DIAS_COMIENZO_ALQUILER);
+        setfecha();
 
 
     }
@@ -49,7 +52,9 @@ public class Socio {
      * getters y setters
      *
      */
-
+    private void setDiasAlquilando(int diasAlquilando) {
+        this.diaAlquilado = diasAlquilando;
+    }
     public String getNif() {
         return nif;
     }
@@ -103,13 +108,13 @@ public class Socio {
         this.alquilando = alquilando;
     }
 
-    public Date getDiaAlquilado() {
-        return diaAlquilado;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setDiaAlquilado() {
+    public void setfecha() {
         if(alquilando==true) {
-            diaAlquilado = new Date();
+            fecha = new Date();
         }
     }
 
@@ -141,7 +146,7 @@ public class Socio {
     }
     public void recargoRetraso(Multimedia multimedia){
         Date hoy = new Date();
-        if(hoy.compareTo(getDiaAlquilado())<Constantes.MAX_DIAS_ALQUILER){
+        if(hoy.compareTo(getFecha())<Constantes.MAX_DIAS_ALQUILER){
 
         }
 
