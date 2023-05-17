@@ -13,8 +13,9 @@ public class Socio {
     private String nombre;
     private int anyoNacimiento;
     private String poblacion;
-    private boolean alquilando;
+    private boolean alquilando, recargoPendiente=false;
     private Date diaAlquilado;
+    ArrayList<Multimedia> multimediaAlquilado=new ArrayList<Multimedia>();
 
     /**
      * constructor default
@@ -127,7 +128,7 @@ public class Socio {
         }
 
     }
-    public void pagarAlquiler(Multimedia multimedia){
+    public int pagarAlquiler(Multimedia multimedia){
         int pagoAlquiler=Constantes.PRECIO_BASE_ALQUILER;
         if(multimedia instanceof Disco && ((Disco) multimedia).getDuracionDisco()<Constantes.DURACION_DISCO_DESCUENTO){
             pagoAlquiler -= Constantes.DESCUENTO;
@@ -141,25 +142,37 @@ public class Socio {
         else if((multimedia instanceof Pelicula ||multimedia instanceof Videojuego) && multimedia.getAnyo()==2023){
             pagoAlquiler+=Constantes.PAGO_EXTRA_VIDEOJUEGOS_PELICULAS_2023;
         }
+        return pagoAlquiler;
 
     }
 
     /**
      * Calcula el valor del recargo por retraso y devuelve el valor.
-     * @param multimedia
+     * @param
      * @return int
      */
-    public int recargoRetraso(Multimedia multimedia){
+
+    public int recargoRetraso(){
         int recargo;
         Date hoy = new Date();
-        Date fechaAlquiler = new Date(123,1,8);
-
-
         long diferenciaMilisec= hoy.getTime()-diaAlquilado.getTime();
         long diferenciaDias= TimeUnit.MILLISECONDS.toDays(diferenciaMilisec);
         recargo= (int) (diferenciaDias-3)*2;
-        System.out.println(diferenciaDias);
+        if (recargo>0) recargoPendiente=true;
         return recargo;
 
+    }
+
+    public void alquilar(Multimedia multimedia){
+        if(recargoPendiente==false){
+            pagarAlquiler(multimedia);
+            multimediaAlquilado.add(multimedia);
+        }
+
+    }
+    public void devolver(Multimedia multimedia){
+        if(recargoPendiente==false){
+            multimediaAlquilado.remove(multimedia);
+        }
     }
 }
