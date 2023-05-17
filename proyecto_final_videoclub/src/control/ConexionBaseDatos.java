@@ -1,6 +1,8 @@
 package control;
 
+import view.Pelicula;
 import view.Socio;
+import view.Videojuego;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,6 +22,8 @@ public class ConexionBaseDatos {
             con = DriverManager.getConnection(url + bd, user,pass);
             try{
                 info.add(datosSocio(con));
+                info.add(datosVideojuego(con));
+                info.add(datosPelicula(con));
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -42,4 +46,42 @@ public class ConexionBaseDatos {
         }
         return infoSocio;
     }
+    public ArrayList<Object> datosVideojuego(Connection con) throws SQLException {
+        Statement st = con.createStatement();
+        ResultSet rsVideojuego = st.executeQuery("select * from Socio");
+        ArrayList<Object> infoVideojuego = new ArrayList<Object>();
+        while (rsVideojuego.next()) {
+            Videojuego videojuego = new Videojuego(rsVideojuego.getString("titulo"), rsVideojuego.getString("autor"),
+                    rsVideojuego.getString("formato"),
+                    rsVideojuego.getInt("anyo"), rsVideojuego.getString("plataforma"));
+            infoVideojuego.add(videojuego);
+        }
+        return infoVideojuego;
+    }
+    public ArrayList<Object> datosPelicula(Connection con) throws SQLException {
+        Statement st = con.createStatement();
+        ResultSet rsPelicula = st.executeQuery("select * from Socio");
+        ArrayList<Object> infoPelicula = new ArrayList<Object>();
+        while (rsPelicula.next()) {
+            Pelicula pelicula = new Pelicula(rsPelicula.getString("titulo"), rsPelicula.getString("autor"),
+                    rsPelicula.getString("formato"),
+                    rsPelicula.getInt("anyo"), rsPelicula.getInt("duracion"),
+                    rsPelicula.getString("actorprincipal"), rsPelicula.getString("actrizPrincipal"));
+            infoPelicula.add(pelicula);
+        }
+        return infoPelicula;
+    }
+    /*public ArrayList<Object> datosDisco(Connection con) throws SQLException {
+        Statement st = con.createStatement();
+        ResultSet rsPelicula = st.executeQuery("select * from Socio");
+        ArrayList<Object> infoPelicula = new ArrayList<Object>();
+        while (rsPelicula.next()) {
+            Pelicula pelicula = new Pelicula(rsPelicula.getString("titulo"), rsPelicula.getString("autor"),
+                    rsPelicula.getString("formato"),
+                    rsPelicula.getInt("anyo"), rsPelicula.getInt("duracion"),
+                    rsPelicula.getString("actorprincipal"), rsPelicula.getString("actrizPrincipal"));
+            infoPelicula.add(pelicula);
+        }
+        return infoPelicula;
+    }*/
 }
