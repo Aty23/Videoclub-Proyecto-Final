@@ -36,20 +36,48 @@ public class FormAltas extends JFrame {
         JTextField txtAnyoNacimiento = new JTextField();
         JLabel lPoblacion = new JLabel("Poblacion");
         JTextField txtPoblacion = new JTextField();
+        JLabel lNombreCancion = new JLabel("Nombre de cancion");
+        JTextField txtNombreCancion = new JTextField();
+        JLabel lDuracionSegundos = new JLabel("Duracion en segundos");
+        JTextField txtDuracionSegundos = new JTextField();
+        JLabel lDuracionDisco = new JLabel("Duracion del disco");
+        JTextField txtDuracionDisco = new JTextField();
+
+        JLabel lColeccionCanciones = new JLabel("Nombres de canciones");
+        DefaultListModel<Cancion> modelo = new DefaultListModel<>();
+        Cancion cancion1 = new Cancion("Melendi ",20);
+        Cancion cancion2 = new Cancion("Euphoria ",30);
+        Cancion cancion3 = new Cancion("Paralized ",40);
+
+        modelo.addElement(cancion1);
+        modelo.addElement(cancion2);
+        modelo.addElement(cancion3);
+
+        JList<Cancion> jListCanciones = new JList<>(modelo);
+        jListCanciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
         JButton btnAltaSocio = new JButton("Alta de socio");
         JButton btnAltaPelicula = new JButton("Alta de película");
         JButton btnAltaVideojuego = new JButton("Alta de videojuego");
+        JButton btnAltaCancion = new JButton("Alta de cancion");
+        JButton btnAltaDisco = new JButton("Alta de disco");
 
         try{
             cmbEligeAlta.addItem("Elige uno");
             cmbEligeAlta.addItem("Alta de socio");
             cmbEligeAlta.addItem("Alta de pelicula");
             cmbEligeAlta.addItem("Alta de videojuego");
+            cmbEligeAlta.addItem("Alta de cancion");
+            cmbEligeAlta.addItem("Alta de disco");
         }catch (Exception e){
             e.printStackTrace();
         }
+
+        // ComboBox con opciones
         cmbEligeAlta.setBounds(100,100,150,50);
         panelPrincipal.add(cmbEligeAlta);
+
+        // Controles comunes en mas de una opcion
         lTitulo.setBounds(100,200,50,20);
         lTitulo.setVisible(false);
         panelPrincipal.add(lTitulo);
@@ -74,12 +102,16 @@ public class FormAltas extends JFrame {
         txtAnyo.setBounds(150,350,100,20);
         txtAnyo.setVisible(false);
         panelPrincipal.add(txtAnyo);
+
+        // Controles videojuego
         lPlataforma.setBounds(80,400,70,20);
         lPlataforma.setVisible(false);
         panelPrincipal.add(lPlataforma);
         txtPlataforma.setBounds(150,400,100,20);
         txtPlataforma.setVisible(false);
         panelPrincipal.add(txtPlataforma);
+
+        // Controles pelicula
         lDuracion.setBounds(80,400,70,20);
         lDuracion.setVisible(false);
         panelPrincipal.add(lDuracion);
@@ -98,6 +130,8 @@ public class FormAltas extends JFrame {
         txtActrizPrincipal.setBounds(150,500,100,20);
         txtActrizPrincipal.setVisible(false);
         panelPrincipal.add(txtActrizPrincipal);
+
+        // Controles socio
         lNif.setBounds(100,200,50,20);
         lNif.setVisible(false);
         panelPrincipal.add(lNif);
@@ -123,6 +157,35 @@ public class FormAltas extends JFrame {
         txtPoblacion.setVisible(false);
         panelPrincipal.add(txtPoblacion);
 
+        // Controles cancion
+        lNombreCancion.setBounds(30,200,130,20);
+        lNombreCancion.setVisible(false);
+        panelPrincipal.add(lNombreCancion);
+        txtNombreCancion.setBounds(150,200,100,20);
+        txtNombreCancion.setVisible(false);
+        panelPrincipal.add(txtNombreCancion);
+        lDuracionSegundos.setBounds(20,250,130,20);
+        lDuracionSegundos.setVisible(false);
+        panelPrincipal.add(lDuracionSegundos);
+        txtDuracionSegundos.setBounds(150,250,100,20);
+        txtDuracionSegundos.setVisible(false);
+        panelPrincipal.add(txtDuracionSegundos);
+
+        //Controles disco
+        lDuracionDisco.setBounds(30,200,130,20);
+        lDuracionDisco.setVisible(false);
+        panelPrincipal.add(lDuracionDisco);
+        txtDuracionDisco.setBounds(150,200,100,20);
+        txtDuracionDisco.setVisible(false);
+        panelPrincipal.add(txtDuracionDisco);
+        lColeccionCanciones.setBounds(20,250,130,20);
+        lColeccionCanciones.setVisible(false);
+        panelPrincipal.add(lColeccionCanciones);
+        jListCanciones.setBounds(150,250,300,70);
+        jListCanciones.setVisible(false);
+        panelPrincipal.add(jListCanciones);
+
+        // Botones para crear objeto segun opciones
         btnAltaSocio.setBounds(600,300,150,50);
         btnAltaSocio.setVisible(false);
         panelPrincipal.add(btnAltaSocio);
@@ -132,7 +195,12 @@ public class FormAltas extends JFrame {
         btnAltaVideojuego.setBounds(600,300,150,50);
         btnAltaVideojuego.setVisible(false);
         panelPrincipal.add(btnAltaVideojuego);
-
+        btnAltaCancion.setBounds(600,300,150,50);
+        btnAltaCancion.setVisible(false);
+        panelPrincipal.add(btnAltaCancion);
+        btnAltaDisco.setBounds(600,300,150,50);
+        btnAltaDisco.setVisible(false);
+        panelPrincipal.add(btnAltaDisco);
         cmbEligeAlta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -164,6 +232,16 @@ public class FormAltas extends JFrame {
                     lPoblacion.setVisible(false);
                     txtPoblacion.setVisible(false);
                     btnAltaSocio.setVisible(false);
+                    lNombreCancion.setVisible(false);
+                    txtNombreCancion.setVisible(false);
+                    lDuracionSegundos.setVisible(false);
+                    txtDuracionSegundos.setVisible(false);
+                    btnAltaCancion.setVisible(false);
+                    lDuracionDisco.setVisible(false);
+                    txtDuracionDisco.setVisible(false);
+                    lColeccionCanciones.setVisible(false);
+                    jListCanciones.setVisible(false);
+                    btnAltaDisco.setVisible(false);
                 }
                 else if (cmbEligeAlta.getSelectedItem().toString().equals("Alta de socio")){
                     lDuracion.setVisible(false);
@@ -184,6 +262,16 @@ public class FormAltas extends JFrame {
                     txtFormato.setVisible(false);
                     lAnyo.setVisible(false);
                     txtAnyo.setVisible(false);
+                    lNombreCancion.setVisible(false);
+                    txtNombreCancion.setVisible(false);
+                    lDuracionSegundos.setVisible(false);
+                    txtDuracionSegundos.setVisible(false);
+                    btnAltaCancion.setVisible(false);
+                    lDuracionDisco.setVisible(false);
+                    txtDuracionDisco.setVisible(false);
+                    lColeccionCanciones.setVisible(false);
+                    jListCanciones.setVisible(false);
+                    btnAltaDisco.setVisible(false);
 
                     lNif.setVisible(true);
                     txtNif.setVisible(true);
@@ -212,6 +300,16 @@ public class FormAltas extends JFrame {
                     lPoblacion.setVisible(false);
                     txtPoblacion.setVisible(false);
                     btnAltaSocio.setVisible(false);
+                    lNombreCancion.setVisible(false);
+                    txtNombreCancion.setVisible(false);
+                    lDuracionSegundos.setVisible(false);
+                    txtDuracionSegundos.setVisible(false);
+                    btnAltaCancion.setVisible(false);
+                    lDuracionDisco.setVisible(false);
+                    txtDuracionDisco.setVisible(false);
+                    lColeccionCanciones.setVisible(false);
+                    jListCanciones.setVisible(false);
+                    btnAltaDisco.setVisible(false);
 
                     lTitulo.setVisible(true);
                     txtTitulo.setVisible(true);
@@ -238,7 +336,16 @@ public class FormAltas extends JFrame {
                     lPoblacion.setVisible(false);
                     txtPoblacion.setVisible(false);
                     btnAltaSocio.setVisible(false);
-
+                    lNombreCancion.setVisible(false);
+                    txtNombreCancion.setVisible(false);
+                    lDuracionSegundos.setVisible(false);
+                    txtDuracionSegundos.setVisible(false);
+                    btnAltaCancion.setVisible(false);
+                    lDuracionDisco.setVisible(false);
+                    txtDuracionDisco.setVisible(false);
+                    lColeccionCanciones.setVisible(false);
+                    jListCanciones.setVisible(false);
+                    btnAltaDisco.setVisible(false);
 
                     lTitulo.setVisible(true);
                     txtTitulo.setVisible(true);
@@ -256,7 +363,105 @@ public class FormAltas extends JFrame {
                     txtActrizPrincipal.setVisible(true);
                     btnAltaPelicula.setVisible(true);
                 }
+                else if(cmbEligeAlta.getSelectedItem().toString().equals("Alta de cancion")){
+                    lDuracion.setVisible(false);
+                    txtDuracion.setVisible(false);
+                    lActorPrincipal.setVisible(false);
+                    txtActorPrincipal.setVisible(false);
+                    lActrizPrincipal.setVisible(false);
+                    txtActrizPrincipal.setVisible(false);
+                    btnAltaPelicula.setVisible(false);
+                    lPlataforma.setVisible(false);
+                    txtPlataforma.setVisible(false);
+                    btnAltaVideojuego.setVisible(false);
+                    lTitulo.setVisible(false);
+                    txtTitulo.setVisible(false);
+                    lAutor.setVisible(false);
+                    txtAutor.setVisible(false);
+                    lFormato.setVisible(false);
+                    txtFormato.setVisible(false);
+                    lAnyo.setVisible(false);
+                    txtAnyo.setVisible(false);
+                    lNif.setVisible(false);
+                    txtNif.setVisible(false);
+                    lNombre.setVisible(false);
+                    txtNombre.setVisible(false);
+                    lAnyoNacimiento.setVisible(false);
+                    txtAnyoNacimiento.setVisible(false);
+                    lPoblacion.setVisible(false);
+                    txtPoblacion.setVisible(false);
+                    btnAltaSocio.setVisible(false);
+                    lDuracionDisco.setVisible(false);
+                    txtDuracionDisco.setVisible(false);
+                    lColeccionCanciones.setVisible(false);
+                    jListCanciones.setVisible(false);
+                    btnAltaDisco.setVisible(false);
+
+                    lNombreCancion.setVisible(true);
+                    txtNombreCancion.setVisible(true);
+                    lDuracionSegundos.setVisible(true);
+                    txtDuracionSegundos.setVisible(true);
+                    btnAltaCancion.setVisible(true);
+                }
+                else if (cmbEligeAlta.getSelectedItem().toString().equals("Alta de disco")){
+                    lDuracion.setVisible(false);
+                    txtDuracion.setVisible(false);
+                    lActorPrincipal.setVisible(false);
+                    txtActorPrincipal.setVisible(false);
+                    lActrizPrincipal.setVisible(false);
+                    txtActrizPrincipal.setVisible(false);
+                    btnAltaPelicula.setVisible(false);
+                    lPlataforma.setVisible(false);
+                    txtPlataforma.setVisible(false);
+                    btnAltaVideojuego.setVisible(false);
+                    lTitulo.setVisible(false);
+                    txtTitulo.setVisible(false);
+                    lAutor.setVisible(false);
+                    txtAutor.setVisible(false);
+                    lFormato.setVisible(false);
+                    txtFormato.setVisible(false);
+                    lAnyo.setVisible(false);
+                    txtAnyo.setVisible(false);
+                    lNif.setVisible(false);
+                    txtNif.setVisible(false);
+                    lNombre.setVisible(false);
+                    txtNombre.setVisible(false);
+                    lAnyoNacimiento.setVisible(false);
+                    txtAnyoNacimiento.setVisible(false);
+                    lPoblacion.setVisible(false);
+                    txtPoblacion.setVisible(false);
+                    btnAltaSocio.setVisible(false);
+                    lNombreCancion.setVisible(false);
+                    txtNombreCancion.setVisible(false);
+                    lDuracionSegundos.setVisible(false);
+                    txtDuracionSegundos.setVisible(false);
+                    btnAltaCancion.setVisible(false);
+
+                    lDuracionDisco.setVisible(true);
+                    txtDuracionDisco.setVisible(true);
+                    lColeccionCanciones.setVisible(true);
+                    jListCanciones.setVisible(true);
+                    btnAltaDisco.setVisible(true);
+                }
             }
+        });
+
+        btnAltaDisco.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int[] indicesSeleccionados = jListCanciones.getSelectedIndices();
+                Disco disco = new Disco();
+                for (int indice : indicesSeleccionados) {
+                    Cancion cancionSeleccionada = modelo.getElementAt(indice);
+                    disco.agregarCancion(cancionSeleccionada);
+                }
+                //ArrayList<Cancion> coleccionCanciones = disco.getColeccionCanciones();
+                /* for (Cancion cancion : coleccionCanciones) {
+                    System.out.println(cancion.getNombre());
+                } */
+            }
+
+
         });
     }
 

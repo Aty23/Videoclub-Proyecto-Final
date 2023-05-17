@@ -8,7 +8,7 @@ public class Disco extends Multimedia{
      * atributos
      */
     private int duracionDisco;
-    private ArrayList<Cancion> Coleccioncanciones;
+    private ArrayList<Cancion> coleccionCanciones;
 
     /**
      * costructor default
@@ -17,7 +17,7 @@ public class Disco extends Multimedia{
     public Disco() {
         super();
         setDuracionDisco();
-        Coleccioncanciones = new ArrayList<>();
+        coleccionCanciones = new ArrayList<>();
     }
 
     /**
@@ -46,18 +46,18 @@ public class Disco extends Multimedia{
 
     public void setDuracionDisco() {
         int sumaTotalCanciones=0;
-        for (int i=0;i<Coleccioncanciones.size();i++){
-            sumaTotalCanciones += Coleccioncanciones.get(i).getDuracionSegundos();
+            for (int i=0;i<coleccionCanciones.size();i++){
+            sumaTotalCanciones += coleccionCanciones.get(i).getDuracionSegundos();
         }
         this.duracionDisco=sumaTotalCanciones;
     }
 
     public ArrayList<Cancion> getCanciones() {
-        return Coleccioncanciones;
+        return coleccionCanciones;
     }
 
     public void setCanciones(ArrayList<Cancion> canciones) {
-        this.Coleccioncanciones = canciones;
+        this.coleccionCanciones = canciones;
     }
 
     /**
@@ -65,7 +65,7 @@ public class Disco extends Multimedia{
      * @param cancion Cancion
      */
     public void anyadirCanciones(Cancion cancion){
-        Coleccioncanciones.add(cancion);
+        coleccionCanciones.add(cancion);
     }
 
     /**
@@ -75,7 +75,7 @@ public class Disco extends Multimedia{
     String titulosCanciones(){
         String cancionesString="";
         for (int i=0;i< getCanciones().size();i++){
-            cancionesString="-"+Coleccioncanciones.get(i).toString();
+            cancionesString="-"+coleccionCanciones.get(i).toString();
         }
         return cancionesString;
     }
@@ -89,6 +89,18 @@ public class Disco extends Multimedia{
         duracionMinutos = duracionMinutos +duracionDisco/60+ ":" + duracionDisco%60;
 
         return duracionMinutos;
+    }
+
+    /**
+     * Agrega una cancion al disco
+     * @return void
+     */
+    public void agregarCancion(Cancion cancion) {
+        coleccionCanciones.add(cancion);
+    }
+
+    public ArrayList<Cancion> getColeccionCanciones() {
+        return coleccionCanciones;
     }
 
     /**
