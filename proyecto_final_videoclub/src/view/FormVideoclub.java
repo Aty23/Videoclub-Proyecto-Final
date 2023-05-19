@@ -46,7 +46,6 @@ public class FormVideoclub extends JFrame{
                 fA.setSize(900, 700);
                 fA.setContentPane(fA.getPanelPrincipal());
                 fA.setVisible(true);
-                fA.setDefaultCloseOperation(EXIT_ON_CLOSE);
             }
         });
 
