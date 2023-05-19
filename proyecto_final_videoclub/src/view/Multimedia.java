@@ -43,7 +43,7 @@ public abstract class Multimedia {
     }
 
     public void setTitulo(String titulo) {
-        if(titulo.equals("")) {
+        if(!titulo.equals("")) {
             this.titulo = titulo;
         }else{
             throw new RuntimeException("No se ha introducido el título");

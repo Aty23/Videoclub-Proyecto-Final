@@ -16,8 +16,8 @@ public class Disco extends Multimedia{
 
     public Disco() {
         super();
-        setDuracionDisco();
         coleccionCanciones = new ArrayList<>();
+        setDuracionDisco();
     }
 
     /**

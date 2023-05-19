@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class FormAltas extends JFrame {
 
@@ -455,10 +456,10 @@ public class FormAltas extends JFrame {
                     Cancion cancionSeleccionada = modelo.getElementAt(indice);
                     disco.agregarCancion(cancionSeleccionada);
                 }
-                //ArrayList<Cancion> coleccionCanciones = disco.getColeccionCanciones();
-                /* for (Cancion cancion : coleccionCanciones) {
+                ArrayList<Cancion> coleccionCanciones = disco.getColeccionCanciones();
+                for (Cancion cancion : coleccionCanciones) {
                     System.out.println(cancion.getNombre());
-                } */
+                }
             }
 
 
