@@ -27,8 +27,6 @@ public class Socio {
         setPoblacion(Constantes.POBLACION_DEFAULT);
         setAlquilando(Constantes.ALQUILANDO_DEFAULT);
         setDiaAlquilado(Constantes.FECHA_DEFAULT);
-
-
     }
 
     /**

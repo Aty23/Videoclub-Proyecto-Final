@@ -447,6 +447,55 @@ public class FormAltas extends JFrame {
             }
         });
 
+        btnAltaSocio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String NIF = txtNif.getText();
+                String Nombre = txtNombre.getText();
+                int AnyoNacimiento = Integer.parseInt(txtAnyoNacimiento.getText());
+                String Poblacion = txtPoblacion.getText();
+
+            }
+        });
+
+        btnAltaPelicula.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String titulo = txtTitulo.getText();
+                String autor = txtAutor.getText();
+                String formato = txtFormato.getText();
+                int anyo = Integer.parseInt(txtAnyo.getText());
+                int duracion = Integer.parseInt(txtDuracion.getText());
+                String actorPrincipal = txtActorPrincipal.getText();
+                String actrizPrincipal = txtActrizPrincipal.getText();
+
+                Pelicula p = new Pelicula(titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal);
+            }
+        });
+
+        btnAltaVideojuego.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String titulo = txtTitulo.getText();
+                String autor = txtAutor.getText();
+                String formato = txtFormato.getText();
+                int anyo = Integer.parseInt(txtAnyo.getText());
+                String plataforma = txtPlataforma.getText();
+
+                Videojuego v = new Videojuego(titulo, autor, formato, anyo, plataforma);
+            }
+        });
+
+        btnAltaCancion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombre = txtNombreCancion.getText();
+                int duracionSegundos = Integer.parseInt(txtDuracionSegundos.getText());
+
+                Cancion c = new Cancion(nombre, duracionSegundos);
+            }
+        });
+
         btnAltaDisco.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
