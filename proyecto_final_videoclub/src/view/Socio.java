@@ -14,7 +14,6 @@ public class Socio {
     private int anyoNacimiento;
     private String poblacion;
     private boolean alquilando, recargoPendiente=false;
-    private Date diaAlquilado;
     ArrayList<Multimedia> multimediaAlquilado=new ArrayList<Multimedia>();
 
     /**
@@ -48,10 +47,23 @@ public class Socio {
         setDiaAlquilado(diaAlquilado);
     }
 
+
+
     /**
      * getters y setters
      *
      */
+    public int getAnyoNacimiento() {
+        return anyoNacimiento;
+    }
+
+    public boolean isRecargoPendiente() {
+        return recargoPendiente;
+    }
+
+    public ArrayList<Multimedia> getMultimediaAlquilado() {
+        return multimediaAlquilado;
+    }
 
     public String getNif() {
         return nif;
@@ -106,9 +118,7 @@ public class Socio {
         this.alquilando = alquilando;
     }
 
-    public Date getDiaAlquilado() {
-        return diaAlquilado;
-    }
+
 
     public void setDiaAlquilado(Date diaAlquilado) {
         if(alquilando==true) {
@@ -126,51 +136,8 @@ public class Socio {
         }
 
     }
-    public int pagarAlquiler(Multimedia multimedia){
-        int pagoAlquiler=Constantes.PRECIO_BASE_ALQUILER;
-        if(multimedia instanceof Disco && ((Disco) multimedia).getDuracionDisco()<Constantes.DURACION_DISCO_DESCUENTO){
-            pagoAlquiler -= Constantes.DESCUENTO;
-        }
-        else if(multimedia instanceof Pelicula && ((Pelicula)multimedia).getAnyo()<Constantes.ANYO_DESCUENTO_PELICULA){
-            pagoAlquiler -= Constantes.DESCUENTO;
-        }
-        else if(multimedia instanceof Videojuego && ((Videojuego) multimedia).getAnyo()<Constantes.ANYO_DESCUENTO_VIDEOJUEGO){
-            pagoAlquiler -= Constantes.DESCUENTO;
-        }
-        else if((multimedia instanceof Pelicula ||multimedia instanceof Videojuego) && multimedia.getAnyo()==2023){
-            pagoAlquiler+=Constantes.PAGO_EXTRA_VIDEOJUEGOS_PELICULAS_2023;
-        }
-        return pagoAlquiler;
 
-    }
 
-    /**
-     * Calcula el valor del recargo por retraso y devuelve el valor.
-     * @param
-     * @return int
-     */
 
-    public int recargoRetraso(){
-        int recargo;
-        Date hoy = new Date();
-        long diferenciaMilisec= hoy.getTime()-diaAlquilado.getTime();
-        long diferenciaDias= TimeUnit.MILLISECONDS.toDays(diferenciaMilisec);
-        recargo= (int) (diferenciaDias-3)*2;
-        if (recargo>0) recargoPendiente=true;
-        return recargo;
 
-    }
-
-    public void alquilar(Multimedia multimedia){
-        if(recargoPendiente==false){
-            pagarAlquiler(multimedia);
-            multimediaAlquilado.add(multimedia);
-        }
-
-    }
-    public void devolver(Multimedia multimedia){
-        if(recargoPendiente==false){
-            multimediaAlquilado.remove(multimedia);
-        }
-    }
 }

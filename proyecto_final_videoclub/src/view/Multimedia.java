@@ -1,13 +1,18 @@
 package view;
 import model.*;
+
+import java.util.Date;
+
 public abstract class Multimedia {
     /**
      * atributos
      */
+    private int idMultimedia=0;
     private String titulo;
     private String autor;
     private String formato;
     private int anyo;
+    private Date diaAlquilado;
 
     /**
      * constructor default
@@ -17,6 +22,7 @@ public abstract class Multimedia {
         setAutor(Constantes.AUTOR_DEFAULT);
         setFormato(Constantes.FORMATO_DEFAULT);
         setAnyo(Constantes.ANYO_DEFAULT);
+        idMultimedia++;
     }
 
     /**
@@ -34,10 +40,20 @@ public abstract class Multimedia {
         setAnyo(anyo);
     }
 
+
+
     /**
      * getters y setters
      *
      */
+    public int getIdMultimedia() {
+        return idMultimedia;
+    }
+
+    public Date getDiaAlquilado() {
+        return diaAlquilado;
+    }
+
     public String getTitulo() {
         return titulo;
     }
