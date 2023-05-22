@@ -48,7 +48,7 @@ public class Cancion{
      * Pasa la duracion en segundos a minutos
      * @return String
      */
-    String duracionMinutos(){
+    private String duracionMinutos(){
         String duracionMinutos="";
         duracionMinutos = duracionMinutos +duracionSegundos/60+ ":" + duracionSegundos%60 + "\n";
 
