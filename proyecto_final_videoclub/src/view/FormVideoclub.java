@@ -10,13 +10,21 @@ public class FormVideoclub extends JFrame{
     public JPanel panelPrincipal = new JPanel();
 
     public FormVideoclub()throws HeadlessException {
+        Color colorFondo=new Color(147,249,249);
+        Color colorLetraBoton=new Color(37,52,124);
+        Color colorheisen=new Color(37,52,124);
         panelPrincipal.setLayout(null);
+        panelPrincipal.setBackground(colorFondo);
+        Color colorButtons= new Color(255,255,255);
         JMenuBar barra = new JMenuBar();
         JMenu archivo = new JMenu("Archivo");
         JMenuItem cargarCategorias = new JMenuItem("Cargar categorias");
         JMenuItem salir = new JMenuItem("Salir");
         // JTextArea infoCategorias = new JTextArea();
-        JLabel videoclub = new JLabel("Bienvenido al videoclub");
+        Color colorLabel=new Color(255,255,255);
+
+        JLabel videoclub = new JLabel(" Heisenberg's Club");
+        videoclub.setForeground(colorheisen);
         JButton altas = new JButton("Altas");
         JButton alquilar = new JButton("Alquilar");
         JButton devolver = new JButton("Devolver");
@@ -30,13 +38,21 @@ public class FormVideoclub extends JFrame{
         videoclub.setBounds(340,100,250,50);
         videoclub.setFont(new Font("Arial", Font.BOLD, 20));
         panelPrincipal.add(videoclub);
-        altas.setBounds(400,200,100,50);
+        altas.setBounds(300,200,250,35);
+        altas.setBackground(colorButtons);
+        altas.setForeground(colorLetraBoton);
         panelPrincipal.add(altas);
-        alquilar.setBounds(400,300,100,50);
+        alquilar.setBounds(300,300,250,35);
+        alquilar.setBackground(colorButtons);
+        alquilar.setForeground(colorLetraBoton);
         panelPrincipal.add(alquilar);
-        devolver.setBounds(400,400,100,50);
+        devolver.setBounds(300,400,250,35);
+        devolver.setBackground(colorButtons);
+        devolver.setForeground(colorLetraBoton);
         panelPrincipal.add(devolver);
-        listar.setBounds(400,500,100,50);
+        listar.setBounds(300,500,250,34);
+        listar.setBackground(colorButtons);
+        listar.setForeground(colorLetraBoton);
         panelPrincipal.add(listar);
 
         altas.addActionListener(new ActionListener() {

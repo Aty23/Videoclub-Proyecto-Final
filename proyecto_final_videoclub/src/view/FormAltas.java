@@ -7,11 +7,14 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class FormAltas extends JFrame {
+    Color colorFondo=new Color(147,249,249);
 
     public JPanel panelPrincipal = new JPanel();
 
+
     public FormAltas() throws HeadlessException{
         panelPrincipal.setLayout(null);
+        panelPrincipal.setBackground(colorFondo);
         JComboBox cmbEligeAlta = new JComboBox<>();
         JLabel lTitulo = new JLabel("Título");
         JTextField txtTitulo = new JTextField();
