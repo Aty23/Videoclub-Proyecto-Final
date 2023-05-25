@@ -25,7 +25,9 @@ public class metodos {
 
     }
     public static int alquilar(Multimedia multimedia, Socio socio){
+        Date hoy = new Date();
         socio.getMultimediaAlquilado().add(multimedia);
+        multimedia.setDiaAlquilado(hoy);
         return  pagarAlquiler(multimedia);
     }
     public static int devolverMultimedia(Multimedia multimedia,Socio socio){

@@ -14,6 +14,10 @@ public abstract class Multimedia {
     private int anyo;
     private Date diaAlquilado;
 
+    public void setDiaAlquilado(Date diaAlquilado) {
+        this.diaAlquilado = diaAlquilado;
+    }
+
     /**
      * constructor default
      */
