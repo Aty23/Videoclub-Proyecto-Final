@@ -32,7 +32,7 @@ public class metodos {
     }
     public static int devolverMultimedia(Multimedia multimedia,Socio socio){
        for(int i=0; i<socio.getMultimediaAlquilado().size();i++){
-           if(socio.getMultimediaAlquilado().get(i).getIdMultimedia()== multimedia.getIdMultimedia()){
+           if(socio.getMultimediaAlquilado().get(i).getId()== multimedia.getId()){
                socio.getMultimediaAlquilado().remove(multimedia);
            }
        }
