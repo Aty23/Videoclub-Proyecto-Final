@@ -29,8 +29,8 @@ public class Disco extends Multimedia{
      * @param duracionDisco int
      * @param canciones ArrayList<Cancion>
      */
-    public Disco(String titulo, String autor,String formato, int anyo, int duracionDisco, ArrayList<Cancion> canciones) {
-        super(titulo, autor, formato, anyo);
+    public Disco(int id, String titulo, String autor,String formato, int anyo, int duracionDisco, ArrayList<Cancion> canciones) {
+        super(id, titulo, autor, formato, anyo);
         setDuracionDisco();
         setCanciones(canciones);
     }
