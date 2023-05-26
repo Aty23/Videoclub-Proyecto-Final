@@ -25,27 +25,26 @@ public class metodos {
 
     }
     public static int alquilar(Multimedia multimedia, Socio socio){
-        int pagoTotal;
-        pagoTotal=pagarAlquiler(multimedia)+recargoRetraso(socio);
+        Date hoy = new Date();
         socio.getMultimediaAlquilado().add(multimedia);
-        return pagoTotal;
+        multimedia.setDiaAlquilado(hoy);
+        return  pagarAlquiler(multimedia);
     }
-    public static void devolverMultimedia(Multimedia multimedia,Socio socio){
+    public static int devolverMultimedia(Multimedia multimedia,Socio socio){
        for(int i=0; i<socio.getMultimediaAlquilado().size();i++){
-           if(socio.getMultimediaAlquilado().get(i).getIdMultimedia()== multimedia.getIdMultimedia()){
+           if(socio.getMultimediaAlquilado().get(i).getId()== multimedia.getId()){
                socio.getMultimediaAlquilado().remove(multimedia);
            }
        }
+       return recargoRetraso(multimedia);
     }
-   public static int recargoRetraso(Socio socio){
-        int recargo=0;
+   public static int recargoRetraso(Multimedia multimedia){
+        int recargo;
         Date hoy = new Date();
+        long diferenciaMilisec= hoy.getTime()-multimedia.getDiaAlquilado().getTime();
+        long diferenciaDias= TimeUnit.MILLISECONDS.toDays(diferenciaMilisec);
+        recargo=(int) (diferenciaDias-3)*2;
 
-       for(int i=0; i<socio.getMultimediaAlquilado().size();i++){
-           long diferenciaMilisec= hoy.getTime()-socio.getMultimediaAlquilado().get(i).getDiaAlquilado().getTime();
-           long diferenciaDias= TimeUnit.MILLISECONDS.toDays(diferenciaMilisec);
-           recargo+=(int) (diferenciaDias-3)*2;
-       }
        return recargo;
     }
 }
