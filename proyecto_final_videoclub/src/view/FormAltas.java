@@ -464,6 +464,7 @@ public class FormAltas extends JFrame {
         btnAltaPelicula.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int id = Integer.parseInt(txtAnyo.getText());
                 String titulo = txtTitulo.getText();
                 String autor = txtAutor.getText();
                 String formato = txtFormato.getText();
@@ -472,20 +473,21 @@ public class FormAltas extends JFrame {
                 String actorPrincipal = txtActorPrincipal.getText();
                 String actrizPrincipal = txtActrizPrincipal.getText();
 
-                Pelicula p = new Pelicula(titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal);
+                Pelicula p = new Pelicula(id,titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal);
             }
         });
 
         btnAltaVideojuego.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int id = Integer.parseInt(txtAnyo.getText());
                 String titulo = txtTitulo.getText();
                 String autor = txtAutor.getText();
                 String formato = txtFormato.getText();
                 int anyo = Integer.parseInt(txtAnyo.getText());
                 String plataforma = txtPlataforma.getText();
 
-                Videojuego v = new Videojuego(titulo, autor, formato, anyo, plataforma);
+                Videojuego v = new Videojuego(id, titulo, autor, formato, anyo, plataforma);
             }
         });
 
