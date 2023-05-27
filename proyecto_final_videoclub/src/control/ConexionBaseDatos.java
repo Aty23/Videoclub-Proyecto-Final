@@ -52,7 +52,7 @@ public class ConexionBaseDatos {
         ResultSet rsVideojuego = st.executeQuery("select * from Videojuego");
         ArrayList<Object> infoVideojuego = new ArrayList<Object>();
         while (rsVideojuego.next()) {
-            Videojuego videojuego = new Videojuego(rsVideojuego.getString("titulo"), rsVideojuego.getString("autor"),
+            Videojuego videojuego = new Videojuego(rsVideojuego.getInt("Id"), rsVideojuego.getString("titulo"), rsVideojuego.getString("autor"),
                     rsVideojuego.getString("formato"),
                     rsVideojuego.getInt("anyo"), rsVideojuego.getString("plataforma"));
             infoVideojuego.add(videojuego);
@@ -64,7 +64,7 @@ public class ConexionBaseDatos {
         ResultSet rsPelicula = st.executeQuery("select * from Pelicula");
         ArrayList<Object> infoPelicula = new ArrayList<Object>();
         while (rsPelicula.next()) {
-            Pelicula pelicula = new Pelicula(rsPelicula.getString("titulo"), rsPelicula.getString("autor"),
+            Pelicula pelicula = new Pelicula(rsPelicula.getInt("Id"),rsPelicula.getString("titulo"), rsPelicula.getString("autor"),
                     rsPelicula.getString("formato"),
                     rsPelicula.getInt("anyo"), rsPelicula.getInt("duracion"),
                     rsPelicula.getString("actorprincipal"), rsPelicula.getString("actrizPrincipal"));
@@ -88,7 +88,7 @@ public class ConexionBaseDatos {
         ArrayList<Object> infoDisco = new ArrayList<Object>();
         while (rsDisco.next()) {
 
-            Disco disco = new Disco(rsDisco.getString("titulo"), rsDisco.getString("autor"),
+            Disco disco = new Disco(rsDisco.getInt("Id"),rsDisco.getString("titulo"), rsDisco.getString("autor"),
                     rsDisco.getString("formato"), rsDisco.getInt("anyo"), rsDisco.getInt("duracion"),
                     cancionesDisco(rsDisco, con));
             infoDisco.add(disco);
