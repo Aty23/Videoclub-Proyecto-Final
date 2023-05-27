@@ -59,9 +59,19 @@ public class FormVideoclub extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 FormAltas fA = new FormAltas();
-                fA.setSize(900, 700);
+                fA.setSize(800, 700);
                 fA.setContentPane(fA.getPanelPrincipal());
                 fA.setVisible(true);
+            }
+        });
+
+        listar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FormListados fL = new FormListados();
+                fL.setSize(800, 700);
+                fL.setContentPane(fL.getPanelPrincipal());
+                fL.setVisible(true);
             }
         });
 
