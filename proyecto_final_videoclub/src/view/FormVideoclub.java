@@ -30,17 +30,13 @@ public class FormVideoclub extends JFrame{
         JButton alquilar = new JButton("Alquilar");
         JButton devolver = new JButton("Devolver");
         JButton listar = new JButton("Listar");
-        JButton heisen = new JButton();
+
 
         this.setJMenuBar(barra);
         barra.add(archivo);
         archivo.add(cargarCategorias);
         archivo.add(salir);
-        heisen.setBounds(700,50,170,200);
-        heisen.setIcon(new ImageIcon(getClass().getResource("../imagenes/heisenImg.png")));
-        heisen.setBorder(new EmptyBorder(0,0,0,0));
-        heisen.setFocusable(false);
-        panelPrincipal.add(heisen);
+
         videoclub.setBounds(340,100,250,50);
         videoclub.setFont(new Font("Arial", Font.BOLD, 20));
         panelPrincipal.add(videoclub);
