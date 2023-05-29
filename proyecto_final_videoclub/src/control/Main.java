@@ -23,10 +23,6 @@ public class Main {
         System.out.println(A);
         ArrayList<Multimedia> multimedias= new ArrayList<Multimedia>();
         ArrayList<Socio> socios= new ArrayList<Socio>();
-        Scanner sc= new Scanner(System.in);
-        System.out.println(OperacionesMenu.textoMenu());
-        switch (OperacionesMenu.selectMenu(sc)){}
-
         try{
             FormVideoclub w = new FormVideoclub();
             w.setSize(900, 700);
