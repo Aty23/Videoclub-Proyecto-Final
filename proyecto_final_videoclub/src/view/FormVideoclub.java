@@ -75,6 +75,25 @@ public class FormVideoclub extends JFrame{
             }
         });
 
+        alquilar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FormAlquilar fAl = new FormAlquilar();
+                fAl.setSize(800, 700);
+                fAl.setContentPane(fAl.getPanelPrincipal());
+                fAl.setVisible(true);
+            }
+        });
+        devolver.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FormDevolver fD = new FormDevolver();
+                fD.setSize(800, 700);
+                fD.setContentPane(fD.getPanelPrincipal());
+                fD.setVisible(true);
+            }
+        });
+
         /*setInfoCategorias();
         setCargarCategorias();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
