@@ -7,8 +7,6 @@ public abstract class Multimedia {
     /**
      * atributos
      */
-    private static int idsMultimedia=Constantes.IDS_DEFAULT;
-    private int id;
     private String titulo;
     private String autor;
     private String formato;
@@ -27,21 +25,17 @@ public abstract class Multimedia {
         setAutor(Constantes.AUTOR_DEFAULT);
         setFormato(Constantes.FORMATO_DEFAULT);
         setAnyo(Constantes.ANYO_DEFAULT);
-        id=idsMultimedia;
-        idsMultimedia++;
     }
 
     /**
      * constructor por parámetros
-     * @param id int
      * @param titulo String
      * @param autor String
      * @param formato String
      * @param anyo int
      */
 
-    public Multimedia(int id, String titulo, String autor, String formato, int anyo) {
-        setId(id);
+    public Multimedia( String titulo, String autor, String formato, int anyo) {
         setTitulo(titulo);
         setAutor(autor);
         setFormato(formato);
@@ -54,14 +48,6 @@ public abstract class Multimedia {
      * getters y setters
      *
      */
-    public void setId(int id){
-        try {
-            this.id = id;
-        }catch (Exception e){}
-    }
-    public int getId() {
-        return id;
-    }
 
     public Date getDiaAlquilado() {
         return diaAlquilado;

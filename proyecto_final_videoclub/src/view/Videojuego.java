@@ -22,8 +22,8 @@ public class Videojuego extends Multimedia{
      * @param anyo int
      * @param plataforma String
      */
-    public Videojuego(int id,String titulo, String autor, String formato, int anyo, String plataforma) {
-        super(id, titulo, autor, formato, anyo);
+    public Videojuego(String titulo, String autor, String formato, int anyo, String plataforma) {
+        super(titulo, autor, formato, anyo);
         setPlataforma(plataforma);
     }
 

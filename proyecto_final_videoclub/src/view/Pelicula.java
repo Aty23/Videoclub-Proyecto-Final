@@ -28,8 +28,8 @@ public class Pelicula extends Multimedia {
      * @param actorPrincipal String
      * @param actrizPrincipal String
      */
-    public Pelicula(int id, String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal) {
-        super(id,titulo, autor, formato, anyo);
+    public Pelicula(String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal) {
+        super(titulo, autor, formato, anyo);
         setDuracion(duracion);
         setActorPrincipal(actorPrincipal);
         setActrizPrincipal(actrizPrincipal);

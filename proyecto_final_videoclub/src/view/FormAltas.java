@@ -473,7 +473,7 @@ public class FormAltas extends JFrame {
                 String actorPrincipal = txtActorPrincipal.getText();
                 String actrizPrincipal = txtActrizPrincipal.getText();
 
-                Pelicula p = new Pelicula(id,titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal);
+                Pelicula p = new Pelicula(titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal);
             }
         });
 
@@ -487,7 +487,7 @@ public class FormAltas extends JFrame {
                 int anyo = Integer.parseInt(txtAnyo.getText());
                 String plataforma = txtPlataforma.getText();
 
-                Videojuego v = new Videojuego(id, titulo, autor, formato, anyo, plataforma);
+                Videojuego v = new Videojuego(titulo, autor, formato, anyo, plataforma);
             }
         });
 
