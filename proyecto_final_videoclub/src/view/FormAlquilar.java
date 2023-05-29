@@ -30,11 +30,16 @@ public class FormAlquilar extends JFrame {
         }
         cmbEligeMultimedia.setBounds(100,100,350,50);
         panelPrincipal.add(cmbEligeMultimedia);
+        cmbEligeMultimedia.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")){
+                lstPeliculas.setBounds(100,200,350,50);
+                lstPeliculas.setVisible(true);
+                panelPrincipal.add(lstPeliculas);
+            }
+        }});
 
-        if(cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")){
-            lstPeliculas.setBounds(100,200,350,50);
-            panelPrincipal.add(lstPeliculas);
-        }
     }
 
     public JPanel getPanelPrincipal(){
