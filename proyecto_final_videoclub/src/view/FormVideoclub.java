@@ -1,6 +1,8 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +22,6 @@ public class FormVideoclub extends JFrame{
         JMenu archivo = new JMenu("Archivo");
         JMenuItem cargarCategorias = new JMenuItem("Cargar categorias");
         JMenuItem salir = new JMenuItem("Salir");
-        // JTextArea infoCategorias = new JTextArea();
         Color colorLabel=new Color(255,255,255);
 
         JLabel videoclub = new JLabel(" Heisenberg's Club");
@@ -29,12 +30,17 @@ public class FormVideoclub extends JFrame{
         JButton alquilar = new JButton("Alquilar");
         JButton devolver = new JButton("Devolver");
         JButton listar = new JButton("Listar");
+        JButton heisen = new JButton();
 
         this.setJMenuBar(barra);
         barra.add(archivo);
         archivo.add(cargarCategorias);
         archivo.add(salir);
-        // panelPrincipal.add(infoCategorias);
+        heisen.setBounds(700,50,170,200);
+        heisen.setIcon(new ImageIcon(getClass().getResource("../imagenes/heisenImg.png")));
+        heisen.setBorder(new EmptyBorder(0,0,0,0));
+        heisen.setFocusable(false);
+        panelPrincipal.add(heisen);
         videoclub.setBounds(340,100,250,50);
         videoclub.setFont(new Font("Arial", Font.BOLD, 20));
         panelPrincipal.add(videoclub);

@@ -25,9 +25,7 @@ public class Main {
         ArrayList<Socio> socios= new ArrayList<Socio>();
         Scanner sc= new Scanner(System.in);
         System.out.println(OperacionesMenu.textoMenu());
-        switch (OperacionesMenu.selectMenu(sc)){
-
-        }
+        switch (OperacionesMenu.selectMenu(sc)){}
 
         try{
             FormVideoclub w = new FormVideoclub();

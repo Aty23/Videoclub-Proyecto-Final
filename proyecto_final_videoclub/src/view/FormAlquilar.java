@@ -30,6 +30,7 @@ public class FormAlquilar extends JFrame {
         }
         cmbEligeMultimedia.setBounds(100,100,350,50);
         panelPrincipal.add(cmbEligeMultimedia);
+
         if(cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")){
             lstPeliculas.setBounds(100,200,350,50);
             panelPrincipal.add(lstPeliculas);
