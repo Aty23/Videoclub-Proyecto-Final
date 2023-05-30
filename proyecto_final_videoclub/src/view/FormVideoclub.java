@@ -31,6 +31,9 @@ public class FormVideoclub extends JFrame{
         JButton devolver = new JButton("Devolver");
         JButton listar = new JButton("Listar");
 
+        JLabel dniLabel = new JLabel("Dni Cliente");
+        JTextField dniCliente = new JTextField();
+        JButton dniBtn = new JButton("Enviar");
 
         this.setJMenuBar(barra);
         barra.add(archivo);
@@ -56,6 +59,13 @@ public class FormVideoclub extends JFrame{
         listar.setBackground(colorButtons);
         listar.setForeground(colorLetraBoton);
         panelPrincipal.add(listar);
+
+        dniLabel.setBounds(0,0,100,30);
+        panelPrincipal.add(dniLabel);
+        dniCliente.setBounds(0,30,100,25);
+        panelPrincipal.add(dniCliente);
+        dniBtn.setBounds(100,30,75,25);
+        panelPrincipal.add(dniBtn);
 
         altas.addActionListener(new ActionListener() {
             @Override
@@ -95,6 +105,22 @@ public class FormVideoclub extends JFrame{
                 fD.setVisible(true);
             }
         });
+
+        /* Action Listener Provisional
+        dniBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String dni = dniCliente.getText();
+                for (int i = 0; i<infoSocio.size; i++){
+                    if (dni.equals(infoSocio.get(i).getDni)){
+                        JOptionPane.showMessageDialog(null, "Correcto");
+                    }
+                    return;
+                }
+                JOptionPane.showMessageDialog(null, "Incorrecto");
+            }
+        });
+         */
 
         /*setInfoCategorias();
         setCargarCategorias();
