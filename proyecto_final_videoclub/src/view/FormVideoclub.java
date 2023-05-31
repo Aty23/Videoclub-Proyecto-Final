@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.Normalizer;
+import java.util.ArrayList;
+
+import control.ConexionBaseDatos;
 
 public class FormVideoclub extends JFrame{
     public JPanel panelPrincipal = new JPanel();
@@ -106,21 +109,25 @@ public class FormVideoclub extends JFrame{
             }
         });
 
-        /* Action Listener Provisional
+        /* Action Listener provisional
         dniBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 String dni = dniCliente.getText();
-                for (int i = 0; i<infoSocio.size; i++){
-                    if (dni.equals(infoSocio.get(i).getDni)){
-                        JOptionPane.showMessageDialog(null, "Correcto");
-                    }
-                    return;
+                boolean autenticado = autenticarUsuario(dni);
+
+                if (autenticado) {
+                    // Iniciar sesión exitosamente, realizar las acciones necesarias
+                } else {
+                    // Mostrar mensaje de error o tomar acciones correspondientes
                 }
-                JOptionPane.showMessageDialog(null, "Incorrecto");
             }
         });
-         */
+        */
+
+
+
 
         /*setInfoCategorias();
         setCargarCategorias();
@@ -131,6 +138,26 @@ public class FormVideoclub extends JFrame{
         setPanelPrincipal();*/
 
     }
+
+    /* Metodo provisional
+    public boolean autenticarUsuario(String dni) {
+        ConexionBaseDatos con = new ConexionBaseDatos();
+        ArrayList<ArrayList<Object>> info = con.conexionBase();
+
+        ArrayList<Object> infoSocio = info.get(0);
+
+        for (Object obj : infoSocio) {
+            Socio socio = (Socio) obj;
+            String dniSocio = socio.getNif();
+            if (dniSocio.equals(dni)){
+                JOptionPane.showMessageDialog(null, "Correcto");
+                return true;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Incorrecto");
+        return false;
+    }
+    */
 
     public JPanel getPanelPrincipal(){
         return panelPrincipal;
