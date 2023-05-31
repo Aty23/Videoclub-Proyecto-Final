@@ -15,15 +15,9 @@ public class FormListados extends JFrame{
         panelPrincipal.setLayout(null);
         JComboBox cmbEligeLista = new JComboBox<>();
         JTextArea textoListas = new JTextArea();
+        //((Pelicula)ConexionBaseDatos.db.get(1).get(0)).getTitulo();
+        //casteo------clase base datos.array.array.objeto.metodo
 
-        ConexionBaseDatos con = new ConexionBaseDatos();
-        ArrayList<ArrayList<Object>> info = con.conexionBase();
-
-        ArrayList<Object> infoSocio = info.get(0);
-        ArrayList<Object> infoVideojuego = info.get(1);
-        ArrayList<Object> infoPelicula = info.get(2);
-        ArrayList<Object> infoCancion = info.get(3);
-        ArrayList<Object> infoDisco = info.get(4);
 
         try{
             cmbEligeLista.addItem("Elige uno");
@@ -44,28 +38,18 @@ public class FormListados extends JFrame{
                     textoListas.setText("");
                 }
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de todos los objetos multimedia")){
-                    for (ArrayList<Object> lista : info) {
-                        for (Object obj : lista) {
-                            if (obj instanceof Socio) {
-                                Socio socio = (Socio) obj;
-                                textoListas.append("Nombre del socio: " + socio.getNombre() + "\n");
-                            } else if (obj instanceof Videojuego) {
-                                Videojuego videojuego = (Videojuego) obj;
-                                textoListas.append("Título del videojuego: " + videojuego.getTitulo() + "\n");
-                            }
-                            else if (obj instanceof Pelicula) {
-                                Pelicula pelicula = (Pelicula) obj;
-                                textoListas.append("Título de la pelicula: " + pelicula.getTitulo() + "\n");
-                            }
-                            else if (obj instanceof Cancion) {
-                                Cancion cancion = (Cancion) obj;
-                                textoListas.append("Nombre de la cancion: " + cancion.getNombre() + "\n");
-                            }
-                            else if (obj instanceof Disco) {
-                                Disco disco = (Disco) obj;
-                                textoListas.append("Título del disco: " + disco.getTitulo() + "\n");
-                            }
-                        }
+                    textoListas.setText("");
+                    for (int i = 0; i<ConexionBaseDatos.db.get(1).size(); i++) {
+                        textoListas.append("Titulo del videojuego: " + ((Videojuego)ConexionBaseDatos.db.get(1).get(i)).getTitulo() + "\n");
+                    }
+                    for (int i = 0; i<ConexionBaseDatos.db.get(2).size(); i++) {
+                        textoListas.append("Titulo de la pelicula: " + ((Pelicula)ConexionBaseDatos.db.get(2).get(i)).getTitulo() + "\n");
+                    }
+                    for (int i = 0; i<ConexionBaseDatos.db.get(3).size(); i++) {
+                        textoListas.append("Nombre de la cancion: " + ((Cancion)ConexionBaseDatos.db.get(3).get(i)).getNombre() + "\n");
+                    }
+                    for (int i = 0; i<ConexionBaseDatos.db.get(4).size(); i++) {
+                        textoListas.append("Titulo del disco: " + ((Disco)ConexionBaseDatos.db.get(4).get(i)).getTitulo() + "\n");
                     }
                 }
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de todas las peliculas ordenadas por titulo")){
