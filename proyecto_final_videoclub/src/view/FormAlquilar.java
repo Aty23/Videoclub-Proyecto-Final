@@ -68,12 +68,12 @@ public class FormAlquilar extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //((Pelicula)ConexionBaseDatos.db.get(1).get(0)).getTitulo();
                 //casteo------clase base datos.array.array.objeto.metodo
-                /*JScrollPane scrollerPeliculas = new JScrollPane(buscadorMultimedia(txtfldMulti.getText(), ));
+                JScrollPane scrollerPeliculas = new JScrollPane(buscadorMultimedia(txtfldMulti.getText(), ((Pelicula)ConexionBaseDatos.db.get(1)));
                 scrollerPeliculas.setBounds(100,300,350,100);
                 scrollerPeliculas.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
                 scrollerPeliculas.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
                 panelPrincipal.add(scrollerPeliculas);
-                scrollerPeliculas.setVisible(true);*/
+                scrollerPeliculas.setVisible(true);
             }
         });
         

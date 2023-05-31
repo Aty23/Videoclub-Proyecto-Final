@@ -14,6 +14,9 @@ public class Socio {
     private int anyoNacimiento;
     private String poblacion;
     private boolean alquilando, recargoPendiente=false;
+
+
+
     ArrayList<Multimedia> multimediaAlquilado=new ArrayList<Multimedia>();
 
     /**
@@ -38,13 +41,14 @@ public class Socio {
      * @param diaAlquilado Date
      */
 
-    public Socio(String nif, String nombre, int anyoNacimiento, String poblacion, boolean alquilando, Date diaAlquilado) {
+    public Socio(String nif, String nombre, int anyoNacimiento, String poblacion, boolean alquilando, Date diaAlquilado,ArrayList<Multimedia> multimediaAlquilado) {
         setNif(nif);
         setNombre(nombre);
         setAnyoNacimiento(anyoNacimiento);
         setPoblacion(poblacion);
         setAlquilando(alquilando);
         setDiaAlquilado(diaAlquilado);
+        setMultimediaAlquilado(multimediaAlquilado);
     }
 
 
@@ -53,6 +57,9 @@ public class Socio {
      * getters y setters
      *
      */
+    public void setMultimediaAlquilado(ArrayList<Multimedia> multimediaAlquilado) {
+        this.multimediaAlquilado = multimediaAlquilado;
+    }
     public int getAnyoNacimiento() {
         return anyoNacimiento;
     }
