@@ -1,9 +1,12 @@
 package view;
 
+import control.ConexionBaseDatos;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class FormAlquilar extends JFrame {
     String[] listaTest ={"1","2","3","4","5","6","1","2","3","4","5","6"};
@@ -40,16 +43,11 @@ public class FormAlquilar extends JFrame {
         lblAlquiler.setVisible(true);
         panelPrincipal.add(lblAlquiler);
 
-        JList lstPeliculas = new JList<>(listaTest);
+        /*JList lstPeliculas = new JList<>(listaTest);
         panelPrincipal.add(lstPeliculas);
         lstPeliculas.setVisibleRowCount(listaTest.length);
-        lstPeliculas.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        JScrollPane scrollerPeliculas = new JScrollPane(lstPeliculas);
-        scrollerPeliculas.setBounds(100,300,350,100);
-        scrollerPeliculas.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollerPeliculas.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        panelPrincipal.add(scrollerPeliculas);
-        scrollerPeliculas.setVisible(true);
+        lstPeliculas.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);*/
+
 
 
 
@@ -65,8 +63,22 @@ public class FormAlquilar extends JFrame {
         }catch (Exception e){
             e.printStackTrace();
         }
+        btnBuscar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //((Pelicula)ConexionBaseDatos.db.get(1).get(0)).getTitulo();
+                //casteo------clase base datos.array.array.objeto.metodo
+                /*JScrollPane scrollerPeliculas = new JScrollPane(buscadorMultimedia(txtfldMulti.getText(), ));
+                scrollerPeliculas.setBounds(100,300,350,100);
+                scrollerPeliculas.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+                scrollerPeliculas.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+                panelPrincipal.add(scrollerPeliculas);
+                scrollerPeliculas.setVisible(true);*/
+            }
+        });
+        
 
-        cmbEligeMultimedia.addActionListener(new ActionListener(){
+        /*cmbEligeMultimedia.addActionListener(new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
             if(cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")){
@@ -79,12 +91,20 @@ public class FormAlquilar extends JFrame {
 
             }
         }
-        });
+        });*/
 
     }
 
     public JPanel getPanelPrincipal(){
         return panelPrincipal;
     }
-
+    public static ArrayList<Multimedia> buscadorMultimedia(String nombreMultimedia, ArrayList<Multimedia> ArrMultim){
+        ArrayList<Multimedia> resultado = new ArrayList<>();
+        for (Multimedia multimedia : ArrMultim) {
+            if (multimedia.getTitulo().toLowerCase().contains(nombreMultimedia.toLowerCase())) {
+                resultado.add(multimedia);
+            }
+        }
+        return resultado;
+    }
 }

@@ -5,6 +5,7 @@ import view.*;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
 
 public class metodos {
     public static int pagarAlquiler(Multimedia multimedia){
@@ -47,4 +48,5 @@ public class metodos {
 
        return recargo;
     }
+
 }

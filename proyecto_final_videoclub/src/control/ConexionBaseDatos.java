@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public class ConexionBaseDatos {
 
+    public static ArrayList<ArrayList<Object>>db=ConexionBaseDatos.conexionBase();
+
     public static ArrayList<ArrayList<Object>> conexionBase(){
         Connection con = null;
         String url = "jdbc:postgresql://localhost:5432/";
@@ -210,4 +212,5 @@ public class ConexionBaseDatos {
         }
         return cancionesDisco;
     }
+
 }

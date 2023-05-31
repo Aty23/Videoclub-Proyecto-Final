@@ -15,12 +15,12 @@ public class FormVideoclub extends JFrame{
     public JPanel panelPrincipal = new JPanel();
 
     public FormVideoclub()throws HeadlessException {
-        Color colorFondo=new Color(147,249,249);
-        Color colorLetraBoton=new Color(37,52,124);
-        Color colorheisen=new Color(37,52,124);
+        Color colorFondo=new Color(65,65,65);
+        Color colorLetraBoton=new Color(255,255,255);
+        Color colorheisen=new Color(255,255,255);
         panelPrincipal.setLayout(null);
         panelPrincipal.setBackground(colorFondo);
-        Color colorButtons= new Color(255,255,255);
+        Color colorButtons= new Color(82,82,82);
         JMenuBar barra = new JMenuBar();
         JMenu archivo = new JMenu("Archivo");
         JMenuItem cargarCategorias = new JMenuItem("Cargar categorias");
