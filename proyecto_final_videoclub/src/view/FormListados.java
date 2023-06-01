@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 import control.ConexionBaseDatos;
 
@@ -54,9 +57,32 @@ public class FormListados extends JFrame{
                 }
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de todas las peliculas ordenadas por titulo")){
                     textoListas.setText("");
+                    ArrayList<String> peliculas = new ArrayList<>();
+                    for (int i = 0; i<ConexionBaseDatos.db.get(2).size(); i++) {
+                        peliculas.add(((Pelicula)ConexionBaseDatos.db.get(2).get(i)).getTitulo());
+                    }
+
+                    Collections.sort(peliculas);
+
+                    for (String pelicula : peliculas) {
+                        textoListas.append(pelicula + "\n");
+                    }
                 }
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de todas las canciones de un disco por duracion")){
                     textoListas.setText("");
+                    ArrayList<String> canciones = new ArrayList<>();
+                    for (int i = 0; i<ConexionBaseDatos.db.get(2).size(); i++) {
+                        canciones.add(((Disco)ConexionBaseDatos.db.get(4).get(i)).getCanciones().toString());
+                    }
+                    /*
+                    Collections.sort(canciones, new Comparator<Cancion>() {
+                        @Override
+                        public int compare(Cancion cancion1, Cancion cancion2) {
+                            return Integer.compare(cancion1.getDuracionSegundos(), cancion2.getDuracionSegundos());
+                        }
+                    });
+
+                    */
                 }
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de todos los videojuegos ordenados por año")){
                     textoListas.setText("");

@@ -109,7 +109,7 @@ public class FormVideoclub extends JFrame{
             }
         });
 
-        /* Action Listener provisional
+        /* Action Listener provisional */
         dniBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -118,46 +118,26 @@ public class FormVideoclub extends JFrame{
                 boolean autenticado = autenticarUsuario(dni);
 
                 if (autenticado) {
-                    // Iniciar sesión exitosamente, realizar las acciones necesarias
+                    JOptionPane.showMessageDialog(null, "Correcto");
                 } else {
-                    // Mostrar mensaje de error o tomar acciones correspondientes
+                    JOptionPane.showMessageDialog(null, "Incorrecto");
                 }
             }
         });
-        */
 
-
-
-
-        /*setInfoCategorias();
-        setCargarCategorias();
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSalir();
-        setArchivo();
-        setBarra();
-        setPanelPrincipal();*/
 
     }
 
-    /* Metodo provisional
+    /* Metodo provisional */
     public boolean autenticarUsuario(String dni) {
-        ConexionBaseDatos con = new ConexionBaseDatos();
-        ArrayList<ArrayList<Object>> info = con.conexionBase();
-
-        ArrayList<Object> infoSocio = info.get(0);
-
-        for (Object obj : infoSocio) {
-            Socio socio = (Socio) obj;
-            String dniSocio = socio.getNif();
-            if (dniSocio.equals(dni)){
-                JOptionPane.showMessageDialog(null, "Correcto");
+        for (int i = 0; i < ConexionBaseDatos.db.get(0).size(); i++){
+            if (((Socio)ConexionBaseDatos.db.get(0).get(i)).getNif().equals(dni)){
                 return true;
             }
         }
-        JOptionPane.showMessageDialog(null, "Incorrecto");
         return false;
     }
-    */
+
 
     public JPanel getPanelPrincipal(){
         return panelPrincipal;
