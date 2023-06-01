@@ -15,9 +15,10 @@ public class FormAlquilar extends JFrame {
     Color colorFondo=new Color(147,249,249);
 
     public JPanel panelPrincipal = new JPanel();
+    JComboBox cmbEligeMultimedia = new JComboBox<>();
     public FormAlquilar() throws HeadlessException{
 
-        JComboBox cmbEligeMultimedia = new JComboBox<>();
+
         cmbEligeMultimedia.setBounds(100,100,350,50);
         panelPrincipal.add(cmbEligeMultimedia);
         panelPrincipal.setLayout(null);
@@ -43,10 +44,6 @@ public class FormAlquilar extends JFrame {
         lblAlquiler.setVisible(true);
         panelPrincipal.add(lblAlquiler);
 
-        /*JList lstPeliculas = new JList<>(listaTest);
-        panelPrincipal.add(lstPeliculas);
-        lstPeliculas.setVisibleRowCount(listaTest.length);
-        lstPeliculas.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);*/
 
 
 
@@ -68,7 +65,12 @@ public class FormAlquilar extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //((Pelicula)ConexionBaseDatos.db.get(1).get(0)).getTitulo();
                 //casteo------clase base datos.array.array.objeto.metodo
-                JScrollPane scrollerPeliculas = new JScrollPane(buscadorMultimedia(txtfldMulti.getText(), ((Pelicula)ConexionBaseDatos.db.get(1)));
+                JList lstBuscar = new JList<>((ListModel) buscadorMultimedia(txtfldMulti.getText()));
+                panelPrincipal.add(lstBuscar);
+                lstBuscar.setVisibleRowCount(buscadorMultimedia(txtfldMulti.getText()).size());
+                lstBuscar.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+                JScrollPane scrollerPeliculas = new JScrollPane(lstBuscar);
                 scrollerPeliculas.setBounds(100,300,350,100);
                 scrollerPeliculas.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
                 scrollerPeliculas.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -98,13 +100,30 @@ public class FormAlquilar extends JFrame {
     public JPanel getPanelPrincipal(){
         return panelPrincipal;
     }
-    public static ArrayList<Multimedia> buscadorMultimedia(String nombreMultimedia, ArrayList<Multimedia> ArrMultim){
+    public ArrayList<Multimedia> buscadorMultimedia(String nombreMultimedia){
         ArrayList<Multimedia> resultado = new ArrayList<>();
-        for (Multimedia multimedia : ArrMultim) {
-            if (multimedia.getTitulo().toLowerCase().contains(nombreMultimedia.toLowerCase())) {
-                resultado.add(multimedia);
+        if(cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")){
+            for (int i=0;i<ConexionBaseDatos.db.size();i++) {
+                if (((Pelicula)ConexionBaseDatos.db.get(2).get(i)).getTitulo().toLowerCase().contains(nombreMultimedia.toLowerCase())) {
+                    resultado.add(((Pelicula)ConexionBaseDatos.db.get(2).get(i)));
+                }
             }
+
+        }else if(cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")){
+            for (int i=0;i<ConexionBaseDatos.db.size();i++) {
+                if (((Disco)ConexionBaseDatos.db.get(4).get(i)).getTitulo().toLowerCase().contains(nombreMultimedia.toLowerCase())) {
+                    resultado.add(((Disco)ConexionBaseDatos.db.get(4).get(i)));
+                }
+            }
+        }else if(cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")){
+            for (int i=0;i<ConexionBaseDatos.db.size();i++) {
+                if (((Videojuego)ConexionBaseDatos.db.get(1).get(i)).getTitulo().toLowerCase().contains(nombreMultimedia.toLowerCase())) {
+                    resultado.add(((Videojuego)ConexionBaseDatos.db.get(1).get(i)));
+                }
+            }
+
         }
+
         return resultado;
     }
 }
