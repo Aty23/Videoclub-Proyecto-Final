@@ -10,6 +10,7 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 
 import control.ConexionBaseDatos;
+import control.metodos;
 
 public class FormVideoclub extends JFrame{
     public JPanel panelPrincipal = new JPanel();
@@ -34,9 +35,7 @@ public class FormVideoclub extends JFrame{
         JButton devolver = new JButton("Devolver");
         JButton listar = new JButton("Listar");
 
-        JLabel dniLabel = new JLabel("Dni Cliente");
-        JTextField dniCliente = new JTextField();
-        JButton dniBtn = new JButton("Enviar");
+
 
         this.setJMenuBar(barra);
         barra.add(archivo);
@@ -63,12 +62,7 @@ public class FormVideoclub extends JFrame{
         listar.setForeground(colorLetraBoton);
         panelPrincipal.add(listar);
 
-        dniLabel.setBounds(0,0,100,30);
-        panelPrincipal.add(dniLabel);
-        dniCliente.setBounds(0,30,100,25);
-        panelPrincipal.add(dniCliente);
-        dniBtn.setBounds(100,30,75,25);
-        panelPrincipal.add(dniBtn);
+
 
         altas.addActionListener(new ActionListener() {
             @Override
@@ -110,25 +104,12 @@ public class FormVideoclub extends JFrame{
         });
 
         /* Action Listener provisional */
-        dniBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-                String dni = dniCliente.getText();
-                boolean autenticado = autenticarUsuario(dni);
-
-                if (autenticado) {
-                    JOptionPane.showMessageDialog(null, "Correcto");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Incorrecto");
-                }
-            }
-        });
 
 
     }
 
-    /* Metodo provisional */
+    /* Metodo provisional
     public boolean autenticarUsuario(String dni) {
         for (int i = 0; i < ConexionBaseDatos.db.get(0).size(); i++){
             if (((Socio)ConexionBaseDatos.db.get(0).get(i)).getNif().equals(dni)){
@@ -136,7 +117,7 @@ public class FormVideoclub extends JFrame{
             }
         }
         return false;
-    }
+    } */
 
 
     public JPanel getPanelPrincipal(){

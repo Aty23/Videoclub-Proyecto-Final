@@ -1,6 +1,7 @@
 package view;
 
 import control.ConexionBaseDatos;
+import control.metodos;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,8 +17,16 @@ public class FormAlquilar extends JFrame {
 
     public JPanel panelPrincipal = new JPanel();
     JComboBox cmbEligeMultimedia = new JComboBox<>();
+    JLabel dniLabel = new JLabel("Dni Cliente");
+    JTextField dniCliente = new JTextField();
+    JButton dniBtn = new JButton("Enviar");
     public FormAlquilar() throws HeadlessException{
-
+        dniLabel.setBounds(0,0,100,30);
+        panelPrincipal.add(dniLabel);
+        dniCliente.setBounds(0,30,100,25);
+        panelPrincipal.add(dniCliente);
+        dniBtn.setBounds(100,30,75,25);
+        panelPrincipal.add(dniBtn);
 
         cmbEligeMultimedia.setBounds(100,100,350,50);
         panelPrincipal.add(cmbEligeMultimedia);
@@ -78,6 +87,21 @@ public class FormAlquilar extends JFrame {
                 scrollerPeliculas.setVisible(true);
             }
         });
+        dniBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String dni = dniCliente.getText();
+                Socio autenticado = metodos.buscarUsuario(dni);
+
+                if (autenticado==null) {
+                    JOptionPane.showMessageDialog(null, "Incorrecto");
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Correcto");
+                }
+            }
+        });
         
 
         /*cmbEligeMultimedia.addActionListener(new ActionListener(){
@@ -126,4 +150,5 @@ public class FormAlquilar extends JFrame {
 
         return resultado;
     }
+
 }
