@@ -68,24 +68,33 @@ public class FormListados extends JFrame{
                         textoListas.append(pelicula + "\n");
                     }
                 }
-                if (cmbEligeLista.getSelectedItem().toString().equals("Listado de todas las canciones de un disco por duracion")){
+                if (cmbEligeLista.getSelectedItem().toString().equals("Listado de todas las canciones de un disco por duracion")) {
                     textoListas.setText("");
-                    ArrayList<String> canciones = new ArrayList<>();
-                    for (int i = 0; i<ConexionBaseDatos.db.get(2).size(); i++) {
-                        canciones.add(((Disco)ConexionBaseDatos.db.get(4).get(i)).getCanciones().toString());
-                    }
-                    /*
+                    // No se como sacar el disco en cuestion del que quieres ordenar las canciones por duracion asi
+                    // que de momento lo dejo en cero
+                    ArrayList<Cancion> canciones = ((Disco) ConexionBaseDatos.db.get(4).get(0)).getCanciones();
+
+                    for (int i = 0; i<canciones.size(); i++)
                     Collections.sort(canciones, new Comparator<Cancion>() {
                         @Override
                         public int compare(Cancion cancion1, Cancion cancion2) {
                             return Integer.compare(cancion1.getDuracionSegundos(), cancion2.getDuracionSegundos());
                         }
                     });
-
-                    */
                 }
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de todos los videojuegos ordenados por año")){
                     textoListas.setText("");
+                    // Aqui habria que sacar de la base el titulo para mostrarlo en la lista y el año para ordenarlos
+                    ArrayList<String> videojuegos = new ArrayList<>();
+                    for (int i = 0; i<ConexionBaseDatos.db.get(2).size(); i++) {
+                        videojuegos.add(String.valueOf(((Videojuego) ConexionBaseDatos.db.get(1).get(i)).getAnyo()));
+                    }
+
+                    Collections.sort(videojuegos);
+
+                    for (String videojuego : videojuegos) {
+                        textoListas.append(videojuego + "\n");
+                    }
                 }
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de los alquileres actuales de un socio")){
                     textoListas.setText("");
