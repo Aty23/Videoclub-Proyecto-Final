@@ -102,23 +102,7 @@ public class FormVideoclub extends JFrame{
                 fD.setVisible(true);
             }
         });
-
-        /* Action Listener provisional */
-
-
-
     }
-
-    /* Metodo provisional
-    public boolean autenticarUsuario(String dni) {
-        for (int i = 0; i < ConexionBaseDatos.db.get(0).size(); i++){
-            if (((Socio)ConexionBaseDatos.db.get(0).get(i)).getNif().equals(dni)){
-                return true;
-            }
-        }
-        return false;
-    } */
-
 
     public JPanel getPanelPrincipal(){
         return panelPrincipal;

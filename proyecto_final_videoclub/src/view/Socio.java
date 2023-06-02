@@ -150,7 +150,7 @@ public class Socio {
     public String nombresMultimediaAlquilados(){
         String linea="";
         for(int i=0; i<multimediaAlquilado.size(); i++){
-            linea+=multimediaAlquilado.get(i).getTitulo() + " ";
+            linea+=multimediaAlquilado.get(i).getTitulo() + "\n";
         }
         return linea;
     }

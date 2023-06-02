@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import control.ConexionBaseDatos;
+import control.metodos;
 
 public class FormListados extends JFrame{
     public JPanel panelPrincipal = new JPanel();
@@ -73,8 +74,6 @@ public class FormListados extends JFrame{
                     // No se como sacar el disco en cuestion del que quieres ordenar las canciones por duracion asi
                     // que de momento lo dejo en cero
                     ArrayList<Cancion> canciones = ((Disco) ConexionBaseDatos.db.get(4).get(0)).getCanciones();
-
-                    for (int i = 0; i<canciones.size(); i++)
                     Collections.sort(canciones, new Comparator<Cancion>() {
                         @Override
                         public int compare(Cancion cancion1, Cancion cancion2) {
@@ -84,23 +83,47 @@ public class FormListados extends JFrame{
                 }
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de todos los videojuegos ordenados por año")){
                     textoListas.setText("");
-                    // Aqui habria que sacar de la base el titulo para mostrarlo en la lista y el año para ordenarlos
-                    ArrayList<String> videojuegos = new ArrayList<>();
-                    for (int i = 0; i<ConexionBaseDatos.db.get(2).size(); i++) {
-                        videojuegos.add(String.valueOf(((Videojuego) ConexionBaseDatos.db.get(1).get(i)).getAnyo()));
+                    ArrayList<Videojuego> videojuegos = new ArrayList<>();
+                    for (int i = 0; i<ConexionBaseDatos.db.get(2).size(); i++){
+                        videojuegos.add((Videojuego) ConexionBaseDatos.db.get(1).get(i));
                     }
 
-                    Collections.sort(videojuegos);
+                    Collections.sort(videojuegos, new Comparator<Videojuego>() {
+                        @Override
+                        public int compare(Videojuego juego1, Videojuego juego2) {
+                            return juego1.getAnyo() - juego2.getAnyo();
+                        }
+                    });
 
-                    for (String videojuego : videojuegos) {
-                        textoListas.append(videojuego + "\n");
+                    for (Videojuego juego: videojuegos) {
+                        textoListas.append(juego.getTitulo() + " " + juego.getAnyo() + "\n");
                     }
                 }
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de los alquileres actuales de un socio")){
                     textoListas.setText("");
+                    ArrayList<String> multimediaSocio = new ArrayList<>();
+                    for (int i = 0; i<ConexionBaseDatos.db.get(0).size(); i++){
+                        if(metodos.buscarUsuario()){
+                            multimediaSocio.add(((Socio) ConexionBaseDatos.db.get(0).get(i)).getTitulosMultimediaAlquilado());
+                        }
+                    }
+
+                    for (String multimedia: multimediaSocio) {
+                        textoListas.append(multimedia);
+                    }
                 }
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de los socios con recargos pendientes")){
                     textoListas.setText("");
+                    ArrayList<String> recargoSocio = new ArrayList<>();
+                    for (int i = 0; i<ConexionBaseDatos.db.get(0).size(); i++){
+                        if(((Socio) ConexionBaseDatos.db.get(0).get(i)).isRecargoPendiente()){
+                            recargoSocio.add(((Socio) ConexionBaseDatos.db.get(0).get(i)).getNombre());
+                        }
+                    }
+
+                    for (String nombre: recargoSocio) {
+                        textoListas.append(nombre + "\n");
+                    }
                 }
             }
         });
@@ -109,7 +132,6 @@ public class FormListados extends JFrame{
         panelPrincipal.add(cmbEligeLista);
         textoListas.setBounds(100,200,600,300);
         panelPrincipal.add(textoListas);
-
     }
 
     public JPanel getPanelPrincipal(){
