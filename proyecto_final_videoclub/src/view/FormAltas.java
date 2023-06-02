@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class FormAltas extends JFrame {
     Color colorFondo=new Color(147,249,249);
@@ -477,8 +478,9 @@ public class FormAltas extends JFrame {
                 int duracion = Integer.parseInt(txtDuracion.getText());
                 String actorPrincipal = txtActorPrincipal.getText();
                 String actrizPrincipal = txtActrizPrincipal.getText();
+                Date diaAlquilado = null;
 
-                Pelicula p = new Pelicula(titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal);
+                Pelicula p = new Pelicula(titulo, autor, formato, anyo, diaAlquilado, duracion, actorPrincipal, actrizPrincipal);
                 ConexionBaseDatos.db.get(2).add(p);
             }
         });
@@ -492,8 +494,9 @@ public class FormAltas extends JFrame {
                 String formato = txtFormato.getText();
                 int anyo = Integer.parseInt(txtAnyo.getText());
                 String plataforma = txtPlataforma.getText();
+                Date diaAlquilado = null;
 
-                Videojuego v = new Videojuego(titulo, autor, formato, anyo, plataforma);
+                Videojuego v = new Videojuego(titulo, autor, formato, anyo, diaAlquilado, plataforma);
                 ConexionBaseDatos.db.get(1).add(v);
             }
         });
@@ -523,6 +526,7 @@ public class FormAltas extends JFrame {
                 for (Cancion cancion : canciones) {
                     duracion+=cancion.getDuracionSegundos();
                 }
+                Date diaAlquilado = null;
                 Disco d = new Disco();
                 ConexionBaseDatos.db.get(4).add(d);
             }
