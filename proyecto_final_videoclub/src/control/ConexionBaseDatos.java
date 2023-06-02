@@ -100,7 +100,7 @@ public class ConexionBaseDatos {
             Pelicula pelicula = new Pelicula(rsPelicula.getString("titulo"), rsPelicula.getString("autor"),
                     rsPelicula.getString("formato"),
                     rsPelicula.getInt("anyo"),rsPelicula.getDate("diaAlquilado"), rsPelicula.getInt("duracion"),
-                    rsPelicula.getString("actorprincipal"), rsPelicula.getString("actrizPrincipal"));
+                    rsPelicula.getString("actorPrincipal"), rsPelicula.getString("actrizPrincipal"));
             infoPelicula.add(pelicula);
         }
         return infoPelicula;

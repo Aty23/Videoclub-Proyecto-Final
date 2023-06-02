@@ -99,7 +99,7 @@ public class FormListados extends JFrame{
                         textoListas.append(juego.getTitulo() + " " + juego.getAnyo() + "\n");
                     }
                 }
-                if (cmbEligeLista.getSelectedItem().toString().equals("Listado de los alquileres actuales de un socio")){
+                /*if (cmbEligeLista.getSelectedItem().toString().equals("Listado de los alquileres actuales de un socio")){
                     textoListas.setText("");
                     ArrayList<String> multimediaSocio = new ArrayList<>();
                     for (int i = 0; i<ConexionBaseDatos.db.get(0).size(); i++){
@@ -111,7 +111,7 @@ public class FormListados extends JFrame{
                     for (String multimedia: multimediaSocio) {
                         textoListas.append(multimedia);
                     }
-                }
+                }*/
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de los socios con recargos pendientes")){
                     textoListas.setText("");
                     ArrayList<String> recargoSocio = new ArrayList<>();

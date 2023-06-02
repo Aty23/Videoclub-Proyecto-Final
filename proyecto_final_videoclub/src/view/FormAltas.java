@@ -179,16 +179,16 @@ public class FormAltas extends JFrame {
         panelPrincipal.add(txtDuracionSegundos);
 
         //Controles disco
-        lDuracionDisco.setBounds(30,200,130,20);
+        lDuracionDisco.setBounds(30,400,115,20);
         lDuracionDisco.setVisible(false);
         panelPrincipal.add(lDuracionDisco);
-        txtDuracionDisco.setBounds(150,200,100,20);
+        txtDuracionDisco.setBounds(150,400,100,20);
         txtDuracionDisco.setVisible(false);
         panelPrincipal.add(txtDuracionDisco);
-        lColeccionCanciones.setBounds(20,250,130,20);
+        lColeccionCanciones.setBounds(10,450,135,20);
         lColeccionCanciones.setVisible(false);
         panelPrincipal.add(lColeccionCanciones);
-        jListCanciones.setBounds(150,250,300,70);
+        jListCanciones.setBounds(150,450,300,70);
         jListCanciones.setVisible(false);
         panelPrincipal.add(jListCanciones);
 
@@ -421,14 +421,6 @@ public class FormAltas extends JFrame {
                     lPlataforma.setVisible(false);
                     txtPlataforma.setVisible(false);
                     btnAltaVideojuego.setVisible(false);
-                    lTitulo.setVisible(false);
-                    txtTitulo.setVisible(false);
-                    lAutor.setVisible(false);
-                    txtAutor.setVisible(false);
-                    lFormato.setVisible(false);
-                    txtFormato.setVisible(false);
-                    lAnyo.setVisible(false);
-                    txtAnyo.setVisible(false);
                     lNif.setVisible(false);
                     txtNif.setVisible(false);
                     lNombre.setVisible(false);
@@ -444,6 +436,14 @@ public class FormAltas extends JFrame {
                     txtDuracionSegundos.setVisible(false);
                     btnAltaCancion.setVisible(false);
 
+                    lTitulo.setVisible(true);
+                    txtTitulo.setVisible(true);
+                    lAutor.setVisible(true);
+                    txtAutor.setVisible(true);
+                    lFormato.setVisible(true);
+                    txtFormato.setVisible(true);
+                    lAnyo.setVisible(true);
+                    txtAnyo.setVisible(true);
                     lDuracionDisco.setVisible(true);
                     txtDuracionDisco.setVisible(true);
                     lColeccionCanciones.setVisible(true);
@@ -515,6 +515,12 @@ public class FormAltas extends JFrame {
         btnAltaDisco.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String titulo = txtTitulo.getText();
+                String autor = txtAutor.getText();
+                String formato = txtFormato.getText();
+                int anyo = Integer.parseInt(txtAnyo.getText());
+                int duracionDisco = Integer.parseInt(txtDuracionDisco.getText());
+                Date diaAlquilado = null;
                 int[] indicesSeleccionados = jListCanciones.getSelectedIndices();
 
                 ArrayList<Cancion> canciones = new ArrayList<Cancion>();
@@ -526,8 +532,7 @@ public class FormAltas extends JFrame {
                 for (Cancion cancion : canciones) {
                     duracion+=cancion.getDuracionSegundos();
                 }
-                Date diaAlquilado = null;
-                Disco d = new Disco();
+                Disco d = new Disco(titulo,autor,formato,anyo,diaAlquilado,duracionDisco,canciones);
                 ConexionBaseDatos.db.get(4).add(d);
             }
 
