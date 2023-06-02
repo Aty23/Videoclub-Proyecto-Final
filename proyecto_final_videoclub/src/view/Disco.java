@@ -2,6 +2,7 @@ package view;
 import model.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Disco extends Multimedia{
     /**
@@ -29,8 +30,8 @@ public class Disco extends Multimedia{
      * @param duracionDisco int
      * @param canciones ArrayList<Cancion>
      */
-    public Disco(String titulo, String autor,String formato, int anyo, int duracionDisco, ArrayList<Cancion> canciones) {
-        super(titulo, autor, formato, anyo);
+    public Disco(String titulo, String autor, String formato, int anyo, Date diaAlquilado, int duracionDisco, ArrayList<Cancion> canciones) {
+        super(titulo, autor, formato, anyo, diaAlquilado);
         setDuracionDisco2(duracionDisco);
         setCanciones(canciones);
     }

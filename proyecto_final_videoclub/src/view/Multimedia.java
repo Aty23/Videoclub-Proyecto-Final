@@ -13,9 +13,7 @@ public abstract class Multimedia {
     private int anyo;
     private Date diaAlquilado;
 
-    public void setDiaAlquilado(Date diaAlquilado) {
-        this.diaAlquilado = diaAlquilado;
-    }
+
 
     /**
      * constructor default
@@ -35,11 +33,12 @@ public abstract class Multimedia {
      * @param anyo int
      */
 
-    public Multimedia( String titulo, String autor, String formato, int anyo) {
+    public Multimedia( String titulo, String autor, String formato, int anyo, Date diaAlquilado) {
         setTitulo(titulo);
         setAutor(autor);
         setFormato(formato);
         setAnyo(anyo);
+        setDiaAlquilado(diaAlquilado);
     }
 
 
@@ -48,7 +47,9 @@ public abstract class Multimedia {
      * getters y setters
      *
      */
-
+    public void setDiaAlquilado(Date diaAlquilado) {
+        this.diaAlquilado = diaAlquilado;
+    }
     public Date getDiaAlquilado() {
         return diaAlquilado;
     }

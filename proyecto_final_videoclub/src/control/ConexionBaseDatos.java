@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ConexionBaseDatos {
 
-    public static ArrayList<ArrayList<Object>> db;
+    public static ArrayList<ArrayList<Object>> db = ConexionBaseDatos.conexionBase();
 
     public static ArrayList<ArrayList<Object>> conexionBase() {
         Connection con = null;
@@ -85,8 +85,8 @@ public class ConexionBaseDatos {
         ArrayList<Object> infoVideojuego = new ArrayList<Object>();
         while (rsVideojuego.next()) {
             Videojuego videojuego = new Videojuego(rsVideojuego.getString("titulo"), rsVideojuego.getString("autor"),
-                    rsVideojuego.getString("formato"),
-                    rsVideojuego.getInt("anyo"), rsVideojuego.getString("plataforma"));
+                    rsVideojuego.getString("formato"), rsVideojuego.getInt("anyo"),
+                    rsVideojuego.getDate("diaALquilado"), rsVideojuego.getString("plataforma"));
             infoVideojuego.add(videojuego);
         }
         return infoVideojuego;
@@ -99,7 +99,7 @@ public class ConexionBaseDatos {
         while (rsPelicula.next()) {
             Pelicula pelicula = new Pelicula(rsPelicula.getString("titulo"), rsPelicula.getString("autor"),
                     rsPelicula.getString("formato"),
-                    rsPelicula.getInt("anyo"), rsPelicula.getInt("duracion"),
+                    rsPelicula.getInt("anyo"),rsPelicula.getDate("diaAlquilado"), rsPelicula.getInt("duracion"),
                     rsPelicula.getString("actorprincipal"), rsPelicula.getString("actrizPrincipal"));
             infoPelicula.add(pelicula);
         }
@@ -124,8 +124,8 @@ public class ConexionBaseDatos {
         while (rsDisco.next()) {
 
             Disco disco = new Disco(rsDisco.getString("titulo"), rsDisco.getString("autor"),
-                    rsDisco.getString("formato"), rsDisco.getInt("anyo"), rsDisco.getInt("duracion"),
-                    cancionesDisco(con, rsDisco.getString("cancionesDisco")));
+                    rsDisco.getString("formato"), rsDisco.getInt("anyo"), rsDisco.getDate("diaAlquilado"),
+                    rsDisco.getInt("duracion"), cancionesDisco(con, rsDisco.getString("cancionesDisco")));
             infoDisco.add(disco);
         }
         return infoDisco;
@@ -200,7 +200,7 @@ public class ConexionBaseDatos {
             try {
                 st.executeQuery("insert into videojuego values('" + ((Videojuego) infoVideojuego.get(i)).getTitulo() + "', '"
                         + ((Videojuego) infoVideojuego.get(i)).getAutor() + "', '" + ((Videojuego) infoVideojuego.get(i)).getFormato()
-                        + "', " + ((Videojuego) infoVideojuego.get(i)).getAnyo()
+                        + "', " + ((Videojuego) infoVideojuego.get(i)).getAnyo() + ", '" + ((Videojuego)infoVideojuego.get(i)).getDiaAlquilado()
                         + ", '" + ((Videojuego) infoVideojuego.get(i)).getPlataforma() + "');");
             } catch (Exception e) {
             }
@@ -213,7 +213,7 @@ public class ConexionBaseDatos {
             try {
                 st.executeQuery("insert into pelicula values('" + ((Pelicula) infoPelicula.get(i)).getTitulo() + "', '"
                         + ((Pelicula) infoPelicula.get(i)).getAutor() + "', '" + ((Pelicula) infoPelicula.get(i)).getFormato()
-                        + "', " + ((Pelicula) infoPelicula.get(i)).getAnyo()
+                        + "', " + ((Pelicula) infoPelicula.get(i)).getAnyo() + "', '" + ((Pelicula) infoPelicula.get(i)).getDiaAlquilado()
                         + ", " + ((Pelicula) infoPelicula.get(i)).getDuracion() + ", '"
                         + ((Pelicula) infoPelicula.get(i)).getActorPrincipal() + "', '"
                         + ((Pelicula) infoPelicula.get(i)).getActrizPrincipal() + "');");
@@ -239,7 +239,7 @@ public class ConexionBaseDatos {
             try {
                 st.executeQuery("insert into disco values('" + ((Disco) infoDisco.get(i)).getTitulo() + "', '"
                         + ((Disco) infoDisco.get(i)).getAutor() + "', '" + ((Disco) infoDisco.get(i)).getFormato()
-                        + "', " + ((Disco) infoDisco.get(i)).getAnyo()
+                        + "', " + ((Disco) infoDisco.get(i)).getAnyo() + "', '" + ((Disco) infoDisco.get(i)).getDiaAlquilado()
                         + ", " + ((Disco) infoDisco.get(i)).getDuracionDisco() + ", '"
                         + ((Disco) infoDisco.get(i)).lineaCacionesDisco() + "');");
             } catch (Exception e) {

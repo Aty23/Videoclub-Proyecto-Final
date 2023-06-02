@@ -1,5 +1,8 @@
 package view;
 import model.*;
+
+import java.util.Date;
+
 public class Videojuego extends Multimedia{
     /**
      * atributos
@@ -22,8 +25,8 @@ public class Videojuego extends Multimedia{
      * @param anyo int
      * @param plataforma String
      */
-    public Videojuego(String titulo, String autor, String formato, int anyo, String plataforma) {
-        super(titulo, autor, formato, anyo);
+    public Videojuego(String titulo, String autor, String formato, int anyo, Date diaAlquilado, String plataforma) {
+        super(titulo, autor, formato, anyo, diaAlquilado);
         setPlataforma(plataforma);
     }
 

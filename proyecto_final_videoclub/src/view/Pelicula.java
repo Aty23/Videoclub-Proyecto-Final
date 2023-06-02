@@ -1,5 +1,8 @@
 package view;
 import model.*;
+
+import java.util.Date;
+
 public class Pelicula extends Multimedia {
     /**
      * atributos
@@ -28,8 +31,8 @@ public class Pelicula extends Multimedia {
      * @param actorPrincipal String
      * @param actrizPrincipal String
      */
-    public Pelicula(String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal) {
-        super(titulo, autor, formato, anyo);
+    public Pelicula(String titulo, String autor, String formato, int anyo, Date diaAlquilado, int duracion, String actorPrincipal, String actrizPrincipal) {
+        super(titulo, autor, formato, anyo, diaAlquilado);
         setDuracion(duracion);
         setActorPrincipal(actorPrincipal);
         setActrizPrincipal(actrizPrincipal);
