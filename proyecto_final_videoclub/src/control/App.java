@@ -19,6 +19,7 @@ public class App {
      */
 
     public static void main(String[] args) {
+        ConexionBaseDatos.db=ConexionBaseDatos.conexionBase();
         Date A = new Date();
         System.out.println(A);
         ArrayList<Multimedia> multimedias= new ArrayList<Multimedia>();
@@ -29,10 +30,14 @@ public class App {
             w.setContentPane(w.getPanelPrincipal());
             w.setVisible(true);
             w.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            if(w.getDefaultCloseOperation()==3){
+                ConexionBaseDatos.modificarBD(ConexionBaseDatos.db);
+            }
         }
         catch (Exception e){
             e.printStackTrace();
         }
+
     }
 
 

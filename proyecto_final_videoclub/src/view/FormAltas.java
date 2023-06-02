@@ -1,5 +1,7 @@
 package view;
 
+import control.ConexionBaseDatos;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -453,10 +455,13 @@ public class FormAltas extends JFrame {
         btnAltaSocio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String NIF = txtNif.getText();
-                String Nombre = txtNombre.getText();
-                int AnyoNacimiento = Integer.parseInt(txtAnyoNacimiento.getText());
-                String Poblacion = txtPoblacion.getText();
+                String nif = txtNif.getText();
+                String nombre = txtNombre.getText();
+                int anyoNacimiento = Integer.parseInt(txtAnyoNacimiento.getText());
+                String poblacion = txtPoblacion.getText();
+                ArrayList<Multimedia> multimedias= new ArrayList<Multimedia>();
+                Socio s = new Socio(nif, nombre, anyoNacimiento, poblacion, false, multimedias);
+                ConexionBaseDatos.db.get(0).add(s);
 
             }
         });
@@ -474,6 +479,7 @@ public class FormAltas extends JFrame {
                 String actrizPrincipal = txtActrizPrincipal.getText();
 
                 Pelicula p = new Pelicula(titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal);
+                ConexionBaseDatos.db.get(2).add(p);
             }
         });
 
@@ -488,6 +494,7 @@ public class FormAltas extends JFrame {
                 String plataforma = txtPlataforma.getText();
 
                 Videojuego v = new Videojuego(titulo, autor, formato, anyo, plataforma);
+                ConexionBaseDatos.db.get(1).add(v);
             }
         });
 
@@ -498,6 +505,7 @@ public class FormAltas extends JFrame {
                 int duracionSegundos = Integer.parseInt(txtDuracionSegundos.getText());
 
                 Cancion c = new Cancion(nombre, duracionSegundos);
+                ConexionBaseDatos.db.get(3).add(c);
             }
         });
 
@@ -505,15 +513,18 @@ public class FormAltas extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int[] indicesSeleccionados = jListCanciones.getSelectedIndices();
-                Disco disco = new Disco();
+
+                ArrayList<Cancion> canciones = new ArrayList<Cancion>();
                 for (int indice : indicesSeleccionados) {
                     Cancion cancionSeleccionada = modelo.getElementAt(indice);
-                    disco.agregarCancion(cancionSeleccionada);
+                    canciones.add(cancionSeleccionada);
                 }
-                ArrayList<Cancion> coleccionCanciones = disco.getColeccionCanciones();
-                for (Cancion cancion : coleccionCanciones) {
-                    System.out.println(cancion.getNombre());
+                int duracion=0;
+                for (Cancion cancion : canciones) {
+                    duracion+=cancion.getDuracionSegundos();
                 }
+                Disco d = new Disco();
+                ConexionBaseDatos.db.get(4).add(d);
             }
 
 

@@ -25,7 +25,6 @@ public class Socio {
         setAnyoNacimiento(Constantes.ANYO_NACIMIENTO_DEFAULT);
         setPoblacion(Constantes.POBLACION_DEFAULT);
         setAlquilando(Constantes.ALQUILANDO_DEFAULT);
-        setDiaAlquilado(Constantes.FECHA_DEFAULT);
     }
 
     /**
@@ -39,13 +38,12 @@ public class Socio {
      */
 
     public Socio(String nif, String nombre, int anyoNacimiento, String poblacion, boolean alquilando,
-                 Date diaAlquilado,ArrayList<Multimedia> multimediaAlquilado) {
+                 ArrayList<Multimedia> multimediaAlquilado) {
         setNif(nif);
         setNombre(nombre);
         setAnyoNacimiento(anyoNacimiento);
         setPoblacion(poblacion);
         setAlquilando(alquilando);
-        setDiaAlquilado(diaAlquilado);
         setMultimediaAlquilado(multimediaAlquilado);
     }
 
@@ -128,14 +126,6 @@ public class Socio {
 
     public void setAlquilando(boolean alquilando) {
         this.alquilando = alquilando;
-    }
-
-
-
-    public void setDiaAlquilado(Date diaAlquilado) {
-        if(alquilando==true) {
-            diaAlquilado = new Date();
-        }
     }
 
     /**

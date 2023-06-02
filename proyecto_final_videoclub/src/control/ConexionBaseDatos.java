@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ConexionBaseDatos {
 
-    public static ArrayList<ArrayList<Object>> db = ConexionBaseDatos.conexionBase();
+    public static ArrayList<ArrayList<Object>> db;
 
     public static ArrayList<ArrayList<Object>> conexionBase() {
         Connection con = null;
@@ -43,7 +43,7 @@ public class ConexionBaseDatos {
         while (rsSocio.next()) {
             Socio socio = new Socio(rsSocio.getString("dni"), rsSocio.getString("nombre"),
                     rsSocio.getInt("anyoNacimiento"), rsSocio.getString("poblacion"),
-                    rsSocio.getBoolean("alquilando"), rsSocio.getDate("alquiler"), alquileresSocio( con,  rsSocio.getString("alquileresSocio")));
+                    rsSocio.getBoolean("alquilando"), alquileresSocio( con,  rsSocio.getString("alquileresSocio")));
             infoSocio.add(socio);
         }
         return infoSocio;
