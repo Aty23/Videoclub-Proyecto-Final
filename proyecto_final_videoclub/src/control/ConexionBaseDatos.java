@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ConexionBaseDatos {
 
-    public static ArrayList<ArrayList<Object>> db = ConexionBaseDatos.conexionBase();
+    public static ArrayList<ArrayList<Object>> db;
 
     public static ArrayList<ArrayList<Object>> conexionBase() {
         Connection con = null;
@@ -19,7 +19,6 @@ public class ConexionBaseDatos {
         String pass = "1234";
         ArrayList<ArrayList<Object>> info = new ArrayList<ArrayList<Object>>();
         try {
-            Class.forName(driver);
             con = DriverManager.getConnection(url + bd, user, pass);
             try {
                 info.add(datosSocio(con));
@@ -27,6 +26,7 @@ public class ConexionBaseDatos {
                 info.add(datosPelicula(con));
                 info.add(datosCancion(con));
                 info.add(datosDisco(con));
+                con.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -108,10 +108,10 @@ public class ConexionBaseDatos {
 
     private static ArrayList<Object> datosCancion(Connection con) throws SQLException {
         Statement st = con.createStatement();
-        ResultSet rsCanion = st.executeQuery("select * from Canion");
+        ResultSet rsCancion = st.executeQuery("select * from Cancion");
         ArrayList<Object> infoCancion = new ArrayList<Object>();
-        while (rsCanion.next()) {
-            Cancion cancion = new Cancion(rsCanion.getString("nombre"), rsCanion.getInt("duracionSegundos"));
+        while (rsCancion.next()) {
+            Cancion cancion = new Cancion(rsCancion.getString("nombre"), rsCancion.getInt("duracionSegundos"));
             infoCancion.add(cancion);
         }
         return infoCancion;
@@ -161,7 +161,6 @@ public class ConexionBaseDatos {
         String user = "postgres";
         String pass = "1234";
         try {
-            Class.forName(driver);
             con = DriverManager.getConnection(url + bd, user, pass);
             try {
                 Statement st = con.createStatement();
@@ -170,7 +169,6 @@ public class ConexionBaseDatos {
                 modificarPelicula(info.get(2), st);
                 modificarCancion(info.get(3), st);
                 modificarDisco(info.get(4), st);
-
                 con.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -181,7 +179,7 @@ public class ConexionBaseDatos {
     }
 
     private static void modificarSoio(ArrayList<Object> infoSocio, Statement st) throws SQLException {
-        st.executeQuery("delete * from socio");
+        st.executeUpdate("delete from socio");
         for (int i = 0; i < infoSocio.size(); i++) {
             try {
                 st.executeQuery("insert into socio values('" + ((Socio) infoSocio.get(i)).getNif() + "', '"
@@ -195,7 +193,7 @@ public class ConexionBaseDatos {
 
 
     private static void modificarVideojuego(ArrayList<Object> infoVideojuego, Statement st) throws SQLException {
-        st.executeQuery("delete * from videojuego");
+        st.executeUpdate("delete from videojuego");
         for (int i = 0; i < infoVideojuego.size(); i++) {
             try {
                 st.executeQuery("insert into videojuego values('" + ((Videojuego) infoVideojuego.get(i)).getTitulo() + "', '"
@@ -208,7 +206,7 @@ public class ConexionBaseDatos {
     }
 
     private static void modificarPelicula(ArrayList<Object> infoPelicula, Statement st) throws SQLException {
-        st.executeQuery("delete * from pelicula");
+        st.executeUpdate("delete from pelicula");
         for (int i = 0; i < infoPelicula.size(); i++) {
             try {
                 st.executeQuery("insert into pelicula values('" + ((Pelicula) infoPelicula.get(i)).getTitulo() + "', '"
@@ -223,7 +221,7 @@ public class ConexionBaseDatos {
     }
 
     private static void modificarCancion(ArrayList<Object> infoCancion, Statement st) throws SQLException {
-        st.executeQuery("delete * from canicon");
+        st.executeUpdate("delete from cancion");
         for (int i = 0; i < infoCancion.size(); i++) {
             try {
                 st.executeQuery("insert into cancion values('" + ((Cancion) infoCancion.get(i)).getNombre() + "', "
@@ -234,7 +232,7 @@ public class ConexionBaseDatos {
     }
 
     private static void modificarDisco(ArrayList<Object> infoDisco, Statement st) throws SQLException {
-        st.executeQuery("delete * from disco");
+        st.executeUpdate("delete from disco");
         for (int i = 0; i < infoDisco.size(); i++) {
             try {
                 st.executeQuery("insert into disco values('" + ((Disco) infoDisco.get(i)).getTitulo() + "', '"
