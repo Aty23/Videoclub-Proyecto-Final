@@ -10,16 +10,17 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class FormAlquilar extends JFrame {
-    String[] listaTest ={"1","2","3","4","5","6","1","2","3","4","5","6"};
-    String[] listaTest2 ={"a","b","c","d","e","f","a","b","c","d"};
-    String[] listaTest3 ={"!","@","¢","!","@","¢",};
-    Color colorFondo=new Color(147,249,249);
+    private String dniBuscar;
+    private int elementoAlquilado;
+    private JList lstBuscar;
+    private Color colorFondo=new Color(147,249,249);
 
     public JPanel panelPrincipal = new JPanel();
-    JComboBox cmbEligeMultimedia = new JComboBox<>();
-    JLabel dniLabel = new JLabel("Dni Cliente");
-    JTextField dniCliente = new JTextField();
-    JButton dniBtn = new JButton("Enviar");
+    private JComboBox cmbEligeMultimedia = new JComboBox<>();
+    private JLabel dniLabel = new JLabel("Dni Cliente");
+    private JTextField dniCliente = new JTextField();
+    private JButton dniBtn = new JButton("Enviar");
+
     public FormAlquilar() throws HeadlessException{
         dniLabel.setBounds(0,0,100,30);
         panelPrincipal.add(dniLabel);
@@ -48,7 +49,7 @@ public class FormAlquilar extends JFrame {
         btnAlquilar.setVisible(true);
         panelPrincipal.add(btnAlquilar);
 
-        JLabel lblAlquiler = new JLabel("El precio es:");
+        JLabel lblAlquiler = new JLabel("El precio del alquiler es: ");
         lblAlquiler.setBounds(100,500,100,30);
         lblAlquiler.setVisible(true);
         panelPrincipal.add(lblAlquiler);
@@ -74,7 +75,7 @@ public class FormAlquilar extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //((Pelicula)ConexionBaseDatos.db.get(1).get(0)).getTitulo();
                 //casteo------clase base datos.array.array.objeto.metodo
-                JList lstBuscar = new JList<>((ListModel) buscadorMultimedia(txtfldMulti.getText()));
+                lstBuscar = new JList<>((ListModel) buscadorMultimedia(txtfldMulti.getText()));
                 panelPrincipal.add(lstBuscar);
                 lstBuscar.setVisibleRowCount(buscadorMultimedia(txtfldMulti.getText()).size());
                 lstBuscar.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -85,14 +86,24 @@ public class FormAlquilar extends JFrame {
                 scrollerPeliculas.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
                 panelPrincipal.add(scrollerPeliculas);
                 scrollerPeliculas.setVisible(true);
+                elementoAlquilado= lstBuscar.getSelectedIndex();
+
             }
         });
+        btnAlquilar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String dni = dniCliente.getText();
+                lblAlquiler.setText("El precio del alquiler es: "+metodos.alquilar(((Multimedia) lstBuscar.getModel().getElementAt(elementoAlquilado)),metodos.buscarUsuario(dniBuscar)));
+            }
+        });
+
         dniBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String dni = dniCliente.getText();
-                Socio autenticado = metodos.buscarUsuario(dni);
+               dniBuscar = dniCliente.getText();
+                Socio autenticado = metodos.buscarUsuario(dniBuscar);
 
                 if (autenticado==null) {
                     JOptionPane.showMessageDialog(null, "Incorrecto");
@@ -102,22 +113,9 @@ public class FormAlquilar extends JFrame {
                 }
             }
         });
-        
-
-        /*cmbEligeMultimedia.addActionListener(new ActionListener(){
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if(cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")){
 
 
-            }else if(cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")){
 
-            }else if(cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")){
-
-
-            }
-        }
-        });*/
 
     }
 
