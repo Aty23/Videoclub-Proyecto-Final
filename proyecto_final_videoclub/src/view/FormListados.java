@@ -17,6 +17,11 @@ public class FormListados extends JFrame{
 
     public FormListados() throws HeadlessException {
         panelPrincipal.setLayout(null);
+
+        JLabel dniLabel = new JLabel("Dni Cliente");
+        JTextField dniCliente = new JTextField();
+        JButton dniBtn = new JButton("Enviar");
+
         JComboBox cmbEligeLista = new JComboBox<>();
         JTextArea textoListas = new JTextArea();
         //((Pelicula)ConexionBaseDatos.db.get(1).get(0)).getTitulo();
@@ -99,11 +104,11 @@ public class FormListados extends JFrame{
                         textoListas.append(juego.getTitulo() + " " + juego.getAnyo() + "\n");
                     }
                 }
-                /*if (cmbEligeLista.getSelectedItem().toString().equals("Listado de los alquileres actuales de un socio")){
+                if (cmbEligeLista.getSelectedItem().toString().equals("Listado de los alquileres actuales de un socio")){
                     textoListas.setText("");
                     ArrayList<String> multimediaSocio = new ArrayList<>();
                     for (int i = 0; i<ConexionBaseDatos.db.get(0).size(); i++){
-                        if(metodos.buscarUsuario()){
+                        if(((Socio) ConexionBaseDatos.db.get(0).get(i)).getNif() == metodos.buscarUsuario(dniCliente.getText()).getNif()){
                             multimediaSocio.add(((Socio) ConexionBaseDatos.db.get(0).get(i)).getTitulosMultimediaAlquilado());
                         }
                     }
@@ -111,7 +116,7 @@ public class FormListados extends JFrame{
                     for (String multimedia: multimediaSocio) {
                         textoListas.append(multimedia);
                     }
-                }*/
+
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de los socios con recargos pendientes")){
                     textoListas.setText("");
                     ArrayList<String> recargoSocio = new ArrayList<>();
@@ -126,15 +131,21 @@ public class FormListados extends JFrame{
                     }
                 }
             }
-        });
-
+        }
+    });
         cmbEligeLista.setBounds(100,100,350,50);
         panelPrincipal.add(cmbEligeLista);
         textoListas.setBounds(100,200,600,300);
         panelPrincipal.add(textoListas);
+        dniLabel.setBounds(0,0,100,50);
+        panelPrincipal.add(dniLabel);
+        dniCliente.setBounds(100,0,100,50);
+        panelPrincipal.add(dniCliente);
+        dniBtn.setBounds(200,0,100,50);
+        panelPrincipal.add(dniBtn);
     }
-
     public JPanel getPanelPrincipal(){
         return panelPrincipal;
     }
+
 }
