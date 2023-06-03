@@ -10,21 +10,29 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class FormAlquilar extends JFrame {
+    Color colorButtons= new Color(82,82,82);
+    Color colorLetraBoton=new Color(255,255,255);
     private String dniBuscar;
     private int elementoAlquilado;
     private JList lstBuscar;
-    private Color colorFondo = new Color(147, 249, 249);
+    private Color colorFondo = new Color(65, 65, 65);
 
     public JPanel panelPrincipal = new JPanel();
     private JComboBox cmbEligeMultimedia = new JComboBox<>();
     private JLabel dniLabel = new JLabel("Dni Cliente");
+
     private JTextField dniCliente = new JTextField();
     private JButton dniBtn = new JButton("Enviar");
+
     private JScrollPane scrollerPeliculas;
     private JTextField txtfldMulti;
 
     public FormAlquilar() throws HeadlessException {
         try {
+            Color letradni = new Color(255, 255, 255);
+            dniLabel.setForeground(letradni);
+            dniBtn.setBackground(colorButtons);
+            dniBtn.setForeground(colorLetraBoton);
             dniLabel.setBounds(0, 0, 100, 30);
             panelPrincipal.add(dniLabel);
             dniCliente.setBounds(0, 30, 100, 25);
@@ -43,17 +51,23 @@ public class FormAlquilar extends JFrame {
             panelPrincipal.add(txtfldMulti);
 
             JButton btnBuscar = new JButton("Buscar");
+            btnBuscar.setBackground(colorButtons);
+            btnBuscar.setForeground(colorLetraBoton);
             btnBuscar.setBounds(500, 200, 100, 30);
             btnBuscar.setVisible(true);
             panelPrincipal.add(btnBuscar);
 
             JButton btnAlquilar = new JButton("Alquilar");
+            btnAlquilar.setBackground(colorButtons);
+            btnAlquilar.setForeground(colorLetraBoton);
             btnAlquilar.setBounds(500, 500, 100, 30);
             btnAlquilar.setVisible(true);
             panelPrincipal.add(btnAlquilar);
 
             JLabel lblAlquiler = new JLabel("El precio del alquiler es: ");
-            lblAlquiler.setBounds(100, 500, 100, 30);
+            Color letrAlquilar = new Color(255, 255, 255);
+            lblAlquiler.setForeground(letrAlquilar);
+            lblAlquiler.setBounds(100, 500, 300, 30);
             lblAlquiler.setVisible(true);
             panelPrincipal.add(lblAlquiler);
 
