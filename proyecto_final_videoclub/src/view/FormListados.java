@@ -16,8 +16,6 @@ public class FormListados extends JFrame{
     public JPanel panelPrincipal = new JPanel();
 
     public FormListados() throws HeadlessException {
-        Color colorButtons= new Color(82,82,82);
-        Color colorLetraBoton=new Color(255,255,255);
         panelPrincipal.setLayout(null);
         Color colorFondo=new Color(65,65,65);
         panelPrincipal.setBackground(colorFondo);
@@ -28,8 +26,6 @@ public class FormListados extends JFrame{
         dniLabel.setForeground(letradni);
         JTextField dniCliente = new JTextField();
         JButton dniBtn = new JButton("Enviar");
-        dniBtn.setBackground(colorButtons);
-        dniBtn.setForeground(colorLetraBoton);
         dniLabel.setBounds(0,0,100,30);
         panelPrincipal.add(dniLabel);
         dniCliente.setBounds(0,30,100,25);
