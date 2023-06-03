@@ -22,10 +22,6 @@ public class FormVideoclub extends JFrame{
         panelPrincipal.setLayout(null);
         panelPrincipal.setBackground(colorFondo);
         Color colorButtons= new Color(82,82,82);
-        JMenuBar barra = new JMenuBar();
-        JMenu archivo = new JMenu("Archivo");
-        JMenuItem cargarCategorias = new JMenuItem("Cargar categorias");
-        JMenuItem salir = new JMenuItem("Salir");
         Color colorLabel=new Color(255,255,255);
 
         JLabel videoclub = new JLabel(" Heisenberg's Club");
@@ -34,13 +30,6 @@ public class FormVideoclub extends JFrame{
         JButton alquilar = new JButton("Alquilar");
         JButton devolver = new JButton("Devolver");
         JButton listar = new JButton("Listar");
-
-
-
-        this.setJMenuBar(barra);
-        barra.add(archivo);
-        archivo.add(cargarCategorias);
-        archivo.add(salir);
 
         videoclub.setBounds(340,100,250,50);
         videoclub.setFont(new Font("Arial", Font.BOLD, 20));
