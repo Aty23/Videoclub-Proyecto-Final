@@ -17,10 +17,21 @@ public class FormListados extends JFrame{
 
     public FormListados() throws HeadlessException {
         panelPrincipal.setLayout(null);
+        Color colorFondo=new Color(65,65,65);
+        panelPrincipal.setBackground(colorFondo);
+
 
         JLabel dniLabel = new JLabel("Dni Cliente");
+        Color letradni = new Color(255, 255, 255);
+        dniLabel.setForeground(letradni);
         JTextField dniCliente = new JTextField();
         JButton dniBtn = new JButton("Enviar");
+        dniLabel.setBounds(0,0,100,30);
+        panelPrincipal.add(dniLabel);
+        dniCliente.setBounds(0,30,100,25);
+        panelPrincipal.add(dniCliente);
+        dniBtn.setBounds(100,30,75,25);
+        panelPrincipal.add(dniBtn);
 
         JComboBox cmbEligeLista = new JComboBox<>();
         JTextArea textoListas = new JTextArea();
@@ -137,12 +148,7 @@ public class FormListados extends JFrame{
         panelPrincipal.add(cmbEligeLista);
         textoListas.setBounds(100,200,600,300);
         panelPrincipal.add(textoListas);
-        dniLabel.setBounds(0,0,100,50);
-        panelPrincipal.add(dniLabel);
-        dniCliente.setBounds(100,0,100,50);
-        panelPrincipal.add(dniCliente);
-        dniBtn.setBounds(200,0,100,50);
-        panelPrincipal.add(dniBtn);
+
     }
     public JPanel getPanelPrincipal(){
         return panelPrincipal;

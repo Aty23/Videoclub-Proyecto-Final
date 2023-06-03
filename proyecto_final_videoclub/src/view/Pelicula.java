@@ -44,7 +44,7 @@ public class Pelicula extends Multimedia {
      */
 
     public int getDuracion() {
-        return duracion;
+        return  duracion;
     }
 
     public void setDuracion(int duracion) {
