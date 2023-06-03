@@ -16,89 +16,106 @@ public class FormDevolver extends JFrame {
     public JPanel panelPrincipal = new JPanel();
 
     public FormDevolver() throws HeadlessException {
-        Color colorLetraBoton=new Color(255,255,255);
-        Color colorButtons= new Color(82,82,82);
-
-        JLabel dniLabel = new JLabel("Dni Cliente");
-        Color letradni = new Color(255, 255, 255);
-        dniLabel.setForeground(letradni);
-        JTextField dniCliente = new JTextField();
-        JButton dniBtn = new JButton("Enviar");
-        dniBtn.setBackground(colorButtons);
-        dniBtn.setForeground(colorLetraBoton);
-        dniLabel.setBounds(0, 0, 100, 30);
-        panelPrincipal.add(dniLabel);
-        dniCliente.setBounds(0, 30, 100, 25);
-        panelPrincipal.add(dniCliente);
-        dniBtn.setBounds(100, 30, 75, 25);
-        panelPrincipal.add(dniBtn);
+        try {
 
 
-        panelPrincipal.setLayout(null);
-        panelPrincipal.setBackground(colorFondo);
-        Color colorDevolver = new Color(255, 255, 255);
+            Color colorLetraBoton = new Color(255, 255, 255);
+            Color colorButtons = new Color(82, 82, 82);
 
-        JLabel Devolver = new JLabel("Articulos alquilados ");
-        Devolver.setForeground(colorDevolver);
-        Devolver.setBounds(300, 100, 300, 50);
-        Devolver.setFont(new Font("Arial", Font.BOLD, 20));
-        panelPrincipal.add(Devolver);
+            JLabel dniLabel = new JLabel("Dni Cliente");
+            Color letradni = new Color(255, 255, 255);
+            dniLabel.setForeground(letradni);
+            JTextField dniCliente = new JTextField();
+            JButton dniBtn = new JButton("Enviar");
+            dniBtn.setBackground(colorButtons);
+            dniBtn.setForeground(colorLetraBoton);
+            dniLabel.setBounds(0, 0, 100, 30);
+            panelPrincipal.add(dniLabel);
+            dniCliente.setBounds(0, 30, 100, 25);
+            panelPrincipal.add(dniCliente);
+            dniBtn.setBounds(100, 30, 75, 25);
+            panelPrincipal.add(dniBtn);
 
-        JScrollPane scrollerDevolver = new JScrollPane();//((Socio)ConexionBaseDatos.db.get(0).get(1)).get));
-        scrollerDevolver.setBounds(230, 150, 350, 100);
-        scrollerDevolver.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollerDevolver.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        panelPrincipal.add(scrollerDevolver);
-        scrollerDevolver.setVisible(true);
 
-        JButton btnDevolver = new JButton("Devolver");
-        btnDevolver.setForeground(colorLetraBoton);
-        btnDevolver.setBackground(colorButtons);
-        btnDevolver.setBounds(330, 300, 100, 30);
-        btnDevolver.setVisible(true);
-        panelPrincipal.add(btnDevolver);
+            panelPrincipal.setLayout(null);
+            panelPrincipal.setBackground(colorFondo);
+            Color colorDevolver = new Color(255, 255, 255);
 
-        dniBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            JLabel Devolver = new JLabel("Articulos alquilados ");
+            Devolver.setForeground(colorDevolver);
+            Devolver.setBounds(300, 100, 300, 50);
+            Devolver.setFont(new Font("Arial", Font.BOLD, 20));
+            panelPrincipal.add(Devolver);
 
-                dniBuscar = dniCliente.getText();
-                Socio autenticado = metodos.buscarUsuario(dniBuscar);
+            JScrollPane scrollerDevolver = new JScrollPane();//((Socio)ConexionBaseDatos.db.get(0).get(1)).get));
+            scrollerDevolver.setBounds(230, 150, 350, 100);
+            scrollerDevolver.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollerDevolver.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+            panelPrincipal.add(scrollerDevolver);
+            scrollerDevolver.setVisible(true);
 
-                if (autenticado == null) {
-                    JOptionPane.showMessageDialog(null, "Incorrecto");
+            JButton btnDevolver = new JButton("Devolver");
+            btnDevolver.setForeground(colorLetraBoton);
+            btnDevolver.setBackground(colorButtons);
+            btnDevolver.setBounds(330, 300, 100, 30);
+            btnDevolver.setVisible(true);
+            panelPrincipal.add(btnDevolver);
 
-                } else {
-                    JOptionPane.showMessageDialog(null, "Correcto");
-                    lstDevolver = new JList<>((ListModel) autenticado.getMultimediaAlquilado());
-                    panelPrincipal.add(lstDevolver);
-                    lstDevolver.setVisibleRowCount(autenticado.getMultimediaAlquilado().size());
-                    lstDevolver.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+            dniBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
 
-                    JScrollPane scrollerDevolver = new JScrollPane(lstDevolver);//((Socio)ConexionBaseDatos.db.get(0).get(1)).get));
-                    scrollerDevolver.setBounds(230, 150, 350, 100);
-                    scrollerDevolver.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-                    scrollerDevolver.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-                    panelPrincipal.add(scrollerDevolver);
-                    scrollerDevolver.setVisible(true);
+                    dniBuscar = dniCliente.getText();
+                    Socio autenticado = metodos.buscarUsuario(dniBuscar);
+                    if (dniBuscar != null) {
+
+                        if (autenticado == null) {
+                            JOptionPane.showMessageDialog(null, "Incorrecto");
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Correcto");
+                            lstDevolver = new JList<>((ListModel) autenticado.getMultimediaAlquilado());
+                            panelPrincipal.add(lstDevolver);
+                            lstDevolver.setVisibleRowCount(autenticado.getMultimediaAlquilado().size());
+                            lstDevolver.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+                            JScrollPane scrollerDevolver = new JScrollPane(lstDevolver);//((Socio)ConexionBaseDatos.db.get(0).get(1)).get));
+                            scrollerDevolver.setBounds(230, 150, 350, 100);
+                            scrollerDevolver.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+                            scrollerDevolver.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+                            panelPrincipal.add(scrollerDevolver);
+                            scrollerDevolver.setVisible(true);
+
+
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Introduzca dni");
+                    }
+                }
+            });
+            dniBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+
+
+                        elementoDevolver = lstDevolver.getSelectedIndex();
+                        JLabel Precio = new JLabel("Recargo" + metodos.devolverMultimedia(((Multimedia) lstDevolver.getModel().getElementAt(elementoDevolver)), metodos.buscarUsuario(dniBuscar)));
+                        Precio.setForeground(colorDevolver);
+                        Precio.setBounds(300, 500, 300, 50);
+                        Precio.setFont(new Font("Arial", Font.BOLD, 20));
+                        panelPrincipal.add(Precio);
+
+                    } catch (Exception p) {
+                        p.printStackTrace();
+                    }
 
 
                 }
-            }
-        });
-        dniBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                elementoDevolver = lstDevolver.getSelectedIndex();
-                JLabel Precio = new JLabel("Recargo" + metodos.devolverMultimedia(((Multimedia) lstDevolver.getModel().getElementAt(elementoDevolver)), metodos.buscarUsuario(dniBuscar)));
-                Precio.setForeground(colorDevolver);
-                Precio.setBounds(300, 500, 300, 50);
-                Precio.setFont(new Font("Arial", Font.BOLD, 20));
-                panelPrincipal.add(Precio);
-
-
-            }
-        });
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
