@@ -96,10 +96,22 @@ public class FormAltas extends JFrame {
         jListCanciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         JButton btnAltaSocio = new JButton("Alta de socio");
+        Color colorLetraBoton=new Color(255,255,255);
+        Color colorButtons= new Color(82,82,82);
+        btnAltaSocio.setBackground(colorButtons);
+        btnAltaSocio.setForeground(colorLetraBoton);
         JButton btnAltaPelicula = new JButton("Alta de película");
+        btnAltaPelicula.setBackground(colorButtons);
+        btnAltaPelicula.setForeground(colorLetraBoton);
         JButton btnAltaVideojuego = new JButton("Alta de videojuego");
+        btnAltaVideojuego.setBackground(colorButtons);
+        btnAltaVideojuego.setForeground(colorLetraBoton);
         JButton btnAltaCancion = new JButton("Alta de cancion");
+        btnAltaCancion.setBackground(colorButtons);
+        btnAltaCancion.setForeground(colorLetraBoton);
         JButton btnAltaDisco = new JButton("Alta de disco");
+        btnAltaDisco.setBackground(colorButtons);
+        btnAltaDisco.setForeground(colorLetraBoton);
 
         try{
             cmbEligeAlta.addItem("Elige uno");

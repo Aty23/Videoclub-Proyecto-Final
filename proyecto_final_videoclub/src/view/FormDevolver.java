@@ -16,12 +16,16 @@ public class FormDevolver extends JFrame {
     public JPanel panelPrincipal = new JPanel();
 
     public FormDevolver() throws HeadlessException {
+        Color colorLetraBoton=new Color(255,255,255);
+        Color colorButtons= new Color(82,82,82);
 
         JLabel dniLabel = new JLabel("Dni Cliente");
         Color letradni = new Color(255, 255, 255);
         dniLabel.setForeground(letradni);
         JTextField dniCliente = new JTextField();
         JButton dniBtn = new JButton("Enviar");
+        dniBtn.setBackground(colorButtons);
+        dniBtn.setForeground(colorLetraBoton);
         dniLabel.setBounds(0, 0, 100, 30);
         panelPrincipal.add(dniLabel);
         dniCliente.setBounds(0, 30, 100, 25);
@@ -48,6 +52,8 @@ public class FormDevolver extends JFrame {
         scrollerDevolver.setVisible(true);
 
         JButton btnDevolver = new JButton("Devolver");
+        btnDevolver.setForeground(colorLetraBoton);
+        btnDevolver.setBackground(colorButtons);
         btnDevolver.setBounds(330, 300, 100, 30);
         btnDevolver.setVisible(true);
         panelPrincipal.add(btnDevolver);
