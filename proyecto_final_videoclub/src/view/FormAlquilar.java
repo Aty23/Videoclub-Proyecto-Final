@@ -90,7 +90,7 @@ public class FormAlquilar extends JFrame {
                     //((Pelicula)ConexionBaseDatos.db.get(1).get(0)).getTitulo();
                     //casteo------clase base datos.array.array.objeto.metodo
                     if (txtfldMulti != null) {
-                        lstBuscar = new JList<>((ListModel) buscadorMultimedia(txtfldMulti.getText()));
+                        lstBuscar = new JList<>();
                         panelPrincipal.add(lstBuscar);
                         lstBuscar.setVisibleRowCount(buscadorMultimedia(txtfldMulti.getText()).size());
                         lstBuscar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -144,26 +144,28 @@ public class FormAlquilar extends JFrame {
         return panelPrincipal;
     }
 
-    public ArrayList<Multimedia> buscadorMultimedia(String nombreMultimedia) {
-        ArrayList<Multimedia> resultado = new ArrayList<>();
+    public DefaultListModel<Multimedia> buscadorMultimedia(String nombreMultimedia) {
+        //ArrayList<Multimedia> resultado = new ArrayList<>();
+        DefaultListModel<Multimedia> resultado = new DefaultListModel<>();
+
         try{
             if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
                 for (int i = 0; i < ConexionBaseDatos.db.size(); i++) {
                     if (((Pelicula) ConexionBaseDatos.db.get(2).get(i)).getTitulo().toLowerCase().contains(nombreMultimedia.toLowerCase())) {
-                        resultado.add(((Pelicula) ConexionBaseDatos.db.get(2).get(i)));
+                        resultado.addElement(((Pelicula) ConexionBaseDatos.db.get(2).get(i)));
                     }
                 }
 
             } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
                 for (int i = 0; i < ConexionBaseDatos.db.size(); i++) {
                     if (((Disco) ConexionBaseDatos.db.get(4).get(i)).getTitulo().toLowerCase().contains(nombreMultimedia.toLowerCase())) {
-                        resultado.add(((Disco) ConexionBaseDatos.db.get(4).get(i)));
+                        resultado.addElement(((Disco) ConexionBaseDatos.db.get(4).get(i)));
                     }
                 }
             } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")) {
                 for (int i = 0; i < ConexionBaseDatos.db.size(); i++) {
                     if (((Videojuego) ConexionBaseDatos.db.get(1).get(i)).getTitulo().toLowerCase().contains(nombreMultimedia.toLowerCase())) {
-                        resultado.add(((Videojuego) ConexionBaseDatos.db.get(1).get(i)));
+                        resultado.addElement(((Videojuego) ConexionBaseDatos.db.get(1).get(i)));
                     }
                 }
 
