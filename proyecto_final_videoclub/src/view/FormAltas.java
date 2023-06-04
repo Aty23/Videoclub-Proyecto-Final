@@ -233,8 +233,8 @@ public class FormAltas extends JFrame {
         panelPrincipal.add(lColeccionCanciones);
         jListCanciones.setBounds(150,450,300,70);
         jListCanciones.setVisible(false);
-        panelPrincipal.add(jListCanciones);
-        scroll.setBounds(100, 300, 350, 100);
+        // panelPrincipal.add(jListCanciones);
+        scroll.setBounds(150, 4500, 300, 70);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scroll.setVisible(false);
