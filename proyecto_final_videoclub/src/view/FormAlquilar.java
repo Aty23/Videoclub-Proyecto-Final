@@ -85,24 +85,22 @@ public class FormAlquilar extends JFrame {
             scrollerMultimedia.setVisible(true);
 
 
-            panelPrincipal.add(lstBuscar);
-            lstBuscar.setVisibleRowCount(50);
-            lstBuscar.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
 
             ArrayList modeloDisco = new ArrayList<>();
 
-            for (int i = 0; i < ConexionBaseDatos.db.get(3).size(); i++) {
-                modeloDisco.add((Disco) ConexionBaseDatos.db.get(3).get(i));
+            for (int i = 0; i < ConexionBaseDatos.db.get(4).size(); i++) {
+                modeloDisco.add((Disco) ConexionBaseDatos.db.get(4).get(i));
             }
             ArrayList modeloVideojuego = new ArrayList<>();
 
-            for (int i = 0; i < ConexionBaseDatos.db.get(3).size(); i++) {
-                modeloVideojuego.add((Videojuego) ConexionBaseDatos.db.get(3).get(i));
+            for (int i = 0; i < ConexionBaseDatos.db.get(1).size(); i++) {
+                modeloVideojuego.add((Videojuego) ConexionBaseDatos.db.get(1).get(i));
             }
             ArrayList modeloPelicula = new ArrayList<>();
 
-            for (int i = 0; i < ConexionBaseDatos.db.get(3).size(); i++) {
-                modeloPelicula.add((Pelicula) ConexionBaseDatos.db.get(3).get(i));
+            for (int i = 0; i < ConexionBaseDatos.db.get(2).size(); i++) {
+                modeloPelicula.add((Pelicula) ConexionBaseDatos.db.get(2).get(i));
             }
 
 
@@ -125,6 +123,9 @@ public class FormAlquilar extends JFrame {
                             scrollerMultimedia = new JScrollPane(lstBuscar);
 
                         }
+                        panelPrincipal.add(lstBuscar);
+                        lstBuscar.setVisibleRowCount(50);
+                        lstBuscar.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
                     } catch (Exception v) {
                         JOptionPane.showMessageDialog(null, "fallo buscar Multimedia");
