@@ -24,7 +24,7 @@ public class FormAlquilar extends JFrame {
     private JTextField dniCliente = new JTextField();
     private JButton dniBtn = new JButton("Enviar");
 
-    private JScrollPane scrollerPeliculas;
+    private JScrollPane scrollerPeliculas= new JScrollPane(lstBuscar);;
     private JTextField txtfldMulti;
 
     public FormAlquilar() throws HeadlessException {
@@ -94,8 +94,6 @@ public class FormAlquilar extends JFrame {
                         panelPrincipal.add(lstBuscar);
                         lstBuscar.setVisibleRowCount(buscadorMultimedia(txtfldMulti.getText()).size());
                         lstBuscar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-                        scrollerPeliculas = new JScrollPane(lstBuscar);
                         elementoAlquilado = lstBuscar.getSelectedIndex();
                     } else {
                         JOptionPane.showMessageDialog(null, "Debes introducuir un texto");
