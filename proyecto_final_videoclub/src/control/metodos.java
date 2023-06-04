@@ -49,12 +49,15 @@ public class metodos {
        return recargo;
     }
     public static Socio buscarUsuario(String dni) {
-        for (int i = 0; i < ConexionBaseDatos.db.get(0).size(); i++){
-            if (((Socio)ConexionBaseDatos.db.get(0).get(i)).getNif().equals(dni)){
-                return ((Socio)ConexionBaseDatos.db.get(0).get(i));
+        Socio s = null;
+        if(dni!=null){
+        for (int i = 0; i < ConexionBaseDatos.db.get(0).size(); i++) {
+            if (((Socio) ConexionBaseDatos.db.get(0).get(i)).getNif().equals(dni)) {
+                s = ((Socio) ConexionBaseDatos.db.get(0).get(i));
             }
         }
-        return null;
+        }else System.out.println("El dni es null");
+        return s;
     }
 
 }
