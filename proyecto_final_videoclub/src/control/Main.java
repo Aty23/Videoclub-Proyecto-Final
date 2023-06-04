@@ -20,10 +20,6 @@ public class Main {
 
     public static void main(String[] args) {
         ConexionBaseDatos.db=ConexionBaseDatos.conexionBase();
-        Date A = new Date();
-        System.out.println(A);
-        ArrayList<Multimedia> multimedias= new ArrayList<Multimedia>();
-        ArrayList<Socio> socios= new ArrayList<Socio>();
         try{
             FormVideoclub w = new FormVideoclub();
             w.setSize(900, 700);
