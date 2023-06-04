@@ -13,9 +13,10 @@ public class Main {
      */
 
     public static void main(String[] args) {
-        ConexionBaseDatos.db=ConexionBaseDatos.conexionBase();
+
 
         try{
+            ConexionBaseDatos.db=ConexionBaseDatos.conexionBase();
             FormVideoclub w = new FormVideoclub();
             w.setSize(900, 700);
             w.setContentPane(w.getPanelPrincipal());
