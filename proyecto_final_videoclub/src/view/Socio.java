@@ -69,11 +69,18 @@ public class Socio {
         return multimediaAlquilado;
     }
     public String getTitulosMultimediaAlquilado(){
-        String lineaMultimediaAlquilado="/";
-        for(int i=0; 0<multimediaAlquilado.size(); i++){
-            lineaMultimediaAlquilado+=multimediaAlquilado.get(i).getTitulo() + "/";
+        try {
+            String lineaMultimediaAlquilado = "/";
+            for (int i = 0; 0 < multimediaAlquilado.size(); i++) {
+                lineaMultimediaAlquilado += multimediaAlquilado.get(i).getTitulo() + "/";
+            }
+            if (lineaMultimediaAlquilado.equals("/")) {
+                return null;
+            }
+            return lineaMultimediaAlquilado;
+        }catch (Exception e){
+            return null;
         }
-        return lineaMultimediaAlquilado;
     }
 
     public String getNif() {

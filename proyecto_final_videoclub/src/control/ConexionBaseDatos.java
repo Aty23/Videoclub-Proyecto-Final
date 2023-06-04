@@ -51,10 +51,11 @@ public class ConexionBaseDatos {
     }
 
     private static ArrayList<Multimedia> alquileresSocio( Connection con, String alquileres) throws SQLException {
-        if(alquileres==null){
+
+        ArrayList<Multimedia> multimediasAlquilados = new ArrayList<Multimedia>();
+        if(alquileres==null||alquileres.equals("null")){
             return null;
         }
-        ArrayList<Multimedia> multimediasAlquilados = new ArrayList<Multimedia>();
         String[] multimediasSplit = alquileres.split("/");
         for (int i = 0; i < multimediasSplit.length; i++) {
             Multimedia m = compararMultimedia(multimediasSplit[i], con);
@@ -74,9 +75,9 @@ public class ConexionBaseDatos {
         for (int i = 0; i < multimedias.size(); i++) {
             if (multimedias.get(0).get(i) instanceof Videojuego && multimedia.equals(((Videojuego) multimedias.get(0).get(i)).getTitulo())) {
                 return (Videojuego) multimedias.get(0).get(i);
-            } else if (multimedias.get(1).get(i) instanceof Pelicula && multimedia.equals(((Pelicula) multimedias.get(0).get(i)).getTitulo())) {
+            } else if (multimedias.get(1).get(i) instanceof Pelicula && multimedia.equals(((Pelicula) multimedias.get(1).get(i)).getTitulo())) {
                 return (Pelicula) multimedias.get(1).get(i);
-            } else if (multimedias.get(2).get(i) instanceof Disco && multimedia.equals(((Disco) multimedias.get(0).get(i)).getTitulo())) {
+            } else if (multimedias.get(2).get(i) instanceof Disco && multimedia.equals(((Disco) multimedias.get(2).get(i)).getTitulo())) {
                 return (Disco) multimedias.get(2).get(i);
             }
         }
@@ -90,7 +91,7 @@ public class ConexionBaseDatos {
         while (rsVideojuego.next()) {
             Videojuego videojuego = new Videojuego(rsVideojuego.getString("titulo"), rsVideojuego.getString("autor"),
                     rsVideojuego.getString("formato"), rsVideojuego.getInt("anyo"),
-                    rsVideojuego.getDate("diaALquilado"), rsVideojuego.getString("plataforma"));
+                    rsVideojuego.getDate("diaAlquilado"), rsVideojuego.getString("plataforma"));
             infoVideojuego.add(videojuego);
         }
         return infoVideojuego;
@@ -136,10 +137,11 @@ public class ConexionBaseDatos {
     }
 
     private static ArrayList<Cancion> cancionesDisco(Connection con, String canciones) throws SQLException {
+
+        ArrayList<Cancion> cancionesDisco = new ArrayList<Cancion>();
         if(canciones==null){
             return null;
         }
-        ArrayList<Cancion> cancionesDisco = new ArrayList<Cancion>();
         String[] cancionesSplit = canciones.split("/");
         for (int i = 0; i < cancionesSplit.length; i++) {
             Cancion c = compararCanciones(cancionesSplit[i], con);
@@ -194,6 +196,7 @@ public class ConexionBaseDatos {
                         + ", '" + ((Socio) infoSocio.get(i)).getPoblacion() + "', " + ((Socio) infoSocio.get(i)).isAlquilando()
                         + ", '" + ((Socio) infoSocio.get(i)).getTitulosMultimediaAlquilado() + "');");
             } catch (Exception e) {
+
             }
         }
     }
