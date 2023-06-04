@@ -69,9 +69,6 @@ public class FormListados extends JFrame{
                     for (int i = 0; i<ConexionBaseDatos.db.get(2).size(); i++) {
                         textoListas.append("Titulo de la pelicula: " + ((Pelicula)ConexionBaseDatos.db.get(2).get(i)).getTitulo() + "\n");
                     }
-                    for (int i = 0; i<ConexionBaseDatos.db.get(3).size(); i++) {
-                        textoListas.append("Nombre de la cancion: " + ((Cancion)ConexionBaseDatos.db.get(3).get(i)).getNombre() + "\n");
-                    }
                     for (int i = 0; i<ConexionBaseDatos.db.get(4).size(); i++) {
                         textoListas.append("Titulo del disco: " + ((Disco)ConexionBaseDatos.db.get(4).get(i)).getTitulo() + "\n");
                     }

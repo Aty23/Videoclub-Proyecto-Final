@@ -92,8 +92,10 @@ public class FormAltas extends JFrame {
 
         JList<Cancion> jListCanciones = new JList<>(modelo);
         JScrollPane scroll = new JScrollPane(jListCanciones);
+        scroll.setBounds(100, 300, 350, 100);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         panelPrincipal.add(scroll);
         jListCanciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
