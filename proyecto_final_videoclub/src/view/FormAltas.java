@@ -89,7 +89,12 @@ public class FormAltas extends JFrame {
             modelo.addElement((Cancion) ConexionBaseDatos.db.get(3).get(i));
         }
 
+
         JList<Cancion> jListCanciones = new JList<>(modelo);
+        JScrollPane scroll = new JScrollPane(jListCanciones);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        panelPrincipal.add(scroll);
         jListCanciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         JButton btnAltaSocio = new JButton("Alta de socio");
