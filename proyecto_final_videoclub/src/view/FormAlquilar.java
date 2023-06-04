@@ -85,24 +85,21 @@ public class FormAlquilar extends JFrame {
             scrollerMultimedia.setVisible(true);
 
 
-            panelPrincipal.add(lstBuscar);
-            lstBuscar.setVisibleRowCount(50);
-            lstBuscar.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
             DefaultListModel<Disco> modeloDisco = new DefaultListModel<>();
 
-            for (int i = 0; i < ConexionBaseDatos.db.get(3).size(); i++) {
-                modeloDisco.addElement((Disco) ConexionBaseDatos.db.get(3).get(i));
+            for (int i = 0; i < ConexionBaseDatos.db.get(4).size(); i++) {
+                modeloDisco.addElement((Disco) ConexionBaseDatos.db.get(4).get(i));
             }
             DefaultListModel<Videojuego> modeloVideojuego = new DefaultListModel<>();
 
-            for (int i = 0; i < ConexionBaseDatos.db.get(3).size(); i++) {
-                modeloVideojuego.addElement((Videojuego) ConexionBaseDatos.db.get(3).get(i));
+            for (int i = 0; i < ConexionBaseDatos.db.get(1).size(); i++) {
+                modeloVideojuego.addElement((Videojuego) ConexionBaseDatos.db.get(1).get(i));
             }
             DefaultListModel<Pelicula> modeloPelicula = new DefaultListModel<>();
 
-            for (int i = 0; i < ConexionBaseDatos.db.get(3).size(); i++) {
-                modeloPelicula.addElement((Pelicula) ConexionBaseDatos.db.get(3).get(i));
+            for (int i = 0; i < ConexionBaseDatos.db.get(2).size(); i++) {
+                modeloPelicula.addElement((Pelicula) ConexionBaseDatos.db.get(2).get(i));
             }
 
 
@@ -125,6 +122,9 @@ public class FormAlquilar extends JFrame {
                             scrollerMultimedia = new JScrollPane(lstBuscar);
 
                         }
+                        panelPrincipal.add(lstBuscar);
+                        lstBuscar.setVisibleRowCount(50);
+                        lstBuscar.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
                     } catch (Exception v) {
                         JOptionPane.showMessageDialog(null, "fallo buscar Multimedia");
