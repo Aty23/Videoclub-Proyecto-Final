@@ -19,6 +19,8 @@ public class FormListados extends JFrame{
         panelPrincipal.setLayout(null);
         Color colorFondo=new Color(65,65,65);
         panelPrincipal.setBackground(colorFondo);
+        Color colorLetraBoton = new Color(255, 255, 255);
+        Color colorButtons = new Color(82, 82, 82);
 
 
         JLabel dniLabel = new JLabel("Dni Cliente");
@@ -31,6 +33,8 @@ public class FormListados extends JFrame{
         dniCliente.setBounds(0,30,100,25);
         panelPrincipal.add(dniCliente);
         dniBtn.setBounds(100,30,75,25);
+        dniBtn.setBackground(colorButtons);
+        dniBtn.setForeground(colorLetraBoton);
         panelPrincipal.add(dniBtn);
 
         JComboBox cmbEligeLista = new JComboBox<>();
@@ -96,6 +100,10 @@ public class FormListados extends JFrame{
                             return Integer.compare(cancion1.getDuracionSegundos(), cancion2.getDuracionSegundos());
                         }
                     });
+
+                    for (Cancion cancion : canciones) {
+                        textoListas.append(cancion + "\n");
+                    }
                 }
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de todos los videojuegos ordenados por año")){
                     textoListas.setText("");
