@@ -84,13 +84,10 @@ public class FormAltas extends JFrame {
         Color letrColeccion = new Color(255, 255, 255);
         lColeccionCanciones.setForeground(letrColeccion);
         DefaultListModel<Cancion> modelo = new DefaultListModel<>();
-        Cancion cancion1 = new Cancion("Melendi ",20);
-        Cancion cancion2 = new Cancion("Euphoria ",30);
-        Cancion cancion3 = new Cancion("Paralized ",40);
 
-        modelo.addElement(cancion1);
-        modelo.addElement(cancion2);
-        modelo.addElement(cancion3);
+        for (int i = 0; i<ConexionBaseDatos.db.get(3).size(); i++){
+            modelo.addElement((Cancion) ConexionBaseDatos.db.get(3).get(i));
+        }
 
         JList<Cancion> jListCanciones = new JList<>(modelo);
         jListCanciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
