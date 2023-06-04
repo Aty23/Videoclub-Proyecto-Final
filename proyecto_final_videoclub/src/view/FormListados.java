@@ -102,13 +102,13 @@ public class FormListados extends JFrame{
                     });
 
                     for (Cancion cancion : canciones) {
-                        textoListas.append(cancion + "\n");
+                        textoListas.append(cancion.toString() + "\n");
                     }
                 }
                 if (cmbEligeLista.getSelectedItem().toString().equals("Listado de todos los videojuegos ordenados por año")){
                     textoListas.setText("");
                     ArrayList<Videojuego> videojuegos = new ArrayList<>();
-                    for (int i = 0; i<ConexionBaseDatos.db.get(2).size(); i++){
+                    for (int i = 0; i<ConexionBaseDatos.db.get(1).size(); i++){
                         videojuegos.add((Videojuego) ConexionBaseDatos.db.get(1).get(i));
                     }
 
