@@ -1,13 +1,12 @@
-package control;
+package model;
 
-import model.Constantes;
+import control.ConexionBaseDatos;
 import view.*;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import java.util.ArrayList;
 
-public class metodos {
+public class tools {
     public static int pagarAlquiler(Multimedia multimedia){
         int pagoAlquiler= Constantes.PRECIO_BASE_ALQUILER;
         if(multimedia instanceof Disco && ((Disco) multimedia).getDuracionDisco()<Constantes.DURACION_DISCO_DESCUENTO){

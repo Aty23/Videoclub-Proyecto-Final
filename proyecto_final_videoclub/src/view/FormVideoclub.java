@@ -1,16 +1,9 @@
 package view;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.Normalizer;
-import java.util.ArrayList;
-
-import control.ConexionBaseDatos;
-import control.metodos;
 
 public class FormVideoclub extends JFrame{
     public JPanel panelPrincipal = new JPanel();

@@ -5,12 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
 import control.ConexionBaseDatos;
-import control.metodos;
+import model.tools;
 
 public class FormListados extends JFrame{
     public JPanel panelPrincipal = new JPanel();
@@ -124,7 +123,7 @@ public class FormListados extends JFrame{
                     textoListas.setText("");
                     ArrayList<String> multimediaSocio = new ArrayList<>();
                     for (int i = 0; i<ConexionBaseDatos.db.get(0).size(); i++){
-                        if(((Socio) ConexionBaseDatos.db.get(0).get(i)).getNif() == metodos.buscarUsuario(dniCliente.getText()).getNif()){
+                        if(((Socio) ConexionBaseDatos.db.get(0).get(i)).getNif() == tools.buscarUsuario(dniCliente.getText()).getNif()){
                             multimediaSocio.add(((Socio) ConexionBaseDatos.db.get(0).get(i)).getTitulosMultimediaAlquilado());
                         }
                     }

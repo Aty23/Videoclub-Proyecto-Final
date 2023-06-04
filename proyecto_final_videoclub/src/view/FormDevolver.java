@@ -1,7 +1,6 @@
 package view;
 
-import control.ConexionBaseDatos;
-import control.metodos;
+import model.tools;
 
 import javax.swing.*;
 import java.awt.*;
@@ -66,7 +65,7 @@ public class FormDevolver extends JFrame {
                 public void actionPerformed(ActionEvent e) {
 
                     dniBuscar = dniCliente.getText();
-                    Socio autenticado = metodos.buscarUsuario(dniBuscar);
+                    Socio autenticado = tools.buscarUsuario(dniBuscar);
                     if (dniBuscar != null) {
 
                         if (autenticado == null) {
@@ -100,7 +99,7 @@ public class FormDevolver extends JFrame {
 
 
                         elementoDevolver = lstDevolver.getSelectedIndex();
-                        JLabel Precio = new JLabel("Recargo" + metodos.devolverMultimedia(((Multimedia) lstDevolver.getModel().getElementAt(elementoDevolver)), metodos.buscarUsuario(dniBuscar)));
+                        JLabel Precio = new JLabel("Recargo" + tools.devolverMultimedia(((Multimedia) lstDevolver.getModel().getElementAt(elementoDevolver)), tools.buscarUsuario(dniBuscar)));
                         Precio.setForeground(colorDevolver);
                         Precio.setBounds(300, 500, 300, 50);
                         Precio.setFont(new Font("Arial", Font.BOLD, 20));

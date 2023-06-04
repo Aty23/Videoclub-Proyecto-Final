@@ -1,13 +1,12 @@
 package view;
 
 import control.ConexionBaseDatos;
-import control.metodos;
+import model.tools;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class FormAlquilar extends JFrame {
     Color colorButtons = new Color(82, 82, 82);
@@ -150,17 +149,17 @@ public class FormAlquilar extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     if (dniBuscar != null) {
                         if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
-                            lblAlquiler.setText("El precio del alquiler es: " + metodos.alquilar(((Multimedia) lstBuscarPeli.getModel().getElementAt(elementoAlquilado)),
-                                    metodos.buscarUsuario(dniBuscar)));
+                            lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscarPeli.getModel().getElementAt(elementoAlquilado)),
+                                    tools.buscarUsuario(dniBuscar)));
 
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
-                            lblAlquiler.setText("El precio del alquiler es: " + metodos.alquilar(((Multimedia) lstBuscarDisc.getModel().getElementAt(elementoAlquilado)),
-                                    metodos.buscarUsuario(dniBuscar)));
+                            lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscarDisc.getModel().getElementAt(elementoAlquilado)),
+                                    tools.buscarUsuario(dniBuscar)));
 
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")) {
 
-                            lblAlquiler.setText("El precio del alquiler es: " + metodos.alquilar(((Multimedia) lstBuscarVG.getModel().getElementAt(elementoAlquilado)),
-                                    metodos.buscarUsuario(dniBuscar)));
+                            lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscarVG.getModel().getElementAt(elementoAlquilado)),
+                                    tools.buscarUsuario(dniBuscar)));
                         }
 
                     } else {
@@ -174,7 +173,7 @@ public class FormAlquilar extends JFrame {
                 public void actionPerformed(ActionEvent e) {
 
                     dniBuscar = dniCliente.getText();
-                    Socio autenticado = metodos.buscarUsuario(dniBuscar);
+                    Socio autenticado = tools.buscarUsuario(dniBuscar);
                     if (dniBuscar != null) {
                         if (autenticado == null) {
                             JOptionPane.showMessageDialog(null, "DNI Incorrecto");

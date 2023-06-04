@@ -1,17 +1,11 @@
 package control;
 
-import java.util.ArrayList;
-import java.util.Date;
 
 import view.*;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-/**
- * Esto es una ayuda para utilizar el JavaDoc:
- * Si poneis /** (como está puesto al principio de cada comentario del javadoc) se pone automáticamente
- * y se deja una linea para que escribais la explicación de lo que haya debajo (métodos, getters y setters, atributos...)
- */
+
 public class Main {
     /**
      * main

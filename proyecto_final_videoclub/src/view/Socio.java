@@ -52,7 +52,6 @@ public class Socio {
 
     /**
      * getters y setters
-     *
      */
     public void setMultimediaAlquilado(ArrayList<Multimedia> multimediaAlquilado) {
         this.multimediaAlquilado = multimediaAlquilado;
