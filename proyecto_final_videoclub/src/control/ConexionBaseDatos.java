@@ -50,6 +50,9 @@ public class ConexionBaseDatos {
     }
 
     private static ArrayList<Multimedia> alquileresSocio( Connection con, String alquileres) throws SQLException {
+        if(alquileres==null){
+            return null;
+        }
         ArrayList<Multimedia> multimediasAlquilados = new ArrayList<Multimedia>();
         String[] multimediasSplit = alquileres.split("/");
         for (int i = 0; i < multimediasSplit.length; i++) {
@@ -132,6 +135,9 @@ public class ConexionBaseDatos {
     }
 
     private static ArrayList<Cancion> cancionesDisco(Connection con, String canciones) throws SQLException {
+        if(canciones==null){
+            return null;
+        }
         ArrayList<Cancion> cancionesDisco = new ArrayList<Cancion>();
         String[] cancionesSplit = canciones.split("/");
         for (int i = 0; i < cancionesSplit.length; i++) {

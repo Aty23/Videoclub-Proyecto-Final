@@ -84,9 +84,9 @@ public abstract class Multimedia {
 
     public void setFormato(String formato) {
         if(formato.equals(ListaFormatos.CD.toString())||formato.equals(ListaFormatos.DVD.toString())||
-                formato.equals(ListaFormatos.BLUERAY.toString())||formato.equals(ListaFormatos.ARCHIVO.toString())||
+                formato.equals(ListaFormatos.BLURAY.toString())||formato.equals(ListaFormatos.ARCHIVO.toString())||
                 formato.equals(ListaFormatos.cd.toString())||formato.equals(ListaFormatos.dvd.toString())||
-                formato.equals(ListaFormatos.blueray.toString())||formato.equals(ListaFormatos.archivo.toString())){
+                formato.equals(ListaFormatos.bluray.toString())||formato.equals(ListaFormatos.archivo.toString())){
             this.formato = formato;
         }else{
             throw new RuntimeException("El formato introducido no está entre los aceptados");
