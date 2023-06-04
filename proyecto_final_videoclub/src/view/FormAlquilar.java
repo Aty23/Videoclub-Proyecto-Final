@@ -114,14 +114,15 @@ public class FormAlquilar extends JFrame {
                             lstBuscar = new JList<>( modeloPelicula);
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
                             lstBuscar = new JList<>( modeloDisco);
-                            scrollerMultimedia = new JScrollPane(lstBuscar);
+
 
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")) {
 
                             lstBuscar = new JList<>(modeloVideojuego);
-                            scrollerMultimedia = new JScrollPane(lstBuscar);
+
 
                         }
+                        scrollerMultimedia = new JScrollPane(lstBuscar);
                         panelPrincipal.add(lstBuscar);
                         lstBuscar.setVisibleRowCount(50);
                         lstBuscar.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
