@@ -90,7 +90,7 @@ public class FormAlquilar extends JFrame {
                     //((Pelicula)ConexionBaseDatos.db.get(1).get(0)).getTitulo();
                     //casteo------clase base datos.array.array.objeto.metodo
                     if (txtfldMulti != null) {
-                        lstBuscar = new JList<>();
+                        lstBuscar = new JList<>(buscadorMultimedia(txtfldMulti.getText()));
                         panelPrincipal.add(lstBuscar);
                         lstBuscar.setVisibleRowCount(buscadorMultimedia(txtfldMulti.getText()).size());
                         lstBuscar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
