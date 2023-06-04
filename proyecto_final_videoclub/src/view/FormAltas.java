@@ -92,11 +92,6 @@ public class FormAltas extends JFrame {
 
         JList<Cancion> jListCanciones = new JList<>(modelo);
         JScrollPane scroll = new JScrollPane(jListCanciones);
-        scroll.setBounds(100, 300, 350, 100);
-        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        panelPrincipal.add(scroll);
         jListCanciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         JButton btnAltaSocio = new JButton("Alta de socio");
@@ -239,6 +234,11 @@ public class FormAltas extends JFrame {
         jListCanciones.setBounds(150,450,300,70);
         jListCanciones.setVisible(false);
         panelPrincipal.add(jListCanciones);
+        scroll.setBounds(100, 300, 350, 100);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setVisible(false);
+        panelPrincipal.add(scroll);
 
         // Botones para crear objeto segun opciones
         btnAltaSocio.setBounds(600,300,150,50);
@@ -296,6 +296,7 @@ public class FormAltas extends JFrame {
                     txtDuracionDisco.setVisible(false);
                     lColeccionCanciones.setVisible(false);
                     jListCanciones.setVisible(false);
+                    scroll.setVisible(false);
                     btnAltaDisco.setVisible(false);
                 }
                 else if (cmbEligeAlta.getSelectedItem().toString().equals("Alta de socio")){
@@ -326,6 +327,7 @@ public class FormAltas extends JFrame {
                     txtDuracionDisco.setVisible(false);
                     lColeccionCanciones.setVisible(false);
                     jListCanciones.setVisible(false);
+                    scroll.setVisible(false);
                     btnAltaDisco.setVisible(false);
 
                     lNif.setVisible(true);
@@ -364,6 +366,7 @@ public class FormAltas extends JFrame {
                     txtDuracionDisco.setVisible(false);
                     lColeccionCanciones.setVisible(false);
                     jListCanciones.setVisible(false);
+                    scroll.setVisible(false);
                     btnAltaDisco.setVisible(false);
 
                     lTitulo.setVisible(true);
@@ -400,6 +403,7 @@ public class FormAltas extends JFrame {
                     txtDuracionDisco.setVisible(false);
                     lColeccionCanciones.setVisible(false);
                     jListCanciones.setVisible(false);
+                    scroll.setVisible(false);
                     btnAltaDisco.setVisible(false);
 
                     lTitulo.setVisible(true);
@@ -450,6 +454,7 @@ public class FormAltas extends JFrame {
                     txtDuracionDisco.setVisible(false);
                     lColeccionCanciones.setVisible(false);
                     jListCanciones.setVisible(false);
+                    scroll.setVisible(false);
                     btnAltaDisco.setVisible(false);
 
                     lNombreCancion.setVisible(true);
@@ -496,6 +501,7 @@ public class FormAltas extends JFrame {
                     txtDuracionDisco.setVisible(true);
                     lColeccionCanciones.setVisible(true);
                     jListCanciones.setVisible(true);
+                    scroll.setVisible(true);
                     btnAltaDisco.setVisible(true);
                 }
             }
