@@ -4,6 +4,7 @@ import view.*;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class ConexionBaseDatos {
@@ -191,7 +192,7 @@ public class ConexionBaseDatos {
                 st.executeQuery("insert into socio values('" + ((Socio) infoSocio.get(i)).getNif() + "', '"
                         + ((Socio) infoSocio.get(i)).getNombre() + "', " + ((Socio) infoSocio.get(i)).getFechaNacimiento()
                         + ", '" + ((Socio) infoSocio.get(i)).getPoblacion() + "', " + ((Socio) infoSocio.get(i)).isAlquilando()
-                        + ", " + ((Socio) infoSocio.get(i)).getTitulosMultimediaAlquilado() + ");");
+                        + ", '" + ((Socio) infoSocio.get(i)).getTitulosMultimediaAlquilado() + "');");
             } catch (Exception e) {
             }
         }
@@ -204,7 +205,7 @@ public class ConexionBaseDatos {
             try {
                 st.executeQuery("insert into videojuego values('" + ((Videojuego) infoVideojuego.get(i)).getTitulo() + "', '"
                         + ((Videojuego) infoVideojuego.get(i)).getAutor() + "', '" + ((Videojuego) infoVideojuego.get(i)).getFormato()
-                        + "', " + ((Videojuego) infoVideojuego.get(i)).getAnyo() + ", '" + ((Videojuego)infoVideojuego.get(i)).getDiaAlquilado()
+                        + "', " + ((Videojuego) infoVideojuego.get(i)).getAnyo() + ", " + ((Videojuego)infoVideojuego.get(i)).getDiaAlquilado()
                         + ", '" + ((Videojuego) infoVideojuego.get(i)).getPlataforma() + "');");
             } catch (Exception e) {
             }
@@ -217,7 +218,7 @@ public class ConexionBaseDatos {
             try {
                 st.executeQuery("insert into pelicula values('" + ((Pelicula) infoPelicula.get(i)).getTitulo() + "', '"
                         + ((Pelicula) infoPelicula.get(i)).getAutor() + "', '" + ((Pelicula) infoPelicula.get(i)).getFormato()
-                        + "', " + ((Pelicula) infoPelicula.get(i)).getAnyo() + "', '" + ((Pelicula) infoPelicula.get(i)).getDiaAlquilado()
+                        + "', " + ((Pelicula) infoPelicula.get(i)).getAnyo() + ", " + ((Pelicula) infoPelicula.get(i)).getDiaAlquilado()
                         + ", " + ((Pelicula) infoPelicula.get(i)).getDuracion() + ", '"
                         + ((Pelicula) infoPelicula.get(i)).getActorPrincipal() + "', '"
                         + ((Pelicula) infoPelicula.get(i)).getActrizPrincipal() + "');");
@@ -227,10 +228,10 @@ public class ConexionBaseDatos {
     }
 
     private static void modificarCancion(ArrayList<Object> infoCancion, Statement st) throws SQLException {
-        st.executeUpdate("delete from cancion");
+        st.executeUpdate("delete from Cancion");
         for (int i = 0; i < infoCancion.size(); i++) {
             try {
-                st.executeQuery("insert into cancion values('" + ((Cancion) infoCancion.get(i)).getNombre() + "', "
+                st.executeQuery("insert into Cancion values('" + ((Cancion) infoCancion.get(i)).getNombre() + "', "
                         + ((Cancion) infoCancion.get(i)).getDuracionSegundos() + ");");
             } catch (Exception e) {
             }
@@ -243,7 +244,7 @@ public class ConexionBaseDatos {
             try {
                 st.executeQuery("insert into disco values('" + ((Disco) infoDisco.get(i)).getTitulo() + "', '"
                         + ((Disco) infoDisco.get(i)).getAutor() + "', '" + ((Disco) infoDisco.get(i)).getFormato()
-                        + "', " + ((Disco) infoDisco.get(i)).getAnyo() + "', '" + ((Disco) infoDisco.get(i)).getDiaAlquilado()
+                        + "', " + ((Disco) infoDisco.get(i)).getAnyo() + ", " + ((Disco) infoDisco.get(i)).getDiaAlquilado()
                         + ", " + ((Disco) infoDisco.get(i)).getDuracionDisco() + ", '"
                         + ((Disco) infoDisco.get(i)).lineaCacionesDisco() + "');");
             } catch (Exception e) {

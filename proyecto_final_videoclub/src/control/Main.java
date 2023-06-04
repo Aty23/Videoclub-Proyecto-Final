@@ -20,6 +20,7 @@ public class Main {
 
     public static void main(String[] args) {
         ConexionBaseDatos.db=ConexionBaseDatos.conexionBase();
+        System.out.println(ConexionBaseDatos.db);
         try{
             FormVideoclub w = new FormVideoclub();
             w.setSize(900, 700);

@@ -76,10 +76,15 @@ public class Disco extends Multimedia{
      * metodo para devolver los toString de todas las canciones
      * @return String
      */
-    String titulosCanciones(){
+    public String titulosCanciones(){
         String cancionesString="";
+        if(getCanciones()==null){
+            return null;
+        }
         for (int i=0;i< getCanciones().size();i++){
-            cancionesString="-"+coleccionCanciones.get(i).toString();
+            if(coleccionCanciones.get(i).toString()!=null) {
+                cancionesString = "-" + coleccionCanciones.get(i).toString();
+            }
         }
         return cancionesString;
     }
