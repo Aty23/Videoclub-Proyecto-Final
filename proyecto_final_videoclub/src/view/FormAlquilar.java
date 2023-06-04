@@ -46,6 +46,10 @@ public class FormAlquilar extends JFrame {
             panelPrincipal.add(cmbEligeMultimedia);
             panelPrincipal.setLayout(null);
             panelPrincipal.setBackground(colorFondo);
+            cmbEligeMultimedia.addItem("Elige uno");
+            cmbEligeMultimedia.addItem("Películas");
+            cmbEligeMultimedia.addItem("Discos");
+            cmbEligeMultimedia.addItem("Videojuegos");
 
             /*txtfldMulti = new JTextField(20);
             txtfldMulti.setBounds(100, 200, 350, 30);
@@ -73,7 +77,7 @@ public class FormAlquilar extends JFrame {
             lblAlquiler.setVisible(true);
             panelPrincipal.add(lblAlquiler);
 
-            scrollerMultimedia.setBounds(100, 300, 350, 100);
+            scrollerMultimedia.setBounds(100, 300, 350, 200);
             scrollerMultimedia.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
             scrollerMultimedia.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
             panelPrincipal.add(scrollerMultimedia);
@@ -96,10 +100,7 @@ public class FormAlquilar extends JFrame {
             }
 
 
-            cmbEligeMultimedia.addItem("Elige uno");
-            cmbEligeMultimedia.addItem("Películas");
-            cmbEligeMultimedia.addItem("Discos");
-            cmbEligeMultimedia.addItem("Videojuegos");
+
 
 
             cmbEligeMultimedia.addActionListener(new ActionListener() {
