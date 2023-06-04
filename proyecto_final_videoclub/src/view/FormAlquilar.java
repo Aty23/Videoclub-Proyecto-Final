@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class FormAlquilar extends JFrame {
     Color colorButtons = new Color(82, 82, 82);
@@ -88,20 +89,20 @@ public class FormAlquilar extends JFrame {
             lstBuscar.setVisibleRowCount(50);
             lstBuscar.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-            DefaultListModel<Disco> modeloDisco = new DefaultListModel<>();
+            ArrayList modeloDisco = new ArrayList<>();
 
             for (int i = 0; i < ConexionBaseDatos.db.get(3).size(); i++) {
-                modeloDisco.addElement((Disco) ConexionBaseDatos.db.get(3).get(i));
+                modeloDisco.add((Disco) ConexionBaseDatos.db.get(3).get(i));
             }
-            DefaultListModel<Videojuego> modeloVideojuego = new DefaultListModel<>();
+            ArrayList modeloVideojuego = new ArrayList<>();
 
             for (int i = 0; i < ConexionBaseDatos.db.get(3).size(); i++) {
-                modeloVideojuego.addElement((Videojuego) ConexionBaseDatos.db.get(3).get(i));
+                modeloVideojuego.add((Videojuego) ConexionBaseDatos.db.get(3).get(i));
             }
-            DefaultListModel<Pelicula> modeloPelicula = new DefaultListModel<>();
+            ArrayList modeloPelicula = new ArrayList<>();
 
             for (int i = 0; i < ConexionBaseDatos.db.get(3).size(); i++) {
-                modeloPelicula.addElement((Pelicula) ConexionBaseDatos.db.get(3).get(i));
+                modeloPelicula.add((Pelicula) ConexionBaseDatos.db.get(3).get(i));
             }
 
 
@@ -113,14 +114,14 @@ public class FormAlquilar extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     try {
                         if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
-                            lstBuscar = new JList<Pelicula>(modeloPelicula);
+                            lstBuscar = new JList<Pelicula>((ListModel<Pelicula>) modeloPelicula);
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
-                            lstBuscar = new JList<Disco>(modeloDisco);
+                            lstBuscar = new JList<Disco>((ListModel<Disco>) modeloDisco);
                             scrollerMultimedia = new JScrollPane(lstBuscar);
 
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")) {
 
-                            lstBuscar = new JList<Videojuego>(modeloVideojuego);
+                            lstBuscar = new JList<Videojuego>((ListModel<Videojuego>) modeloVideojuego);
                             scrollerMultimedia = new JScrollPane(lstBuscar);
 
                         }
