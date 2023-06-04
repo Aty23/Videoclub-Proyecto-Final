@@ -75,12 +75,14 @@ public class FormAlquilar extends JFrame {
             lblAlquiler.setBounds(100, 500, 300, 30);
             lblAlquiler.setVisible(true);
             panelPrincipal.add(lblAlquiler);
+            scrollerMultimedia = new JScrollPane(lstBuscar);
 
-            scrollerMultimedia.setBounds(100, 300, 350, 200);
+            scrollerMultimedia.setBounds(100, 200, 350, 200);
             scrollerMultimedia.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
             scrollerMultimedia.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
             panelPrincipal.add(scrollerMultimedia);
             scrollerMultimedia.setVisible(true);
+
 
             panelPrincipal.add(lstBuscar);
             lstBuscar.setVisibleRowCount(50);
@@ -112,8 +114,6 @@ public class FormAlquilar extends JFrame {
                     try {
                         if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
                             lstBuscar = new JList<Pelicula>(modeloPelicula);
-                            scrollerMultimedia = new JScrollPane(lstBuscar);
-
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
                             lstBuscar = new JList<Disco>(modeloDisco);
                             scrollerMultimedia = new JScrollPane(lstBuscar);
@@ -122,6 +122,7 @@ public class FormAlquilar extends JFrame {
 
                             lstBuscar = new JList<Videojuego>(modeloVideojuego);
                             scrollerMultimedia = new JScrollPane(lstBuscar);
+
                         }
 
                     } catch (Exception v) {
