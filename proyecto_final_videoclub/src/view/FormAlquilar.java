@@ -15,6 +15,9 @@ public class FormAlquilar extends JFrame {
     private String dniBuscar;
     private int elementoAlquilado;
     private JList lstBuscar;
+    private JList lstBuscarP;
+    private JList lstBuscarV;
+    private JList lstBuscarD;
 
     private Color colorFondo = new Color(65, 65, 65);
 
@@ -111,16 +114,16 @@ public class FormAlquilar extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     try {
                         if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
-                            lstBuscar = new JList<>( modeloPelicula);
+                            lstBuscarP = new JList<>( modeloPelicula);
+                            lstBuscar=lstBuscarP;
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
-                            lstBuscar = new JList<>( modeloDisco);
-
+                            lstBuscarD = new JList<>( modeloDisco);
+                            lstBuscar=lstBuscarD;
 
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")) {
 
-                            lstBuscar = new JList<>(modeloVideojuego);
-
-
+                            lstBuscarV = new JList<>(modeloVideojuego);
+                            lstBuscar=lstBuscarV;
                         }
                         scrollerMultimedia = new JScrollPane(lstBuscar);
                         panelPrincipal.add(lstBuscar);
