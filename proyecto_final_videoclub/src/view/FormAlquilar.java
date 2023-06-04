@@ -13,9 +13,8 @@ public class FormAlquilar extends JFrame {
     Color colorLetraBoton = new Color(255, 255, 255);
     private String dniBuscar;
     private int elementoAlquilado;
-    private JList lstBuscarPeli;
-    private JList lstBuscarVG;
-    private JList lstBuscarDisc;
+    private JList lstBuscar;
+
     private Color colorFondo = new Color(65, 65, 65);
 
     public JPanel panelPrincipal = new JPanel();
@@ -69,6 +68,7 @@ public class FormAlquilar extends JFrame {
             btnAlquilar.setVisible(true);
             panelPrincipal.add(btnAlquilar);
 
+
             JLabel lblAlquiler = new JLabel("El precio del alquiler es: ");
             Color letrAlquilar = new Color(255, 255, 255);
             lblAlquiler.setForeground(letrAlquilar);
@@ -81,6 +81,10 @@ public class FormAlquilar extends JFrame {
             scrollerMultimedia.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
             panelPrincipal.add(scrollerMultimedia);
             scrollerMultimedia.setVisible(true);
+
+            panelPrincipal.add(lstBuscar);
+            lstBuscar.setVisibleRowCount(50);
+            lstBuscar.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
             DefaultListModel<Disco> modeloDisco = new DefaultListModel<>();
 
@@ -107,17 +111,17 @@ public class FormAlquilar extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     try {
                         if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
-                            lstBuscarPeli = new JList<Pelicula>(modeloPelicula);
-                            scrollerMultimedia = new JScrollPane(lstBuscarPeli);
+                            lstBuscar = new JList<Pelicula>(modeloPelicula);
+                            scrollerMultimedia = new JScrollPane(lstBuscar);
 
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
-                            lstBuscarDisc = new JList<Disco>(modeloDisco);
-                            scrollerMultimedia = new JScrollPane(lstBuscarDisc);
+                            lstBuscar = new JList<Disco>(modeloDisco);
+                            scrollerMultimedia = new JScrollPane(lstBuscar);
 
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")) {
 
-                            lstBuscarVG = new JList<Videojuego>(modeloVideojuego);
-                            scrollerMultimedia = new JScrollPane(lstBuscarVG);
+                            lstBuscar = new JList<Videojuego>(modeloVideojuego);
+                            scrollerMultimedia = new JScrollPane(lstBuscar);
                         }
 
                     } catch (Exception v) {
@@ -150,16 +154,16 @@ public class FormAlquilar extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     if (dniBuscar != null) {
                         if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
-                            lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscarPeli.getModel().getElementAt(elementoAlquilado)),
+                            lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscar.getModel().getElementAt(elementoAlquilado)),
                                     tools.buscarUsuario(dniBuscar)));
 
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
-                            lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscarDisc.getModel().getElementAt(elementoAlquilado)),
+                            lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscar.getModel().getElementAt(elementoAlquilado)),
                                     tools.buscarUsuario(dniBuscar)));
 
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")) {
 
-                            lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscarVG.getModel().getElementAt(elementoAlquilado)),
+                            lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscar.getModel().getElementAt(elementoAlquilado)),
                                     tools.buscarUsuario(dniBuscar)));
                         }
 
