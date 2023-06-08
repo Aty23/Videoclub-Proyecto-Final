@@ -79,6 +79,7 @@ public class FormAlquilar extends JFrame {
             lblAlquiler.setBounds(100, 500, 300, 30);
             lblAlquiler.setVisible(true);
             panelPrincipal.add(lblAlquiler);
+            lstBuscar = new JList<>();
             scrollerMultimedia = new JScrollPane(lstBuscar);
 
             scrollerMultimedia.setBounds(100, 200, 350, 200);
@@ -106,29 +107,30 @@ public class FormAlquilar extends JFrame {
             }
 
 
-
-
-
             cmbEligeMultimedia.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
                         if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
-                            lstBuscarP = new JList<>( modeloPelicula);
-                            lstBuscar=lstBuscarP;
+                            System.out.println("Entra en Peliculas");
+                            System.out.println(modeloPelicula.get(0).getTitulo());
+                            lstBuscar.setModel(modeloPelicula);
+
+
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
-                            lstBuscarD = new JList<>( modeloDisco);
-                            lstBuscar=lstBuscarD;
+                            lstBuscarD = new JList<>(modeloDisco);
+                            lstBuscar = lstBuscarD;
 
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")) {
 
                             lstBuscarV = new JList<>(modeloVideojuego);
-                            lstBuscar=lstBuscarV;
+                            lstBuscar = lstBuscarV;
                         }
-                        scrollerMultimedia = new JScrollPane(lstBuscar);
-                        panelPrincipal.add(lstBuscar);
-                        lstBuscar.setVisibleRowCount(50);
-                        lstBuscar.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+//                        scrollerMultimedia = new JScrollPane(lstBuscar);
+
+//                        panelPrincipal.add(lstBuscar);
+//                        lstBuscar.setVisibleRowCount(50);
+//                        lstBuscar.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
                     } catch (Exception v) {
                         JOptionPane.showMessageDialog(null, "fallo buscar Multimedia");

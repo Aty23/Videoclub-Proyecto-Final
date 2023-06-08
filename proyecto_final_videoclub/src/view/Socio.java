@@ -54,7 +54,11 @@ public class Socio {
      * getters y setters
      */
     public void setMultimediaAlquilado(ArrayList<Multimedia> multimediaAlquilado) {
-        this.multimediaAlquilado = multimediaAlquilado;
+        if(multimediaAlquilado==null){
+            this.multimediaAlquilado= new ArrayList<>();
+        }else {
+            this.multimediaAlquilado = multimediaAlquilado;
+        }
     }
     public int getAnyoNacimiento() {
         return anyoNacimiento;
