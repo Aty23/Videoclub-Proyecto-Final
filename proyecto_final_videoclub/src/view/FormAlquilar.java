@@ -112,19 +112,14 @@ public class FormAlquilar extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     try {
                         if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
-                            System.out.println("Entra en Peliculas");
-                            System.out.println(modeloPelicula.get(0).getTitulo());
                             lstBuscar.setModel(modeloPelicula);
 
 
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
-                            lstBuscarD = new JList<>(modeloDisco);
-                            lstBuscar = lstBuscarD;
+                            lstBuscar.setModel(modeloDisco);
 
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")) {
-
-                            lstBuscarV = new JList<>(modeloVideojuego);
-                            lstBuscar = lstBuscarV;
+                            lstBuscar.setModel(modeloVideojuego);
                         }
 //                        scrollerMultimedia = new JScrollPane(lstBuscar);
 

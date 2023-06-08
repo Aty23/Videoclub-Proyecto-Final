@@ -17,6 +17,7 @@ public class Main {
 
         try{
             ConexionBaseDatos.db=ConexionBaseDatos.conexionBase();
+  //          System.out.println(((Socio)ConexionBaseDatos.db.get(0).get(0)).getMultimediaAlquilado().get(0).getTitulo());
             FormVideoclub w = new FormVideoclub();
             w.setSize(900, 700);
             w.setContentPane(w.getPanelPrincipal());

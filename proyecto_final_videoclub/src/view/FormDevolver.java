@@ -73,7 +73,7 @@ public class FormDevolver extends JFrame {
 
                         } else {
                             JOptionPane.showMessageDialog(null, "Correcto");
-                            lstDevolver = new JList<>((ListModel) autenticado.getMultimediaAlquilado());
+                            lstDevolver = new JList<>((ListModel) autenticado.getMultimediaAlquilado());//aquí no se puede castear List>Model
                             panelPrincipal.add(lstDevolver);
                             lstDevolver.setVisibleRowCount(autenticado.getMultimediaAlquilado().size());
                             lstDevolver.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -98,7 +98,7 @@ public class FormDevolver extends JFrame {
                     try {
 
 
-                        elementoDevolver = lstDevolver.getSelectedIndex();
+                        elementoDevolver = lstDevolver.getSelectedIndex();//lstDevolver es null
                         JLabel Precio = new JLabel("Recargo" + tools.devolverMultimedia(((Multimedia) lstDevolver.getModel().getElementAt(elementoDevolver)), tools.buscarUsuario(dniBuscar)));
                         Precio.setForeground(colorDevolver);
                         Precio.setBounds(300, 500, 300, 50);
