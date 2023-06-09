@@ -191,12 +191,12 @@ public class ConexionBaseDatos {
         st.executeUpdate("delete from socio");
         for (int i = 0; i < infoSocio.size(); i++) {
             try {
-                st.executeQuery("insert into socio values('" + ((Socio) infoSocio.get(i)).getNif() + "', '"
+                st.executeUpdate("insert into socio values('" + ((Socio) infoSocio.get(i)).getNif() + "', '"
                         + ((Socio) infoSocio.get(i)).getNombre() + "', " + ((Socio) infoSocio.get(i)).getFechaNacimiento()
                         + ", '" + ((Socio) infoSocio.get(i)).getPoblacion() + "', " + ((Socio) infoSocio.get(i)).isAlquilando()
                         + ", '" + ((Socio) infoSocio.get(i)).getTitulosMultimediaAlquilado() + "');");
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         }
     }
@@ -206,11 +206,12 @@ public class ConexionBaseDatos {
         st.executeUpdate("delete from videojuego");
         for (int i = 0; i < infoVideojuego.size(); i++) {
             try {
-                st.executeQuery("insert into videojuego values('" + ((Videojuego) infoVideojuego.get(i)).getTitulo() + "', '"
+                st.executeUpdate("insert into videojuego values('" + ((Videojuego) infoVideojuego.get(i)).getTitulo() + "', '"
                         + ((Videojuego) infoVideojuego.get(i)).getAutor() + "', '" + ((Videojuego) infoVideojuego.get(i)).getFormato()
                         + "', " + ((Videojuego) infoVideojuego.get(i)).getAnyo() + ", " + ((Videojuego)infoVideojuego.get(i)).getDiaAlquilado()
                         + ", '" + ((Videojuego) infoVideojuego.get(i)).getPlataforma() + "');");
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -219,13 +220,14 @@ public class ConexionBaseDatos {
         st.executeUpdate("delete from pelicula");
         for (int i = 0; i < infoPelicula.size(); i++) {
             try {
-                st.executeQuery("insert into pelicula values('" + ((Pelicula) infoPelicula.get(i)).getTitulo() + "', '"
+                st.executeUpdate("insert into pelicula values('" + ((Pelicula) infoPelicula.get(i)).getTitulo() + "', '"
                         + ((Pelicula) infoPelicula.get(i)).getAutor() + "', '" + ((Pelicula) infoPelicula.get(i)).getFormato()
                         + "', " + ((Pelicula) infoPelicula.get(i)).getAnyo() + ", " + ((Pelicula) infoPelicula.get(i)).getDiaAlquilado()
                         + ", " + ((Pelicula) infoPelicula.get(i)).getDuracion() + ", '"
                         + ((Pelicula) infoPelicula.get(i)).getActorPrincipal() + "', '"
                         + ((Pelicula) infoPelicula.get(i)).getActrizPrincipal() + "');");
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -234,9 +236,10 @@ public class ConexionBaseDatos {
         st.executeUpdate("delete from Cancion");
         for (int i = 0; i < infoCancion.size(); i++) {
             try {
-                st.executeQuery("insert into Cancion values('" + ((Cancion) infoCancion.get(i)).getNombre() + "', "
+                st.executeUpdate("insert into Cancion values('" + ((Cancion) infoCancion.get(i)).getNombre() + "', "
                         + ((Cancion) infoCancion.get(i)).getDuracionSegundos() + ");");
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -245,12 +248,13 @@ public class ConexionBaseDatos {
         st.executeUpdate("delete from disco");
         for (int i = 0; i < infoDisco.size(); i++) {
             try {
-                st.executeQuery("insert into disco values('" + ((Disco) infoDisco.get(i)).getTitulo() + "', '"
+                st.executeUpdate("insert into disco values('" + ((Disco) infoDisco.get(i)).getTitulo() + "', '"
                         + ((Disco) infoDisco.get(i)).getAutor() + "', '" + ((Disco) infoDisco.get(i)).getFormato()
                         + "', " + ((Disco) infoDisco.get(i)).getAnyo() + ", " + ((Disco) infoDisco.get(i)).getDiaAlquilado()
                         + ", " + ((Disco) infoDisco.get(i)).getDuracionDisco() + ", '"
                         + ((Disco) infoDisco.get(i)).lineaCacionesDisco() + "');");
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

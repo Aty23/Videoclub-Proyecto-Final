@@ -536,6 +536,7 @@ public class FormAltas extends JFrame {
 
                 Pelicula p = new Pelicula(titulo, autor, formato, anyo, diaAlquilado, duracion, actorPrincipal, actrizPrincipal);
                 ConexionBaseDatos.db.get(2).add(p);
+                System.out.println(p.toString());
             }
         });
 
