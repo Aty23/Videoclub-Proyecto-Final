@@ -52,7 +52,7 @@ public class tools {
         if(dni!=null){
         for (int i = 0; i < ConexionBaseDatos.db.get(0).size(); i++) {
             if (((Socio) ConexionBaseDatos.db.get(0).get(i)).getNif().equals(dni)) {
-                s = ((Socio) ConexionBaseDatos.db.get(0).get(i));
+                return ((Socio) ConexionBaseDatos.db.get(0).get(i));
             }
         }
         }else System.out.println("El dni es null");

@@ -18,12 +18,15 @@ public class Main {
         try{
             ConexionBaseDatos.db=ConexionBaseDatos.conexionBase();
   //          System.out.println(((Socio)ConexionBaseDatos.db.get(0).get(0)).getMultimediaAlquilado().get(0).getTitulo());
+            System.out.println(((Socio)ConexionBaseDatos.db.get(0).get(0)).getNif());
+            System.out.println(((Socio)ConexionBaseDatos.db.get(0).get(0)).getMultimediaAlquilado());
             FormVideoclub w = new FormVideoclub();
             w.setSize(900, 700);
             w.setContentPane(w.getPanelPrincipal());
             w.setVisible(true);
             w.setDefaultCloseOperation(EXIT_ON_CLOSE);
             if(w.getDefaultCloseOperation()==3){
+                System.out.println(((Socio)ConexionBaseDatos.db.get(0).get(0)).getMultimediaAlquilado());
                 ConexionBaseDatos.modificarBD(ConexionBaseDatos.db);
             }
         }

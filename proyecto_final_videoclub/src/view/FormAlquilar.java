@@ -159,6 +159,8 @@ public class FormAlquilar extends JFrame {
                         if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
                             lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscar.getModel().getElementAt(elementoAlquilado)),
                                     tools.buscarUsuario(dniBuscar)));
+                            System.out.println(tools.buscarUsuario(dniBuscar).getMultimediaAlquilado());
+
 
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
                             lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscar.getModel().getElementAt(elementoAlquilado)),

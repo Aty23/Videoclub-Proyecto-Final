@@ -1,5 +1,6 @@
 package view;
 
+import control.ConexionBaseDatos;
 import model.tools;
 
 import javax.swing.*;
@@ -73,11 +74,13 @@ public class FormDevolver extends JFrame {
 
                         } else {
                             JOptionPane.showMessageDialog(null, "Correcto");
-                            lstDevolver = new JList<>((ListModel) autenticado.getMultimediaAlquilado());//aquí no se puede castear List>Model
+                            DefaultListModel<Multimedia> modeloMultimedia = new DefaultListModel<>();
+                            for (int j = 0; j < autenticado.getMultimediaAlquilado().size(); j++) {
+                                modeloMultimedia.addElement(autenticado.getMultimediaAlquilado().get(j));
+                            }
+                            lstDevolver = new JList<>();//aquí no se puede castear ListModel
+                            lstDevolver.setModel(modeloMultimedia);
                             panelPrincipal.add(lstDevolver);
-                            lstDevolver.setVisibleRowCount(autenticado.getMultimediaAlquilado().size());
-                            lstDevolver.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-
                             JScrollPane scrollerDevolver = new JScrollPane(lstDevolver);//((Socio)ConexionBaseDatos.db.get(0).get(1)).get));
                             scrollerDevolver.setBounds(230, 150, 350, 100);
                             scrollerDevolver.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -86,17 +89,17 @@ public class FormDevolver extends JFrame {
                             scrollerDevolver.setVisible(true);
 
 
+
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "Introduzca dni");
                     }
                 }
             });
-            dniBtn.addActionListener(new ActionListener() {
+            btnDevolver.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-
 
                         elementoDevolver = lstDevolver.getSelectedIndex();//lstDevolver es null
                         JLabel Precio = new JLabel("Recargo" + tools.devolverMultimedia(((Multimedia) lstDevolver.getModel().getElementAt(elementoDevolver)), tools.buscarUsuario(dniBuscar)));
@@ -104,6 +107,7 @@ public class FormDevolver extends JFrame {
                         Precio.setBounds(300, 500, 300, 50);
                         Precio.setFont(new Font("Arial", Font.BOLD, 20));
                         panelPrincipal.add(Precio);
+
 
                     } catch (Exception p) {
                         p.printStackTrace();
