@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class FormAltas extends JFrame {
-    Color colorFondo=new Color(65,65,65);
+    Color colorFondo = new Color(65, 65, 65);
 
     public JPanel panelPrincipal = new JPanel();
 
 
-    public FormAltas() throws HeadlessException{
+    public FormAltas() throws HeadlessException {
         panelPrincipal.setLayout(null);
         panelPrincipal.setBackground(colorFondo);
         JComboBox cmbEligeAlta = new JComboBox<>();
@@ -28,7 +28,7 @@ public class FormAltas extends JFrame {
         lAutor.setForeground(letrAutor);
         JTextField txtAutor = new JTextField();
         JLabel lFormato = new JLabel("Formato");
-        Color letraFormato= new Color(255, 255, 255);
+        Color letraFormato = new Color(255, 255, 255);
         lFormato.setForeground(letraFormato);
         JTextField txtFormato = new JTextField();
         JLabel lAnyo = new JLabel("Año");
@@ -56,7 +56,7 @@ public class FormAltas extends JFrame {
         lNif.setForeground(letraNIF);
         JTextField txtNif = new JTextField();
         JLabel lNombre = new JLabel("Nombre");
-        Color letrNOMBRE= new Color(255, 255, 255);
+        Color letrNOMBRE = new Color(255, 255, 255);
         lNombre.setForeground(letrNOMBRE);
         JTextField txtNombre = new JTextField();
         JLabel lAnyoNacimiento = new JLabel("Año de Nacimiento");
@@ -72,11 +72,11 @@ public class FormAltas extends JFrame {
         lNombreCancion.setForeground(letrCancion);
         JTextField txtNombreCancion = new JTextField();
         JLabel lDuracionSegundos = new JLabel("Duracion en segundos");
-        Color letraDuracion= new Color(255, 255, 255);
+        Color letraDuracion = new Color(255, 255, 255);
         lDuracionSegundos.setForeground(letraDuracion);
         JTextField txtDuracionSegundos = new JTextField();
         JLabel lDuracionDisco = new JLabel("Duracion del disco");
-        Color letrDISCO= new Color(255, 255, 255);
+        Color letrDISCO = new Color(255, 255, 255);
         lDuracionDisco.setForeground(letrDISCO);
         JTextField txtDuracionDisco = new JTextField();
 
@@ -85,7 +85,7 @@ public class FormAltas extends JFrame {
         lColeccionCanciones.setForeground(letrColeccion);
         DefaultListModel<Cancion> modelo = new DefaultListModel<>();
 
-        for (int i = 0; i<ConexionBaseDatos.db.get(3).size(); i++){
+        for (int i = 0; i < ConexionBaseDatos.db.get(3).size(); i++) {
             modelo.addElement((Cancion) ConexionBaseDatos.db.get(3).get(i));
         }
 
@@ -95,8 +95,8 @@ public class FormAltas extends JFrame {
         jListCanciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         JButton btnAltaSocio = new JButton("Alta de socio");
-        Color colorLetraBoton=new Color(255,255,255);
-        Color colorButtons= new Color(82,82,82);
+        Color colorLetraBoton = new Color(255, 255, 255);
+        Color colorButtons = new Color(82, 82, 82);
         btnAltaSocio.setBackground(colorButtons);
         btnAltaSocio.setForeground(colorLetraBoton);
         JButton btnAltaPelicula = new JButton("Alta de película");
@@ -112,126 +112,126 @@ public class FormAltas extends JFrame {
         btnAltaDisco.setBackground(colorButtons);
         btnAltaDisco.setForeground(colorLetraBoton);
 
-        try{
+        try {
             cmbEligeAlta.addItem("Elige uno");
             cmbEligeAlta.addItem("Alta de socio");
             cmbEligeAlta.addItem("Alta de pelicula");
             cmbEligeAlta.addItem("Alta de videojuego");
             cmbEligeAlta.addItem("Alta de cancion");
             cmbEligeAlta.addItem("Alta de disco");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         // ComboBox con opciones
-        cmbEligeAlta.setBounds(100,100,150,50);
+        cmbEligeAlta.setBounds(100, 100, 150, 50);
         panelPrincipal.add(cmbEligeAlta);
 
         // Controles comunes en mas de una opcion
-        lTitulo.setBounds(100,200,50,20);
+        lTitulo.setBounds(100, 200, 50, 20);
         lTitulo.setVisible(false);
         panelPrincipal.add(lTitulo);
-        txtTitulo.setBounds(150,200,100,20);
+        txtTitulo.setBounds(150, 200, 100, 20);
         txtTitulo.setVisible(false);
         panelPrincipal.add(txtTitulo);
-        lAutor.setBounds(100,250,50,20);
+        lAutor.setBounds(100, 250, 50, 20);
         lAutor.setVisible(false);
         panelPrincipal.add(lAutor);
-        txtAutor.setBounds(150,250,100,20);
+        txtAutor.setBounds(150, 250, 100, 20);
         txtAutor.setVisible(false);
         panelPrincipal.add(txtAutor);
-        lFormato.setBounds(100,300,50,20);
+        lFormato.setBounds(100, 300, 50, 20);
         lFormato.setVisible(false);
         panelPrincipal.add(lFormato);
-        txtFormato.setBounds(150,300,100,20);
+        txtFormato.setBounds(150, 300, 100, 20);
         txtFormato.setVisible(false);
         panelPrincipal.add(txtFormato);
-        lAnyo.setBounds(100,350,50,20);
+        lAnyo.setBounds(100, 350, 50, 20);
         lAnyo.setVisible(false);
         panelPrincipal.add(lAnyo);
-        txtAnyo.setBounds(150,350,100,20);
+        txtAnyo.setBounds(150, 350, 100, 20);
         txtAnyo.setVisible(false);
         panelPrincipal.add(txtAnyo);
 
         // Controles videojuego
-        lPlataforma.setBounds(80,400,70,20);
+        lPlataforma.setBounds(80, 400, 70, 20);
         lPlataforma.setVisible(false);
         panelPrincipal.add(lPlataforma);
-        txtPlataforma.setBounds(150,400,100,20);
+        txtPlataforma.setBounds(150, 400, 100, 20);
         txtPlataforma.setVisible(false);
         panelPrincipal.add(txtPlataforma);
 
         // Controles pelicula
-        lDuracion.setBounds(80,400,70,20);
+        lDuracion.setBounds(80, 400, 70, 20);
         lDuracion.setVisible(false);
         panelPrincipal.add(lDuracion);
-        txtDuracion.setBounds(150,400,100,20);
+        txtDuracion.setBounds(150, 400, 100, 20);
         txtDuracion.setVisible(false);
         panelPrincipal.add(txtDuracion);
-        lActorPrincipal.setBounds(50,450,100,20);
+        lActorPrincipal.setBounds(50, 450, 100, 20);
         lActorPrincipal.setVisible(false);
         panelPrincipal.add(lActorPrincipal);
-        txtActorPrincipal.setBounds(150,450,100,20);
+        txtActorPrincipal.setBounds(150, 450, 100, 20);
         txtActorPrincipal.setVisible(false);
         panelPrincipal.add(txtActorPrincipal);
-        lActrizPrincipal.setBounds(50,500,100,20);
+        lActrizPrincipal.setBounds(50, 500, 100, 20);
         lActrizPrincipal.setVisible(false);
         panelPrincipal.add(lActrizPrincipal);
-        txtActrizPrincipal.setBounds(150,500,100,20);
+        txtActrizPrincipal.setBounds(150, 500, 100, 20);
         txtActrizPrincipal.setVisible(false);
         panelPrincipal.add(txtActrizPrincipal);
 
         // Controles socio
-        lNif.setBounds(100,200,50,20);
+        lNif.setBounds(100, 200, 50, 20);
         lNif.setVisible(false);
         panelPrincipal.add(lNif);
-        txtNif.setBounds(150,200,100,20);
+        txtNif.setBounds(150, 200, 100, 20);
         txtNif.setVisible(false);
         panelPrincipal.add(txtNif);
-        lNombre.setBounds(100,250,50,20);
+        lNombre.setBounds(100, 250, 50, 20);
         lNombre.setVisible(false);
         panelPrincipal.add(lNombre);
-        txtNombre.setBounds(150,250,100,20);
+        txtNombre.setBounds(150, 250, 100, 20);
         txtNombre.setVisible(false);
         panelPrincipal.add(txtNombre);
-        lAnyoNacimiento.setBounds(30,300,130,20);
+        lAnyoNacimiento.setBounds(30, 300, 130, 20);
         lAnyoNacimiento.setVisible(false);
         panelPrincipal.add(lAnyoNacimiento);
-        txtAnyoNacimiento.setBounds(150,300,100,20);
+        txtAnyoNacimiento.setBounds(150, 300, 100, 20);
         txtAnyoNacimiento.setVisible(false);
         panelPrincipal.add(txtAnyoNacimiento);
-        lPoblacion.setBounds(80,350,60,20);
+        lPoblacion.setBounds(80, 350, 60, 20);
         lPoblacion.setVisible(false);
         panelPrincipal.add(lPoblacion);
-        txtPoblacion.setBounds(150,350,100,20);
+        txtPoblacion.setBounds(150, 350, 100, 20);
         txtPoblacion.setVisible(false);
         panelPrincipal.add(txtPoblacion);
 
         // Controles cancion
-        lNombreCancion.setBounds(30,200,130,20);
+        lNombreCancion.setBounds(30, 200, 130, 20);
         lNombreCancion.setVisible(false);
         panelPrincipal.add(lNombreCancion);
-        txtNombreCancion.setBounds(150,200,100,20);
+        txtNombreCancion.setBounds(150, 200, 100, 20);
         txtNombreCancion.setVisible(false);
         panelPrincipal.add(txtNombreCancion);
-        lDuracionSegundos.setBounds(20,250,130,20);
+        lDuracionSegundos.setBounds(20, 250, 130, 20);
         lDuracionSegundos.setVisible(false);
         panelPrincipal.add(lDuracionSegundos);
-        txtDuracionSegundos.setBounds(150,250,100,20);
+        txtDuracionSegundos.setBounds(150, 250, 100, 20);
         txtDuracionSegundos.setVisible(false);
         panelPrincipal.add(txtDuracionSegundos);
 
         //Controles disco
-        lDuracionDisco.setBounds(30,400,115,20);
+        lDuracionDisco.setBounds(30, 400, 115, 20);
         lDuracionDisco.setVisible(false);
         panelPrincipal.add(lDuracionDisco);
-        txtDuracionDisco.setBounds(150,400,100,20);
+        txtDuracionDisco.setBounds(150, 400, 100, 20);
         txtDuracionDisco.setVisible(false);
         panelPrincipal.add(txtDuracionDisco);
-        lColeccionCanciones.setBounds(10,450,135,20);
+        lColeccionCanciones.setBounds(10, 450, 135, 20);
         lColeccionCanciones.setVisible(false);
         panelPrincipal.add(lColeccionCanciones);
-        jListCanciones.setBounds(150,450,280,180);
+        jListCanciones.setBounds(150, 450, 280, 180);
         jListCanciones.setVisible(false);
         panelPrincipal.add(jListCanciones);
         scroll.setBounds(150, 450, 300, 70);
@@ -241,25 +241,25 @@ public class FormAltas extends JFrame {
         panelPrincipal.add(scroll);
 
         // Botones para crear objeto segun opciones
-        btnAltaSocio.setBounds(600,300,150,50);
+        btnAltaSocio.setBounds(600, 300, 150, 50);
         btnAltaSocio.setVisible(false);
         panelPrincipal.add(btnAltaSocio);
-        btnAltaPelicula.setBounds(600,300,150,50);
+        btnAltaPelicula.setBounds(600, 300, 150, 50);
         btnAltaPelicula.setVisible(false);
         panelPrincipal.add(btnAltaPelicula);
-        btnAltaVideojuego.setBounds(600,300,150,50);
+        btnAltaVideojuego.setBounds(600, 300, 150, 50);
         btnAltaVideojuego.setVisible(false);
         panelPrincipal.add(btnAltaVideojuego);
-        btnAltaCancion.setBounds(600,300,150,50);
+        btnAltaCancion.setBounds(600, 300, 150, 50);
         btnAltaCancion.setVisible(false);
         panelPrincipal.add(btnAltaCancion);
-        btnAltaDisco.setBounds(600,300,150,50);
+        btnAltaDisco.setBounds(600, 300, 150, 50);
         btnAltaDisco.setVisible(false);
         panelPrincipal.add(btnAltaDisco);
         cmbEligeAlta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (cmbEligeAlta.getSelectedItem().toString().equals("Elige uno")){
+                if (cmbEligeAlta.getSelectedItem().toString().equals("Elige uno")) {
                     lDuracion.setVisible(false);
                     txtDuracion.setVisible(false);
                     lActorPrincipal.setVisible(false);
@@ -298,8 +298,7 @@ public class FormAltas extends JFrame {
                     jListCanciones.setVisible(false);
                     scroll.setVisible(false);
                     btnAltaDisco.setVisible(false);
-                }
-                else if (cmbEligeAlta.getSelectedItem().toString().equals("Alta de socio")){
+                } else if (cmbEligeAlta.getSelectedItem().toString().equals("Alta de socio")) {
                     lDuracion.setVisible(false);
                     txtDuracion.setVisible(false);
                     lActorPrincipal.setVisible(false);
@@ -339,8 +338,7 @@ public class FormAltas extends JFrame {
                     lPoblacion.setVisible(true);
                     txtPoblacion.setVisible(true);
                     btnAltaSocio.setVisible(true);
-                }
-                else if (cmbEligeAlta.getSelectedItem().toString().equals("Alta de videojuego")){
+                } else if (cmbEligeAlta.getSelectedItem().toString().equals("Alta de videojuego")) {
                     lDuracion.setVisible(false);
                     txtDuracion.setVisible(false);
                     lActorPrincipal.setVisible(false);
@@ -380,8 +378,7 @@ public class FormAltas extends JFrame {
                     lPlataforma.setVisible(true);
                     txtPlataforma.setVisible(true);
                     btnAltaVideojuego.setVisible(true);
-                }
-                else if (cmbEligeAlta.getSelectedItem().toString().equals("Alta de pelicula")){
+                } else if (cmbEligeAlta.getSelectedItem().toString().equals("Alta de pelicula")) {
                     lPlataforma.setVisible(false);
                     txtPlataforma.setVisible(false);
                     btnAltaVideojuego.setVisible(false);
@@ -421,8 +418,7 @@ public class FormAltas extends JFrame {
                     lActrizPrincipal.setVisible(true);
                     txtActrizPrincipal.setVisible(true);
                     btnAltaPelicula.setVisible(true);
-                }
-                else if(cmbEligeAlta.getSelectedItem().toString().equals("Alta de cancion")){
+                } else if (cmbEligeAlta.getSelectedItem().toString().equals("Alta de cancion")) {
                     lDuracion.setVisible(false);
                     txtDuracion.setVisible(false);
                     lActorPrincipal.setVisible(false);
@@ -462,8 +458,7 @@ public class FormAltas extends JFrame {
                     lDuracionSegundos.setVisible(true);
                     txtDuracionSegundos.setVisible(true);
                     btnAltaCancion.setVisible(true);
-                }
-                else if (cmbEligeAlta.getSelectedItem().toString().equals("Alta de disco")){
+                } else if (cmbEligeAlta.getSelectedItem().toString().equals("Alta de disco")) {
                     lDuracion.setVisible(false);
                     txtDuracion.setVisible(false);
                     lActorPrincipal.setVisible(false);
@@ -510,13 +505,20 @@ public class FormAltas extends JFrame {
         btnAltaSocio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nif = txtNif.getText();
-                String nombre = txtNombre.getText();
-                int anyoNacimiento = Integer.parseInt(txtAnyoNacimiento.getText());
-                String poblacion = txtPoblacion.getText();
-                ArrayList<Multimedia> multimedias= new ArrayList<Multimedia>();
-                Socio s = new Socio(nif, nombre, anyoNacimiento, poblacion, false, multimedias);
-                ConexionBaseDatos.db.get(0).add(s);
+                try {
+                    String nif = txtNif.getText();
+                    String nombre = txtNombre.getText();
+                    int anyoNacimiento = Integer.parseInt(txtAnyoNacimiento.getText());
+                    String poblacion = txtPoblacion.getText();
+                    ArrayList<Multimedia> multimedias = new ArrayList<Multimedia>();
+
+                    Socio s = new Socio(nif, nombre, anyoNacimiento, poblacion, false, multimedias);
+                    ConexionBaseDatos.db.get(0).add(s);
+                    JOptionPane.showMessageDialog(null, "Se ha dado de alta el socio");
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(null, "Datos mal");
+                }
+
 
             }
         });
@@ -524,78 +526,106 @@ public class FormAltas extends JFrame {
         btnAltaPelicula.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = Integer.parseInt(txtAnyo.getText());
-                String titulo = txtTitulo.getText();
-                String autor = txtAutor.getText();
-                String formato = txtFormato.getText();
-                int anyo = Integer.parseInt(txtAnyo.getText());
-                int duracion = Integer.parseInt(txtDuracion.getText());
-                String actorPrincipal = txtActorPrincipal.getText();
-                String actrizPrincipal = txtActrizPrincipal.getText();
-                Date diaAlquilado = null;
+                try {
+                    int id = Integer.parseInt(txtAnyo.getText());
+                    String titulo = txtTitulo.getText();
+                    String autor = txtAutor.getText();
+                    String formato = txtFormato.getText();
+                    int anyo = Integer.parseInt(txtAnyo.getText());
+                    int duracion = Integer.parseInt(txtDuracion.getText());
+                    String actorPrincipal = txtActorPrincipal.getText();
+                    String actrizPrincipal = txtActrizPrincipal.getText();
+                    Date diaAlquilado = null;
 
-                Pelicula p = new Pelicula(titulo, autor, formato, anyo, diaAlquilado, duracion, actorPrincipal, actrizPrincipal);
-                ConexionBaseDatos.db.get(2).add(p);
-                System.out.println(p.toString());
+                    Pelicula p = new Pelicula(titulo, autor, formato, anyo, diaAlquilado, duracion, actorPrincipal, actrizPrincipal);
+                    ConexionBaseDatos.db.get(2).add(p);
+                    JOptionPane.showMessageDialog(null, "Se ha dado de alta la pelicula");
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(null, "Datos mal");
+                }
+
+
             }
         });
 
         btnAltaVideojuego.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = Integer.parseInt(txtAnyo.getText());
-                String titulo = txtTitulo.getText();
-                String autor = txtAutor.getText();
-                String formato = txtFormato.getText();
-                int anyo = Integer.parseInt(txtAnyo.getText());
-                String plataforma = txtPlataforma.getText();
-                Date diaAlquilado = null;
+                try {
+                    int id = Integer.parseInt(txtAnyo.getText());
+                    String titulo = txtTitulo.getText();
+                    String autor = txtAutor.getText();
+                    String formato = txtFormato.getText();
+                    int anyo = Integer.parseInt(txtAnyo.getText());
+                    String plataforma = txtPlataforma.getText();
+                    Date diaAlquilado = null;
 
-                Videojuego v = new Videojuego(titulo, autor, formato, anyo, diaAlquilado, plataforma);
-                ConexionBaseDatos.db.get(1).add(v);
+                    Videojuego v = new Videojuego(titulo, autor, formato, anyo, diaAlquilado, plataforma);
+                    ConexionBaseDatos.db.get(1).add(v);
+                    JOptionPane.showMessageDialog(null, "Se ha dado de alta el Videojuego");
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(null, "Datos mal");
+                }
+
+
             }
         });
 
         btnAltaCancion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nombre = txtNombreCancion.getText();
-                int duracionSegundos = Integer.parseInt(txtDuracionSegundos.getText());
+                try {
+                    String nombre = txtNombreCancion.getText();
+                    int duracionSegundos = Integer.parseInt(txtDuracionSegundos.getText());
 
-                Cancion c = new Cancion(nombre, duracionSegundos);
-                ConexionBaseDatos.db.get(3).add(c);
+                    Cancion c = new Cancion(nombre, duracionSegundos);
+                    ConexionBaseDatos.db.get(3).add(c);
+                    JOptionPane.showMessageDialog(null, "Se ha dado de alta la cancion");
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(null, "Datos mal");
+                }
+
+
             }
         });
 
         btnAltaDisco.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String titulo = txtTitulo.getText();
-                String autor = txtAutor.getText();
-                String formato = txtFormato.getText();
-                int anyo = Integer.parseInt(txtAnyo.getText());
-                int duracionDisco = Integer.parseInt(txtDuracionDisco.getText());
-                Date diaAlquilado = null;
-                int[] indicesSeleccionados = jListCanciones.getSelectedIndices();
+                try {
+                    String titulo = txtTitulo.getText();
+                    String autor = txtAutor.getText();
+                    String formato = txtFormato.getText();
+                    int anyo = Integer.parseInt(txtAnyo.getText());
+                    int duracionDisco = Integer.parseInt(txtDuracionDisco.getText());
+                    Date diaAlquilado = null;
+                    int[] indicesSeleccionados = jListCanciones.getSelectedIndices();
 
-                ArrayList<Cancion> canciones = new ArrayList<Cancion>();
-                for (int indice : indicesSeleccionados) {
-                    Cancion cancionSeleccionada = modelo.getElementAt(indice);
-                    canciones.add(cancionSeleccionada);
+                    ArrayList<Cancion> canciones = new ArrayList<Cancion>();
+                    for (int indice : indicesSeleccionados) {
+                        Cancion cancionSeleccionada = modelo.getElementAt(indice);
+                        canciones.add(cancionSeleccionada);
+                    }
+                    int duracion = 0;
+                    for (Cancion cancion : canciones) {
+                        duracion += cancion.getDuracionSegundos();
+                    }
+
+                    Disco d = new Disco(titulo, autor, formato, anyo, diaAlquilado, duracionDisco, canciones);
+                    ConexionBaseDatos.db.get(4).add(d);
+                    JOptionPane.showMessageDialog(null, "Se ha dado de alta el disco");
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(null, "Datos mal");
                 }
-                int duracion=0;
-                for (Cancion cancion : canciones) {
-                    duracion+=cancion.getDuracionSegundos();
-                }
-                Disco d = new Disco(titulo,autor,formato,anyo,diaAlquilado,duracionDisco,canciones);
-                ConexionBaseDatos.db.get(4).add(d);
+
+
             }
 
 
         });
     }
 
-    public JPanel getPanelPrincipal(){
+    public JPanel getPanelPrincipal() {
         return panelPrincipal;
     }
 }

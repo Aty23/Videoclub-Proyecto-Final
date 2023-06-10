@@ -13,14 +13,13 @@ public class ConexionBaseDatos {
 
     public static ArrayList<ArrayList<Object>> conexionBase() {
         Connection con = null;
-        String url = "jdbc:postgresql://localhost:5432/";
-        String bd = "Videoclub";
-        String driver = "org.postgresql.Driver";
+        String url = "jdbc:postgresql://localhost:5432/Videoclub";
+        String driver="/Users/llorenc/Desktop/Videoclub-Proyecto-Final1/proyecto_final_videoclub/src/postgresql-42.6.0.jar";
         String user = "postgres";
-        String pass = "1234";
+        String pass = "Caca21";
         ArrayList<ArrayList<Object>> info = new ArrayList<ArrayList<Object>>();
         try {
-            con = DriverManager.getConnection(url + bd, user, pass);
+            con = DriverManager.getConnection(url, user, pass);
             try {
                 info.add(datosSocio(con));
                 info.add(datosVideojuego(con));
@@ -166,9 +165,9 @@ public class ConexionBaseDatos {
         Connection con = null;
         String url = "jdbc:postgresql://localhost:5432/";
         String bd = "Videoclub";
-        String driver = "org.postgresql.Driver";
+
         String user = "postgres";
-        String pass = "1234";
+        String pass = "Caca21";
         try {
             con = DriverManager.getConnection(url + bd, user, pass);
             try {

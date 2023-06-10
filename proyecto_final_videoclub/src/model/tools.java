@@ -12,7 +12,7 @@ public class tools {
         if(multimedia instanceof Disco && ((Disco) multimedia).getDuracionDisco()<Constantes.DURACION_DISCO_DESCUENTO){
             pagoAlquiler -= Constantes.DESCUENTO;
         }
-        else if(multimedia instanceof Pelicula && ((Pelicula)multimedia).getAnyo()<Constantes.ANYO_DESCUENTO_PELICULA){
+        else if(multimedia instanceof Pelicula && ((Pelicula) multimedia).getAnyo()<Constantes.ANYO_DESCUENTO_PELICULA){
             pagoAlquiler -= Constantes.DESCUENTO;
         }
         else if(multimedia instanceof Videojuego && ((Videojuego) multimedia).getAnyo()<Constantes.ANYO_DESCUENTO_VIDEOJUEGO){
@@ -33,7 +33,7 @@ public class tools {
     public static int devolverMultimedia(Multimedia multimedia,Socio socio){
        for(int i=0; i<socio.getMultimediaAlquilado().size();i++){
            if(socio.getMultimediaAlquilado().get(i).getTitulo().equals(multimedia.getTitulo())){
-               socio.getMultimediaAlquilado().remove(multimedia);
+               socio.getMultimediaAlquilado().remove(i);
            }
        }
        return recargoRetraso(multimedia);
