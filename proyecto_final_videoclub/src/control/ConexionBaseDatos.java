@@ -1,10 +1,9 @@
 package control;
 
-import view.*;
+import model.*;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 
 
 public class ConexionBaseDatos {
@@ -49,7 +48,7 @@ public class ConexionBaseDatos {
         return infoSocio;
     }
 
-    private static ArrayList<Multimedia> alquileresSocio( Connection con, String alquileres) throws SQLException {
+    private static ArrayList<Multimedia> alquileresSocio(Connection con, String alquileres) throws SQLException {
 
         ArrayList<Multimedia> multimediasAlquilados = new ArrayList<Multimedia>();
         if(alquileres==null||alquileres.equals("null")){

@@ -1,10 +1,9 @@
-package view;
-import model.*;
+package model;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Disco extends Multimedia{
+public class Disco extends Multimedia {
     /**
      * atributos
      */

@@ -1,13 +1,12 @@
 package view;
 
 import control.ConexionBaseDatos;
-import model.tools;
+import model.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class FormAlquilar extends JFrame {
     Color colorButtons = new Color(82, 82, 82);
@@ -147,7 +146,7 @@ public class FormAlquilar extends JFrame {
                             if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
                                 lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscar.getModel().getElementAt(elementoAlquilado)),
                                         tools.buscarUsuario(dniBuscar)));
-                                System.out.println(tools.buscarUsuario(dniBuscar).getMultimediaAlquilado());
+
 
 
                             } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {

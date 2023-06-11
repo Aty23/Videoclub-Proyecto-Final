@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import control.ConexionBaseDatos;
-import model.tools;
+import model.*;
 
 public class FormListados extends JFrame{
     public JPanel panelPrincipal = new JPanel();

@@ -1,6 +1,7 @@
 package view;
 
 import control.ConexionBaseDatos;
+import model.*;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,6 +1,7 @@
 package view;
 
-import control.ConexionBaseDatos;
+import model.Multimedia;
+import model.Socio;
 import model.tools;
 
 import javax.swing.*;
@@ -27,6 +28,13 @@ public class FormDevolver extends JFrame {
         try {
             panelPrincipal.setLayout(null);
             panelPrincipal.setBackground(colorFondo);
+
+            JLabel Precio= new JLabel();
+            Precio.setForeground(colorDevolver);
+            Precio.setBounds(300, 500, 300, 50);
+            Precio.setFont(new Font("Arial", Font.BOLD, 20));
+            panelPrincipal.add(Precio);
+            Precio.setVisible(true);
             //label  dni
             JLabel dniLabel = new JLabel("Dni Cliente");
             dniLabel.setForeground(letradni);
@@ -100,15 +108,11 @@ public class FormDevolver extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-
-                        elementoDevolver = lstDevolver.getSelectedIndex();//lstDevolver es null
+                        elementoDevolver = lstDevolver.getSelectedIndex();
                         try{
-                            JLabel Precio = new JLabel("Recargo" + tools.devolverMultimedia(((Multimedia) lstDevolver.getModel().getElementAt(elementoDevolver)), tools.buscarUsuario(dniBuscar)));
-                            Precio.setForeground(colorDevolver);
-                            Precio.setBounds(300, 500, 300, 50);
-                            Precio.setFont(new Font("Arial", Font.BOLD, 20));
-                            panelPrincipal.add(Precio);
-                            Precio.setVisible(true);
+                            Precio.setText("Recargo adicion al de " +
+                                    tools.devolverMultimedia(((Multimedia) lstDevolver.getModel().getElementAt(elementoDevolver)),
+                                    tools.buscarUsuario(dniBuscar))+"€");
                         }catch (Exception e1){
                             JOptionPane.showMessageDialog(null, "Debes seleccionar un elemento");
                         }

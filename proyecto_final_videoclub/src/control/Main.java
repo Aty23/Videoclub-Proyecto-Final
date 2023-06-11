@@ -1,11 +1,11 @@
 package control;
 
 
+import model.Socio;
 import view.*;
-import javax.swing.*;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;

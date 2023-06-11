@@ -1,9 +1,7 @@
-package view;
+package model;
 import model.*;
 
-import javax.swing.plaf.PanelUI;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 public class Socio {
     /**
