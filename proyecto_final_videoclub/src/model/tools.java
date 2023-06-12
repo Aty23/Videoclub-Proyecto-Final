@@ -78,13 +78,14 @@ public class tools {
         array.add(ConexionBaseDatos.db.get(1));
         array.add(ConexionBaseDatos.db.get(2));
         array.add(ConexionBaseDatos.db.get(4));
+        System.out.println(array.size());
         for (int i = 0; i < array.size(); i++) {
-            if (array.get(0).get(i) instanceof Videojuego && multimedia.equals(((Videojuego) array.get(0).get(i)).getTitulo())) {
+            if (array.get(0).get(i) instanceof Videojuego && multimedia.getTitulo().equals(((Videojuego) array.get(0).get(i)).getTitulo())) {
                 return (Videojuego) ConexionBaseDatos.db.get(1).get(i);
-            } else if (array.get(1).get(i) instanceof Pelicula && multimedia.equals(((Pelicula) array.get(1).get(i)).getTitulo())) {
+            } else if (array.get(1).get(i) instanceof Pelicula && multimedia.getTitulo().equals(((Pelicula) array.get(1).get(i)).getTitulo())) {
 
                 return (Pelicula) ConexionBaseDatos.db.get(2).get(i);
-            } else if (array.get(2).get(i) instanceof Disco && multimedia.equals(((Disco) array.get(2).get(i)).getTitulo())) {
+            } else if (array.get(2).get(i) instanceof Disco && multimedia.getTitulo().equals(((Disco) array.get(2).get(i)).getTitulo())) {
                 return (Disco) ConexionBaseDatos.db.get(4).get(i);
             }
         }

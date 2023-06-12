@@ -160,6 +160,7 @@ public class FormAlquilar extends JFrame {
                             }
                         }catch (Exception e1){
                             JOptionPane.showMessageDialog(null, "Debes seleccionar un elemento");
+                            e1.printStackTrace();
                         }
 
 

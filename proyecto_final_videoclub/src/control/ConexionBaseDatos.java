@@ -77,7 +77,7 @@ public class ConexionBaseDatos {
             } else if (multimedias.get(1).get(i) instanceof Pelicula && multimedia.equals(((Pelicula) multimedias.get(1).get(i)).getTitulo())) {
 
                 return (Pelicula) multimedias.get(1).get(i);
-            } else if (multimedias.get(2).get(i) instanceof Disco && multimedia.equals(((Disco) multimedias.get(2).get(i)).getTitulo())) {
+            } else if (multimedias.get(2).get(i) instanceof Disco && multimedia.equals(((Disco)  multimedias.get(2).get(i)).getTitulo())) {
                 return (Disco) multimedias.get(2).get(i);
             }
         }
