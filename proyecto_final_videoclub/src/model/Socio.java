@@ -76,11 +76,19 @@ public class Socio {
                 System.out.println("AaA");
                 return null;
             }
-            String lineaMultimediaAlquilado = "/";
+            String lineaMultimediaAlquilado = "";
             for (int i = 0; 0 < multimediaAlquilado.size(); i++) {
-                lineaMultimediaAlquilado += multimediaAlquilado.get(i).getTitulo() + "/";
+                System.out.println("AAAAAAAAAAAAAAAAAA");
+                lineaMultimediaAlquilado =lineaMultimediaAlquilado +  multimediaAlquilado.get(i).getTitulo() + "/";
+                System.out.println(lineaMultimediaAlquilado);
+                if(i==multimediaAlquilado.size()-1){
+                    return lineaMultimediaAlquilado;
+                }
             }
-            if (lineaMultimediaAlquilado.equals("/")) {
+            System.out.println(lineaMultimediaAlquilado);
+            if (lineaMultimediaAlquilado.equals("")) {
+                System.out.println(lineaMultimediaAlquilado);
+                System.out.println("AAAAA");
                 System.out.println(getMultimediaAlquilado().size());
                 System.out.println(getMultimediaAlquilado().get(0).getTitulo());
                 return null;
