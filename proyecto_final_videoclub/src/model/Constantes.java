@@ -27,4 +27,5 @@ public class Constantes {
     public static final int PAGO_EXTRA_VIDEOJUEGOS_PELICULAS_2023=1;
     public static final Date FECHA_DEFAULT = new Date();
     public static final int IDS_DEFAULT = 0;
+    public static final Date ANYOS_1960 = new Date(1960, 01, 01);
 }

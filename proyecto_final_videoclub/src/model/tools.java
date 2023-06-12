@@ -2,6 +2,7 @@ package model;
 
 import control.ConexionBaseDatos;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -24,11 +25,12 @@ public class tools {
     public static int alquilar(Multimedia multimedia, Socio socio) {
         Date hoy = new Date();
         socio.getMultimediaAlquilado().add(multimedia);
+        System.out.println(socio.getNif());
         multimedia.setDiaAlquilado(hoy);
         return pagarAlquiler(multimedia);
     }
 
-    public static int devolverMultimedia(Multimedia multimedia, Socio socio) {
+    public static int devolverMultimedia(Multimedia multimedia, Socio socio) throws ParseException {
         for (int i = 0; i < socio.getMultimediaAlquilado().size(); i++) {
             if (socio.getMultimediaAlquilado().get(i).getTitulo().equals(multimedia.getTitulo())) {
                 socio.getMultimediaAlquilado().remove(i);
@@ -44,7 +46,7 @@ public class tools {
         return recargoRetraso(multimedia);
     }
 
-    public static int recargoRetraso(Multimedia multimedia) {
+    public static int recargoRetraso(Multimedia multimedia) throws ParseException {
         int recargo=0;
         Date hoy = new Date();
         long diferenciaMilisec = hoy.getTime() - multimedia.getDiaAlquilado().getTime();
@@ -58,7 +60,6 @@ public class tools {
     }
 
     public static Socio buscarUsuario(String dni) {
-        Socio s = null;
         if (dni != null) {
             for (int i = 0; i < ConexionBaseDatos.db.get(0).size(); i++) {
                 if (((Socio) ConexionBaseDatos.db.get(0).get(i)).getNif().equals(dni)) {
@@ -66,7 +67,7 @@ public class tools {
                 }
             }
         } else System.out.println("El dni es null");
-        return s;
+        return null;
     }
 
 }

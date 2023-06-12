@@ -1,5 +1,7 @@
 package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public abstract class Multimedia {
@@ -37,6 +39,7 @@ public abstract class Multimedia {
         setAutor(autor);
         setFormato(formato);
         setAnyo(anyo);
+        //setNoAlquilado();
         setDiaAlquilado(diaAlquilado);
     }
 
@@ -46,10 +49,19 @@ public abstract class Multimedia {
      * getters y setters
      *
      */
+    public void setNoAlquilado(){
+        this.diaAlquilado=null;
+    }
     public void setDiaAlquilado(Date diaAlquilado) {
         this.diaAlquilado = diaAlquilado;
+
     }
-    public Date getDiaAlquilado() {
+    public Date getDiaAlquilado() throws ParseException {
+        if(this.diaAlquilado==null){
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date dateDefault = format.parse("1960-01-01");
+            return dateDefault;
+        }
         return diaAlquilado;
     }
 

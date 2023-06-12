@@ -88,6 +88,9 @@ public class Disco extends Multimedia {
         return cancionesString;
     }
     public String lineaCacionesDisco() {
+        if(coleccionCanciones==null){
+            return null;
+        }
         String cancionesDisco = "/";
         for (int i = 0; i < coleccionCanciones.size(); i++) {
             cancionesDisco += coleccionCanciones.get(i) + "/";

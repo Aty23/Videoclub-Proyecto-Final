@@ -71,13 +71,22 @@ public class Socio {
     }
     public String getTitulosMultimediaAlquilado(){
         try {
+            System.out.println(getNif());
+            if(multimediaAlquilado==null){
+                System.out.println("AaA");
+                return null;
+            }
             String lineaMultimediaAlquilado = "/";
             for (int i = 0; 0 < multimediaAlquilado.size(); i++) {
                 lineaMultimediaAlquilado += multimediaAlquilado.get(i).getTitulo() + "/";
             }
             if (lineaMultimediaAlquilado.equals("/")) {
+                System.out.println(getMultimediaAlquilado().size());
+                System.out.println(getMultimediaAlquilado().get(0).getTitulo());
                 return null;
+
             }
+            System.out.println(lineaMultimediaAlquilado);
             return lineaMultimediaAlquilado;
         }catch (Exception e){
             return null;

@@ -15,7 +15,7 @@ public class ConexionBaseDatos {
         String url = "jdbc:postgresql://localhost:5432/Videoclub";
         String driver="/Users/llorenc/Desktop/Videoclub-Proyecto-Final1/proyecto_final_videoclub/src/postgresql-42.6.0.jar";
         String user = "postgres";
-        String pass = "Caca21";
+        String pass = "1234";
         ArrayList<ArrayList<Object>> info = new ArrayList<ArrayList<Object>>();
         try {
             con = DriverManager.getConnection(url, user, pass);
@@ -70,10 +70,12 @@ public class ConexionBaseDatos {
         multimedias.add(datosVideojuego(con));
         multimedias.add(datosPelicula(con));
         multimedias.add(datosDisco(con));
+        System.out.println("AAAA");
         for (int i = 0; i < multimedias.size(); i++) {
             if (multimedias.get(0).get(i) instanceof Videojuego && multimedia.equals(((Videojuego) multimedias.get(0).get(i)).getTitulo())) {
                 return (Videojuego) multimedias.get(0).get(i);
             } else if (multimedias.get(1).get(i) instanceof Pelicula && multimedia.equals(((Pelicula) multimedias.get(1).get(i)).getTitulo())) {
+
                 return (Pelicula) multimedias.get(1).get(i);
             } else if (multimedias.get(2).get(i) instanceof Disco && multimedia.equals(((Disco) multimedias.get(2).get(i)).getTitulo())) {
                 return (Disco) multimedias.get(2).get(i);
@@ -89,11 +91,13 @@ public class ConexionBaseDatos {
         while (rsVideojuego.next()) {
             Videojuego videojuego = new Videojuego(rsVideojuego.getString("titulo"), rsVideojuego.getString("autor"),
                     rsVideojuego.getString("formato"), rsVideojuego.getInt("anyo"),
-                    rsVideojuego.getDate("diaAlquilado"), rsVideojuego.getString("plataforma"));
+                    devolverFecha(rsVideojuego.getLong("diaAlquilado")),
+                    rsVideojuego.getString("plataforma"));
             infoVideojuego.add(videojuego);
         }
         return infoVideojuego;
     }
+
 
     private static ArrayList<Object> datosPelicula(Connection con) throws SQLException {
         Statement st = con.createStatement();
@@ -102,7 +106,8 @@ public class ConexionBaseDatos {
         while (rsPelicula.next()) {
             Pelicula pelicula = new Pelicula(rsPelicula.getString("titulo"), rsPelicula.getString("autor"),
                     rsPelicula.getString("formato"),
-                    rsPelicula.getInt("anyo"),rsPelicula.getDate("diaAlquilado"), rsPelicula.getInt("duracion"),
+                    rsPelicula.getInt("anyo"),
+                    devolverFecha(rsPelicula.getLong("diaAlquilado")), rsPelicula.getInt("duracion"),
                     rsPelicula.getString("actorPrincipal"), rsPelicula.getString("actrizPrincipal"));
             infoPelicula.add(pelicula);
         }
@@ -127,7 +132,8 @@ public class ConexionBaseDatos {
         while (rsDisco.next()) {
 
             Disco disco = new Disco(rsDisco.getString("titulo"), rsDisco.getString("autor"),
-                    rsDisco.getString("formato"), rsDisco.getInt("anyo"), rsDisco.getDate("diaAlquilado"),
+                    rsDisco.getString("formato"), rsDisco.getInt("anyo"),
+                    devolverFecha(rsDisco.getLong("diaAlquilado")),
                     rsDisco.getInt("duracion"), cancionesDisco(con, rsDisco.getString("cancionesDisco")));
             infoDisco.add(disco);
         }
@@ -137,7 +143,7 @@ public class ConexionBaseDatos {
     private static ArrayList<Cancion> cancionesDisco(Connection con, String canciones) throws SQLException {
 
         ArrayList<Cancion> cancionesDisco = new ArrayList<Cancion>();
-        if(canciones==null){
+        if(canciones==null||canciones.equals("null")){
             return null;
         }
         String[] cancionesSplit = canciones.split("/");
@@ -159,6 +165,9 @@ public class ConexionBaseDatos {
         }
         return null;
     }
+    private static Date devolverFecha(long time){
+        return new Date(time);
+    }
 
     public static void modificarBD(ArrayList<ArrayList<Object>> info) {
         Connection con = null;
@@ -166,7 +175,7 @@ public class ConexionBaseDatos {
         String bd = "Videoclub";
 
         String user = "postgres";
-        String pass = "Caca21";
+        String pass = "1234";
         try {
             con = DriverManager.getConnection(url + bd, user, pass);
             try {
@@ -189,6 +198,7 @@ public class ConexionBaseDatos {
         st.executeUpdate("delete from socio");
         for (int i = 0; i < infoSocio.size(); i++) {
             try {
+
                 st.executeUpdate("insert into socio values('" + ((Socio) infoSocio.get(i)).getNif() + "', '"
                         + ((Socio) infoSocio.get(i)).getNombre() + "', " + ((Socio) infoSocio.get(i)).getFechaNacimiento()
                         + ", '" + ((Socio) infoSocio.get(i)).getPoblacion() + "', " + ((Socio) infoSocio.get(i)).isAlquilando()
@@ -206,8 +216,9 @@ public class ConexionBaseDatos {
             try {
                 st.executeUpdate("insert into videojuego values('" + ((Videojuego) infoVideojuego.get(i)).getTitulo() + "', '"
                         + ((Videojuego) infoVideojuego.get(i)).getAutor() + "', '" + ((Videojuego) infoVideojuego.get(i)).getFormato()
-                        + "', " + ((Videojuego) infoVideojuego.get(i)).getAnyo() + ", " + ((Videojuego)infoVideojuego.get(i)).getDiaAlquilado()
-                        + ", '" + ((Videojuego) infoVideojuego.get(i)).getPlataforma() + "');");
+                        + "', " + ((Videojuego) infoVideojuego.get(i)).getAnyo() + ", '"
+                        + ((Videojuego) infoVideojuego.get(i)).getPlataforma() + "', "
+                        +((Videojuego) infoVideojuego.get(i)).getDiaAlquilado().getTime() + ");");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -218,16 +229,21 @@ public class ConexionBaseDatos {
         st.executeUpdate("delete from pelicula");
         for (int i = 0; i < infoPelicula.size(); i++) {
             try {
-                st.executeUpdate("insert into pelicula values('" + ((Pelicula) infoPelicula.get(i)).getTitulo() + "', '"
+                st. executeUpdate("insert into pelicula values('" + ((Pelicula) infoPelicula.get(i)).getTitulo() + "', '"
                         + ((Pelicula) infoPelicula.get(i)).getAutor() + "', '" + ((Pelicula) infoPelicula.get(i)).getFormato()
-                        + "', " + ((Pelicula) infoPelicula.get(i)).getAnyo() + ", " + ((Pelicula) infoPelicula.get(i)).getDiaAlquilado()
-                        + ", " + ((Pelicula) infoPelicula.get(i)).getDuracion() + ", '"
+                        + "', " + ((Pelicula) infoPelicula.get(i)).getAnyo() + ", "
+                         + ((Pelicula) infoPelicula.get(i)).getDuracion() + ", '"
                         + ((Pelicula) infoPelicula.get(i)).getActorPrincipal() + "', '"
-                        + ((Pelicula) infoPelicula.get(i)).getActrizPrincipal() + "');");
+                        + ((Pelicula) infoPelicula.get(i)).getActrizPrincipal() + "', "
+                        +((Pelicula) infoPelicula.get(i)).getDiaAlquilado().getTime() + ");"
+                        );
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+    }
+    private static void comprobarAlquilado(){
+
     }
 
     private static void modificarCancion(ArrayList<Object> infoCancion, Statement st) throws SQLException {
@@ -248,14 +264,16 @@ public class ConexionBaseDatos {
             try {
                 st.executeUpdate("insert into disco values('" + ((Disco) infoDisco.get(i)).getTitulo() + "', '"
                         + ((Disco) infoDisco.get(i)).getAutor() + "', '" + ((Disco) infoDisco.get(i)).getFormato()
-                        + "', " + ((Disco) infoDisco.get(i)).getAnyo() + ", " + ((Disco) infoDisco.get(i)).getDiaAlquilado()
-                        + ", " + ((Disco) infoDisco.get(i)).getDuracionDisco() + ", '"
-                        + ((Disco) infoDisco.get(i)).lineaCacionesDisco() + "');");
+                        + "', " + ((Disco) infoDisco.get(i)).getAnyo() + ", "
+                        + ((Disco) infoDisco.get(i)).getDuracionDisco() + ", '"
+                        + ((Disco) infoDisco.get(i)).lineaCacionesDisco() + "', "
+                        +((Disco) infoDisco.get(i)).getDiaAlquilado().getTime()+ ");");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
+
 
     /*public String lineaCacionesDisco(ArrayList<Cancion> canciones) {
         String cancionesDisco = "/";
