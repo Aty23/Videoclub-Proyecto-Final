@@ -2,7 +2,9 @@ package model;
 
 import control.ConexionBaseDatos;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -24,17 +26,18 @@ public class tools {
 
     public static int alquilar(Multimedia multimedia, Socio socio) {
         Date hoy = new Date();
-        socio.getMultimediaAlquilado().add(multimedia);
+        Multimedia multimediaSeleccionado=comararMultimedia(multimedia);
+        socio.getMultimediaAlquilado().add(multimediaSeleccionado);
         System.out.println(socio.getNif());
-        multimedia.setDiaAlquilado(hoy);
-        return pagarAlquiler(multimedia);
+        multimediaSeleccionado.setDiaAlquilado(hoy);
+        return pagarAlquiler(multimediaSeleccionado);
     }
 
     public static int devolverMultimedia(Multimedia multimedia, Socio socio) throws ParseException {
         for (int i = 0; i < socio.getMultimediaAlquilado().size(); i++) {
             if (socio.getMultimediaAlquilado().get(i).getTitulo().equals(multimedia.getTitulo())) {
                 socio.getMultimediaAlquilado().remove(i);
-                if (multimedia instanceof Disco ) {
+                if (multimedia instanceof Disco) {
                     (ConexionBaseDatos.db.get(4)).add(multimedia);
                 } else if (multimedia instanceof Pelicula) {
                     (ConexionBaseDatos.db.get(2)).add(multimedia);
@@ -47,11 +50,11 @@ public class tools {
     }
 
     public static int recargoRetraso(Multimedia multimedia) throws ParseException {
-        int recargo=0;
+        int recargo = 0;
         Date hoy = new Date();
         long diferenciaMilisec = hoy.getTime() - multimedia.getDiaAlquilado().getTime();
         long diferenciaDias = TimeUnit.MILLISECONDS.toDays(diferenciaMilisec);
-        if(diferenciaDias>3){
+        if (diferenciaDias > 3) {
             recargo = (int) (diferenciaDias - 3) * 2;
         }
 
@@ -69,5 +72,25 @@ public class tools {
         } else System.out.println("El dni es null");
         return null;
     }
+
+    public static Multimedia comararMultimedia(Multimedia multimedia) {
+        ArrayList<ArrayList<Object>> array = new ArrayList<>();
+        array.add(ConexionBaseDatos.db.get(1));
+        array.add(ConexionBaseDatos.db.get(2));
+        array.add(ConexionBaseDatos.db.get(4));
+        for (int i = 0; i < array.size(); i++) {
+            if (array.get(0).get(i) instanceof Videojuego && multimedia.equals(((Videojuego) array.get(0).get(i)).getTitulo())) {
+                return (Videojuego) ConexionBaseDatos.db.get(1).get(i);
+            } else if (array.get(1).get(i) instanceof Pelicula && multimedia.equals(((Pelicula) array.get(1).get(i)).getTitulo())) {
+
+                return (Pelicula) ConexionBaseDatos.db.get(2).get(i);
+            } else if (array.get(2).get(i) instanceof Disco && multimedia.equals(((Disco) array.get(2).get(i)).getTitulo())) {
+                return (Disco) ConexionBaseDatos.db.get(4).get(i);
+            }
+        }
+        return null;
+
+    }
+
 
 }
