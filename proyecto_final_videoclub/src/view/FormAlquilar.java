@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class FormAlquilar extends JFrame {
     Color colorButtons = new Color(82, 82, 82);
@@ -15,9 +14,6 @@ public class FormAlquilar extends JFrame {
     private String dniBuscar;
     private int elementoAlquilado;
     private JList lstBuscar;
-    private JList lstBuscarP;
-    private JList lstBuscarV;
-    private JList lstBuscarD;
 
     private Color colorFondo = new Color(65, 65, 65);
 
@@ -79,6 +75,7 @@ public class FormAlquilar extends JFrame {
             lblAlquiler.setBounds(100, 500, 300, 30);
             lblAlquiler.setVisible(true);
             panelPrincipal.add(lblAlquiler);
+            lstBuscar = new JList<>();
             scrollerMultimedia = new JScrollPane(lstBuscar);
 
             scrollerMultimedia.setBounds(100, 200, 350, 200);
@@ -106,35 +103,20 @@ public class FormAlquilar extends JFrame {
             }
 
 
-
-
-
             cmbEligeMultimedia.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
                         if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
-                            lstBuscarP = new JList<>( modeloPelicula);
-                            lstBuscar=lstBuscarP;
+                            lstBuscar.setModel(modeloPelicula);
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
-                            lstBuscarD = new JList<>( modeloDisco);
-                            lstBuscar=lstBuscarD;
-
+                            lstBuscar.setModel(modeloDisco);
                         } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")) {
-
-                            lstBuscarV = new JList<>(modeloVideojuego);
-                            lstBuscar=lstBuscarV;
+                            lstBuscar.setModel(modeloVideojuego);
                         }
-                        scrollerMultimedia = new JScrollPane(lstBuscar);
-                        panelPrincipal.add(lstBuscar);
-                        lstBuscar.setVisibleRowCount(50);
-                        lstBuscar.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-
                     } catch (Exception v) {
                         JOptionPane.showMessageDialog(null, "fallo buscar Multimedia");
                     }
-
-
                 }
             });
             /*btnBuscar.addActionListener(new ActionListener() {
@@ -147,7 +129,7 @@ public class FormAlquilar extends JFrame {
                         panelPrincipal.add(lstBuscar);
                         lstBuscar.setVisibleRowCount(buscadorMultimedia(txtfldMulti.getText()).size());
                         lstBuscar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-                        elementoAlquilado = lstBuscar.getSelectedIndex();
+
                     } else {
                         JOptionPane.showMessageDialog(null, "Debes introducuir un texto");
                     }
@@ -159,19 +141,28 @@ public class FormAlquilar extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (dniBuscar != null) {
-                        if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
-                            lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscar.getModel().getElementAt(elementoAlquilado)),
-                                    tools.buscarUsuario(dniBuscar)));
+                        elementoAlquilado = lstBuscar.getSelectedIndex();
+                        try{
+                            if (cmbEligeMultimedia.getSelectedItem().toString().equals("Películas")) {
+                                lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscar.getModel().getElementAt(elementoAlquilado)),
+                                        tools.buscarUsuario(dniBuscar)));
 
-                        } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
-                            lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscar.getModel().getElementAt(elementoAlquilado)),
-                                    tools.buscarUsuario(dniBuscar)));
 
-                        } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")) {
 
-                            lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscar.getModel().getElementAt(elementoAlquilado)),
-                                    tools.buscarUsuario(dniBuscar)));
+                            } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Discos")) {
+                                lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscar.getModel().getElementAt(elementoAlquilado)),
+                                        tools.buscarUsuario(dniBuscar)));
+
+                            } else if (cmbEligeMultimedia.getSelectedItem().toString().equals("Videojuegos")) {
+
+                                lblAlquiler.setText("El precio del alquiler es: " + tools.alquilar(((Multimedia) lstBuscar.getModel().getElementAt(elementoAlquilado)),
+                                        tools.buscarUsuario(dniBuscar)));
+                            }
+                        }catch (Exception e1){
+                            JOptionPane.showMessageDialog(null, "Debes seleccionar un elemento");
+                            e1.printStackTrace();
                         }
+
 
                     } else {
                         JOptionPane.showMessageDialog(null, "Debes introducir un DNI");
