@@ -136,13 +136,13 @@ public class FormListados extends JFrame{
                     textoListas.setText("");
                     ArrayList<String> recargoSocio = new ArrayList<>();
                     for (int i = 0; i<ConexionBaseDatos.db.get(0).size(); i++){
-                        if(((Socio) ConexionBaseDatos.db.get(0).get(i)).isRecargoPendiente()){
-                            recargoSocio.add(((Socio) ConexionBaseDatos.db.get(0).get(i)).getNombre());
+                        if(!(((Socio) ConexionBaseDatos.db.get(0).get(i)).getMultimediaAlquilado() == null)){
+                            recargoSocio.add(((Socio) ConexionBaseDatos.db.get(0).get(i)).getNif());
                         }
                     }
 
-                    for (String nombre: recargoSocio) {
-                        textoListas.append(nombre + "\n");
+                    for (String nif: recargoSocio) {
+                        textoListas.append(nif + "\n");
                     }
                 }
             }
